@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
+import PropTypes from "prop-types";
 
 const Logo = styled.img`
   position: absolute;
@@ -26,13 +27,17 @@ const HeaderStyled = styled.div`
   height: 70px;
 `;
 
-function Header() {
+function Header(props) {
   return (
     <HeaderStyled>
       <Logo src="logo-small.svg" />
-      <Headline>Feed</Headline>
+      <Headline>{props.headline}</Headline>
     </HeaderStyled>
   );
 }
+
+Header.propTypes = {
+  headline: PropTypes.string
+};
 
 export default Header;
