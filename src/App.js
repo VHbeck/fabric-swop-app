@@ -1,14 +1,15 @@
 import React from "react";
-import "./App.css";
 import GlobalStyle from "./misc/GlobalStyle";
-import Headline from "./components/Headline";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Headline>Fabric Swop</Headline>
-      <div className="App">hello</div>
+      <Header />
+
+      <Footer />
     </>
   );
 }

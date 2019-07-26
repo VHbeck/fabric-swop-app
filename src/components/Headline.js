@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Headline = styled.h1`
-  font-size: 30px;
+  font-size: 18px;
 `;
 
 export default Headline;
