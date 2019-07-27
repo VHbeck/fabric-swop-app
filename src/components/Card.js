@@ -41,9 +41,18 @@ const TextContainer = styled.div`
   padding-bottom: 15px;
 `;
 
+const Bookmark = styled.a`
+  position: absolute;
+  right: 20px;
+  font-size: 30px;
+`;
+
 function Card(props) {
   return (
     <CardFrame>
+      <Bookmark>
+        <i class="far fa-heart" />
+      </Bookmark>
       <CardImage src={props.source} alt={props.name} />
       <CardTitle>{props.name}</CardTitle>
       <TextContainer>

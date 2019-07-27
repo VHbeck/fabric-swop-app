@@ -3,6 +3,7 @@ import Card from "../components/Card";
 
 import Container from "../components/Container";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function List() {
   return (
@@ -28,6 +29,7 @@ function List() {
           source="images/sample-fabric3.jpg"
         />
       </Container>
+      <Footer />
     </>
   );
 }

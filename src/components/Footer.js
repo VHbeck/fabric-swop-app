@@ -1,11 +1,34 @@
+import React from "react";
 import styled from "styled-components";
 
-const Footer = styled.div`
+const FooterStyled = styled.div`
   background-color: #ffe0c7;
   width: 100vw;
   height: 70px;
   position: fixed;
   bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 `;
+
+const Icons = styled.div`
+  font-size: 35px;
+  align-self: center;
+  text-align: center;
+`;
+
+function Footer() {
+  return (
+    <FooterStyled>
+      <Icons />
+      <Icons />
+      <Icons />
+      <Icons />
+      <Icons>
+        <i class="far fa-heart" />
+      </Icons>
+    </FooterStyled>
+  );
+}
 
 export default Footer;

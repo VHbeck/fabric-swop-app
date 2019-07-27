@@ -25,6 +25,7 @@ const HeaderStyled = styled.div`
   );
   width: 100vw;
   height: 70px;
+  z-index: 1;
 `;
 
 function Header(props) {
