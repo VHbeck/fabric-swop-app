@@ -5,7 +5,7 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-function List() {
+function List(props) {
   const output = [
     {
       title: "Baumwollstoff",
@@ -29,7 +29,6 @@ function List() {
       bookmark: "true"
     }
   ];
-  console.log(output);
   const outputArray =
     output &&
     output.map(element => {
@@ -37,20 +36,23 @@ function List() {
         name: element.title,
         price: element.price,
         source: element.source,
-        length: element.length
+        length: element.length,
+        bookmark: element.bookmark
       };
     });
-
+  //console.log(outputArray);
   return (
     <>
       <Header headline="Feed" />
       <Container>
-        {outputArray.map(out => (
+        {outputArray.map((out, index) => (
           <Card
+            key={out.name + index}
             name={out.name}
             length={out.length}
             price={out.price}
             source={out.source}
+            bookmark={out.bookmark}
           />
         ))}
       </Container>

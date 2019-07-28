@@ -43,10 +43,10 @@ const TextContainer = styled.div`
 `;
 
 function Card(props) {
+  //console.log(props.bookmark);
   return (
     <CardFrame>
-      <Bookmark />
-
+      <Bookmark bookmark={props.bookmark} />
       <CardImage src={props.source} alt={props.name} />
       <CardTitle>{props.name}</CardTitle>
       <TextContainer>

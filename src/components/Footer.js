@@ -15,16 +15,19 @@ const Icons = styled.div`
   font-size: 35px;
   align-self: center;
   text-align: center;
+  :active {
+    color: #ff979a;
+  }
 `;
 
-function Footer() {
+function Footer(props) {
   return (
     <FooterStyled>
       <Icons />
       <Icons />
       <Icons />
       <Icons />
-      <Icons>
+      <Icons onClick={props.handleFavoriteClick}>
         <i class="far fa-heart" />
       </Icons>
     </FooterStyled>
