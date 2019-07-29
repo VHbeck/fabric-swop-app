@@ -2,6 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
+h2 {
+  font-family: 'Nunito', sans-serif;
+   color: #131426;
+   font-size: 16px;
+}
+
 body {
    background: #FDF7F5;
    margin: 0px;
