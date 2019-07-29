@@ -34,21 +34,20 @@ function Footer(props) {
     <FooterStyled>
       <Icons>
         <Link to="/">
-          <i class="fas fa-home" />
+          <i className="fas fa-home" />
         </Link>
       </Icons>
       <Icons>
         <Link to="/create">
-          <i class="fas fa-plus" />
+          <i className="fas fa-plus" />
         </Link>
       </Icons>
       <Icons />
       <Icons />
 
-      <Icons onClick={props.handleFavoriteClick}>
-        <Link to="/">
-          {" "}
-          <i className="far fa-heart" />{" "}
+      <Icons>
+        <Link to="/favorite">
+          <i className="far fa-heart" />
         </Link>
       </Icons>
     </FooterStyled>
