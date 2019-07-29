@@ -9,17 +9,20 @@ const BookmarkStyled = styled.div`
 `;
 
 function Bookmark(props) {
-  const [BookmarkState, SetBookmarkState] = React.useState(false);
+  const [BookmarkState, SetBookmarkState] = React.useState(
+    getInitialBookmark()
+  );
+
+  function getInitialBookmark() {
+    return props.bookmark === "true" ? true : false;
+  }
 
   function handleBookmarkClick() {
     SetBookmarkState(BookmarkState === true ? false : true);
   }
   console.log(BookmarkState);
   return (
-    <BookmarkStyled
-      active={props.bookmark === "true" ? props.bookmark : BookmarkState}
-      onClick={handleBookmarkClick}
-    >
+    <BookmarkStyled active={BookmarkState} onClick={handleBookmarkClick}>
       <i className="far fa-heart" />
     </BookmarkStyled>
   );
