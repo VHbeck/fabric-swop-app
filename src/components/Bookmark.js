@@ -14,17 +14,23 @@ function Bookmark(props) {
   function handleBookmarkClick() {
     SetBookmarkState(BookmarkState === true ? false : true);
   }
-  //console.log(props.bookmark);
+  console.log(BookmarkState);
   return (
-    <BookmarkStyled active={BookmarkState} onClick={handleBookmarkClick}>
+    <BookmarkStyled
+      active={props.bookmark === "true" ? props.bookmark : BookmarkState}
+      onClick={handleBookmarkClick}
+    >
       <i className="far fa-heart" />
     </BookmarkStyled>
   );
 }
 
 export default Bookmark;
-
-/* active={() =>
-        (props.bookmark && SetBookmarkState(props.bookmark)) || BookmarkState
-      }
-      */
+/*
+<BookmarkStyled
+      active={props.bookmark === "true" ? props.bookmark : BookmarkState}
+      onClick={handleBookmarkClick}
+    >
+      <i className="far fa-heart" />
+    </BookmarkStyled>
+    */

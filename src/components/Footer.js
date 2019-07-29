@@ -28,7 +28,7 @@ function Footer(props) {
       <Icons />
       <Icons />
       <Icons onClick={props.handleFavoriteClick}>
-        <i class="far fa-heart" />
+        <i className="far fa-heart" />
       </Icons>
     </FooterStyled>
   );

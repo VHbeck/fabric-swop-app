@@ -5,31 +5,11 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-function List(props) {
+const output = require("../models/items.json");
+
+function List() {
   const [favoriteArray, setFavoriteArray] = React.useState("");
-  const output = [
-    {
-      title: "Baumwollstoff",
-      length: "4",
-      price: "5",
-      source: "images/sample-fabric.jpg",
-      bookmark: "true"
-    },
-    {
-      title: "Leinenstoff",
-      length: "3",
-      price: "4",
-      source: "images/sample-fabric2.jpg",
-      bookmark: "false"
-    },
-    {
-      title: "Polyesterstoff",
-      length: "2",
-      price: "8",
-      source: "images/sample-fabric3.jpg",
-      bookmark: "true"
-    }
-  ];
+
   const outputArray =
     output &&
     output.map(element => {
@@ -41,7 +21,6 @@ function List(props) {
         bookmark: element.bookmark
       };
     });
-  //console.log(outputArray);
 
   function favorite() {
     const bookmarkState = outputArray

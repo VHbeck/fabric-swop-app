@@ -10,14 +10,14 @@
     "title": "Leinenstoff",
     "length:": "3",
     "price": "4",
-    "source": "images/sample-fabric.jpg",
+    "source": "images/sample-fabric2.jpg",
     "bookmark": "false"
   },
   {
     "title": "Polyesterstoff",
     "length:": "2",
     "price": "8",
-    "source": "images/sample-fabric.jpg",
+    "source": "images/sample-fabric3.jpg",
     "bookmark": "true"
   }
 ]
