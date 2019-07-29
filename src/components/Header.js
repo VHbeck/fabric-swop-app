@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const Logo = styled.img`
   position: absolute;
   left: 15px;
-  top: 30px;
+  top: 15px;
 `;
 
 const HeaderStyled = styled.div`
