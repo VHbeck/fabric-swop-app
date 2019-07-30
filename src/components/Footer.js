@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FooterStyled = styled.div`
   background-color: #ffe0c7;
   width: 100vw;
-  height: 70px;
+  height: 60px;
   position: fixed;
   bottom: 0;
   display: grid;
@@ -13,7 +13,7 @@ const FooterStyled = styled.div`
 `;
 
 const Icons = styled.div`
-  font-size: 35px;
+  font-size: 30px;
   align-self: center;
   text-align: center;
   color: #131426;

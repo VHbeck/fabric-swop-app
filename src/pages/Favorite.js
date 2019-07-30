@@ -3,9 +3,19 @@ import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
-const output = require("../models/items.json");
+//const output = require("../models/items.json");
 
 function Favorite() {
+  function getCardFromStorage() {
+    try {
+      return JSON.parse(localStorage.getItem("Card")) || [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  const output = getCardFromStorage();
+
   const outputArray =
     output &&
     output

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import AddButton from "./AddButton";
+//import { Redirect } from "react-router-dom";
 
 const FormContainer = styled.div`
   display: flex;
@@ -89,7 +90,8 @@ function Form() {
         fabricWidth: fabricWidth,
         fabricColor: fabricColor,
         price: price,
-        bookmark: false
+        source: "images/sample-fabric.jpg",
+        bookmark: "true"
       },
       ...cardState
     ];

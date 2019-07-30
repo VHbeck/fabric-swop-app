@@ -5,17 +5,27 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const output = require("../models/items.json");
+//const output = require("../models/items.json");
 
 function List() {
+  function getCardFromStorage() {
+    try {
+      return JSON.parse(localStorage.getItem("Card")) || [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  const output = getCardFromStorage();
+
   const outputArray =
     output &&
     output.map(element => {
       return {
-        name: element.title,
+        name: element.name,
         price: element.price,
         source: element.source,
-        length: element.length,
+        length: element.fabricLength,
         bookmark: element.bookmark
       };
     });
