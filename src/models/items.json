@@ -1,20 +1,20 @@
 [
   {
-    "title": "Baumwollstoff",
+    "title": "Cotton Fabric",
     "length": "4",
     "price": "5",
     "source": "images/sample-fabric.jpg",
     "bookmark": "true"
   },
   {
-    "title": "Leinenstoff",
+    "title": "Linen Fabric",
     "length": "3",
     "price": "4",
     "source": "images/sample-fabric2.jpg",
     "bookmark": "false"
   },
   {
-    "title": "Polyesterstoff",
+    "title": "Poly Fabric",
     "length": "2",
     "price": "8",
     "source": "images/sample-fabric3.jpg",

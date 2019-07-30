@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import AddButton from "./AddButton";
 
 const FormContainer = styled.div`
   display: flex;
@@ -29,18 +30,6 @@ const Number = styled.div`
   margin-top: 10px;
 `;
 
-const AddButton = styled.button`
-  height: 35px;
-  width: 133px;
-  background-color: #ff979a;
-  border-radius: 15px;
-  font-weight: bold;
-  font-size: 16px;
-  font-family: "Nunito", sans-serif;
-  margin: 10px;
-  border: none;
-`;
-
 function Form() {
   return (
     <form>
@@ -68,7 +57,7 @@ function Form() {
         <Number>2</Number>
         <h2>Price</h2>
         <label>
-          Price: <input type="number" placeholder="10" />
+          Price: <input type="number" placeholder="10" /> Euro
         </label>
         <AddButton>Add</AddButton>
       </FormContainer>
