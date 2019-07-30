@@ -5,16 +5,42 @@ import List from "./pages/List";
 import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
 import Favorite from "./pages/Favorite";
+import { getCardFromStorage, setCardToStorage } from "./utils/Storage";
+const dummy = require("./models/items.json");
 
 function App() {
+  const [cards, setCards] = React.useState(getCardFromStorage() || dummy);
+  React.useEffect(() => {
+    setCardToStorage(cards);
+  }, [cards]);
+
+  function handleBookmarkChange(index) {
+    const card = cards[index];
+    setCards([
+      ...cards.slice(0, index),
+      { ...card, bookmark: !card.bookmark },
+      ...cards.slice(index + 1)
+    ]);
+  }
+
   return (
     <>
       <GlobalStyle />
       <Router>
         <Switch>
-          <Route path="/" exact component={List} />
+          <Route
+            path="/"
+            exact
+            render={props => (
+              <List cards={cards} onBookmark={handleBookmarkChange} />
+            )}
+          />
           <Route path="/create" exact component={Create} />
-          <Route path="/favorite" exact component={Favorite} />
+          <Route
+            path="/favorite"
+            exact
+            render={props => <Favorite cards={cards} />}
+          />
           <Route component={NotFound} />
         </Switch>
       </Router>

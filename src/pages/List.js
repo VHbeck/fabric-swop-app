@@ -1,15 +1,14 @@
 import React from "react";
 import Card from "../components/Card";
+import { withRouter } from "react-router-dom";
 
 import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { getCardFromStorage } from "../utils/Storage";
 
-//const output = require("../models/items.json");
-
-function List() {
-  const output = getCardFromStorage();
+function List(props) {
+  console.log(props.history);
+  const output = props.cards;
 
   const outputArray =
     output &&
@@ -25,6 +24,7 @@ function List() {
 
   const initialOutput = outputArray.map((out, index) => (
     <Card
+      onBookmarkClick={() => props.onBookmark(index)}
       key={out.name + index}
       name={out.name}
       length={out.length}
@@ -43,4 +43,4 @@ function List() {
   );
 }
 
-export default List;
+export default withRouter(List);

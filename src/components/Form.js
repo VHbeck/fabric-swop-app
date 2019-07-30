@@ -95,6 +95,7 @@ function Form() {
         <label>
           Name:{" "}
           <input
+            id="name"
             type="text"
             placeholder="Cotton fabric with dots"
             value={name}
