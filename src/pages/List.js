@@ -4,18 +4,11 @@ import Card from "../components/Card";
 import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { getCardFromStorage } from "../utils/Storage";
 
 //const output = require("../models/items.json");
 
 function List() {
-  function getCardFromStorage() {
-    try {
-      return JSON.parse(localStorage.getItem("Card")) || [];
-    } catch (error) {
-      return [];
-    }
-  }
-
   const output = getCardFromStorage();
 
   const outputArray =

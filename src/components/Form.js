@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import AddButton from "./AddButton";
-//import { Redirect } from "react-router-dom";
+import { getCardFromStorage, setCardToStorage } from "../utils/Storage";
+// import { Redirect } from "react-router-dom";
 
 const FormContainer = styled.div`
   display: flex;
@@ -43,18 +44,6 @@ function Form() {
   React.useEffect(() => {
     setCardToStorage(cardState);
   }, [cardState]);
-
-  function getCardFromStorage() {
-    try {
-      return JSON.parse(localStorage.getItem("Card")) || [];
-    } catch (error) {
-      return [];
-    }
-  }
-
-  function setCardToStorage(item) {
-    return localStorage.setItem("Card", JSON.stringify(item));
-  }
 
   function handleNameChange(event) {
     setName(event.target.value);
@@ -165,7 +154,7 @@ function Form() {
           />
           Euro
         </label>
-        <AddButton>Add</AddButton>
+        <AddButton type="submit">Add</AddButton>
       </FormContainer>
     </form>
   );
