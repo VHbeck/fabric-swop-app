@@ -20,7 +20,7 @@ function Bookmark(props) {
   function handleBookmarkClick() {
     SetBookmarkState(BookmarkState === true ? false : true);
   }
-  console.log(BookmarkState);
+  // console.log(BookmarkState);
   return (
     <BookmarkStyled active={BookmarkState} onClick={handleBookmarkClick}>
       <i className="far fa-heart" />
