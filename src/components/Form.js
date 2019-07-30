@@ -31,7 +31,7 @@ const Number = styled.div`
 `;
 
 function Form() {
-  const [cardState, setCardState] = React.useState([]);
+  const [cardState, setCardState] = React.useState(getCardFromStorage());
   const [name, setName] = React.useState("");
   const [type, setType] = React.useState("");
   const [fabricLength, setFabricLength] = React.useState("");
@@ -42,6 +42,14 @@ function Form() {
   React.useEffect(() => {
     setCardToStorage(cardState);
   }, [cardState]);
+
+  function getCardFromStorage() {
+    try {
+      return JSON.parse(localStorage.getItem("Card")) || [];
+    } catch (error) {
+      return [];
+    }
+  }
 
   function setCardToStorage(item) {
     return localStorage.setItem("Card", JSON.stringify(item));
