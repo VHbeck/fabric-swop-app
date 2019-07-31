@@ -2,6 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import AddButton from "./AddButton";
 
+import axios from "axios";
+
+const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
+const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
+
+const StyledUpload = styled.div`
+  text-align: center;
+`;
+
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,6 +40,29 @@ const Number = styled.div`
 `;
 
 function Form({ onCreate }) {
+  const [image, setImage] = React.useState("");
+
+  function upload(event) {
+    const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
+
+    const formData = new FormData();
+    formData.append("file", event.target.files[0]);
+    formData.append("upload_preset", PRESET);
+
+    axios
+      .post(url, formData, {
+        headers: {
+          "Content-type": "multipart/form-data"
+        }
+      })
+      .then(onImageSave)
+      .catch(err => console.error(err));
+  }
+
+  function onImageSave(response) {
+    setImage(response.data.url);
+  }
+
   const [newCard, setnewCard] = React.useState({
     name: "",
     type: "",
@@ -38,7 +70,7 @@ function Form({ onCreate }) {
     fabricWidth: "",
     fabricColor: "",
     price: "",
-    source: "images/sample-fabric.jpg",
+    source: "",
     bookmark: false
   });
 
@@ -62,88 +94,101 @@ function Form({ onCreate }) {
       fabricWidth: newCard.fabricWidth,
       fabricColor: newCard.fabricColor,
       price: newCard.price,
-      source: "images/sample-fabric.jpg",
+      source: image,
       bookmark: false
     };
     onCreate(item);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <FormContainer>
         <Number>1</Number>
-        <h2>Fabric Info</h2>
-        <label>
-          Name:{" "}
-          <input
-            name="name"
-            type="text"
-            placeholder="Cotton fabric with dots"
-            value={newCard.name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Type:{" "}
-          <input
-            name="type"
-            type="text"
-            placeholder="cotton"
-            value={newCard.type}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Length:{" "}
-          <input
-            name="fabricLength"
-            type="number"
-            placeholder="3"
-            value={newCard.fabricLength}
-            onChange={handleChange}
-          />
-          m
-        </label>
-        <label>
-          Width:{" "}
-          <input
-            name="fabricWidth"
-            type="number"
-            placeholder="1.45"
-            value={newCard.fabricWidth}
-            onChange={handleChange}
-          />
-          m
-        </label>
-        <label>
-          Color:{" "}
-          <input
-            name="fabricColor"
-            type="text"
-            placeholder="blue"
-            value={newCard.fabricColor}
-            onChange={handleChange}
-          />
-        </label>
+        <h2>Upload Image</h2>
+        <StyledUpload>
+          {image ? (
+            <img src={image} alt="" style={{ width: "20%" }} />
+          ) : (
+            <input type="file" name="file" onChange={upload} />
+          )}
+        </StyledUpload>
       </FormContainer>
+      <form onSubmit={handleSubmit}>
+        <FormContainer>
+          <Number>2</Number>
+          <h2>Fabric Info</h2>
+          <label>
+            Name:{" "}
+            <input
+              name="name"
+              type="text"
+              placeholder="Cotton fabric with dots"
+              value={newCard.name}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Type:{" "}
+            <input
+              name="type"
+              type="text"
+              placeholder="cotton"
+              value={newCard.type}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Length:{" "}
+            <input
+              name="fabricLength"
+              type="number"
+              placeholder="3"
+              value={newCard.fabricLength}
+              onChange={handleChange}
+            />
+            m
+          </label>
+          <label>
+            Width:{" "}
+            <input
+              name="fabricWidth"
+              type="number"
+              placeholder="1.45"
+              value={newCard.fabricWidth}
+              onChange={handleChange}
+            />
+            m
+          </label>
+          <label>
+            Color:{" "}
+            <input
+              name="fabricColor"
+              type="text"
+              placeholder="blue"
+              value={newCard.fabricColor}
+              onChange={handleChange}
+            />
+          </label>
+        </FormContainer>
 
-      <FormContainer>
-        <Number>2</Number>
-        <h2>Price</h2>
-        <label>
-          Price:{" "}
-          <input
-            name="price"
-            type="number"
-            placeholder="10"
-            value={newCard.price}
-            onChange={handleChange}
-          />
-          Euro
-        </label>
-        <AddButton type="submit">Add</AddButton>
-      </FormContainer>
-    </form>
+        <FormContainer>
+          <Number>3</Number>
+          <h2>Price</h2>
+          <label>
+            Price:{" "}
+            <input
+              name="price"
+              type="number"
+              placeholder="10"
+              value={newCard.price}
+              onChange={handleChange}
+            />
+            Euro
+          </label>
+          <AddButton type="submit">Add</AddButton>
+        </FormContainer>
+      </form>
+    </>
   );
 }
 
