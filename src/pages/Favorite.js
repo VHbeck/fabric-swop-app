@@ -3,19 +3,17 @@ import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
-import { getCardFromStorage } from "../utils/Storage";
-//const output = require("../models/items.json");
 
-function Favorite() {
-  const output = getCardFromStorage();
+function Favorite(props) {
+  const output = props.cards;
 
   const outputArray =
     output &&
     output
-      .filter(element => element.bookmark === "true")
+      .filter(element => element.bookmark === true)
       .map(element => {
         return {
-          name: element.title,
+          name: element.name,
           price: element.price,
           source: element.source,
           length: element.length,

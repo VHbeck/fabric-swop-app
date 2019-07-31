@@ -46,7 +46,7 @@ function Card(props) {
   //console.log(props.bookmark);
   return (
     <CardFrame>
-      <Bookmark bookmark={props.bookmark} />
+      <Bookmark active={props.bookmark} onClick={props.onBookmarkClick} />
       <CardImage src={props.source} alt={props.name} />
       <CardTitle>{props.name}</CardTitle>
       <TextContainer>

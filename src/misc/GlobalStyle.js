@@ -9,7 +9,8 @@ h2 {
 }
 
 body {
-   background: #FDF7F5;
+  background: rgb(253,247,245);
+background: linear-gradient(0deg, rgba(253,247,245,1) 76%, rgba(255,224,199,1) 89%, rgba(255,200,202,1) 100%);
    margin: 0px;
    font-family: 'Nunito', sans-serif;
    color: #131426;

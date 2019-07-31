@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import AddButton from "./AddButton";
-import { getCardFromStorage, setCardToStorage } from "../utils/Storage";
-// import { Redirect } from "react-router-dom";
 
 const FormContainer = styled.div`
   display: flex;
@@ -32,59 +30,42 @@ const Number = styled.div`
   margin-top: 10px;
 `;
 
-function Form() {
-  const [cardState, setCardState] = React.useState(getCardFromStorage());
-  const [name, setName] = React.useState("");
-  const [type, setType] = React.useState("");
-  const [fabricLength, setFabricLength] = React.useState("");
-  const [fabricWidth, setFabricWidth] = React.useState("");
-  const [fabricColor, setfabricColor] = React.useState("");
-  const [price, setPrice] = React.useState("");
+function Form({ onCreate }) {
+  const [newCard, setnewCard] = React.useState({
+    name: "",
+    type: "",
+    fabricLength: "",
+    fabricWidth: "",
+    fabricColor: "",
+    price: "",
+    source: "images/sample-fabric.jpg",
+    bookmark: false
+  });
 
-  React.useEffect(() => {
-    setCardToStorage(cardState);
-  }, [cardState]);
-
-  function handleNameChange(event) {
-    setName(event.target.value);
+  function handleChange(event) {
+    event.preventDefault();
+    const { name, value } = event.target;
+    setnewCard({
+      ...newCard,
+      [name]: value
+    });
   }
 
-  function handleTypeChange(event) {
-    setType(event.target.value);
-  }
-
-  function handleLengthChange(event) {
-    setFabricLength(event.target.value);
-  }
-
-  function handelWidthChange(event) {
-    setFabricWidth(event.target.value);
-  }
-
-  function handleColorChange(event) {
-    setfabricColor(event.target.value);
-  }
-
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
-  }
+  //console.log(newCard);
 
   function handleSubmit(event) {
     event.preventDefault();
-    const newCard = [
-      {
-        name: name,
-        type: type,
-        fabricLength: fabricLength,
-        fabricWidth: fabricWidth,
-        fabricColor: fabricColor,
-        price: price,
-        source: "images/sample-fabric.jpg",
-        bookmark: "true"
-      },
-      ...cardState
-    ];
-    setCardState(newCard);
+    const item = {
+      name: newCard.name,
+      type: newCard.type,
+      fabricLength: newCard.fabricLength,
+      fabricWidth: newCard.fabricWidth,
+      fabricColor: newCard.fabricColor,
+      price: newCard.price,
+      source: "images/sample-fabric.jpg",
+      bookmark: false
+    };
+    onCreate(item);
   }
 
   return (
@@ -95,48 +76,53 @@ function Form() {
         <label>
           Name:{" "}
           <input
+            name="name"
             type="text"
             placeholder="Cotton fabric with dots"
-            value={name}
-            onChange={handleNameChange}
+            value={newCard.name}
+            onChange={handleChange}
           />
         </label>
         <label>
           Type:{" "}
           <input
+            name="type"
             type="text"
             placeholder="cotton"
-            value={type}
-            onChange={handleTypeChange}
+            value={newCard.type}
+            onChange={handleChange}
           />
         </label>
         <label>
           Length:{" "}
           <input
+            name="fabricLength"
             type="number"
             placeholder="3"
-            value={fabricLength}
-            onChange={handleLengthChange}
+            value={newCard.fabricLength}
+            onChange={handleChange}
           />
           m
         </label>
         <label>
           Width:{" "}
           <input
+            name="fabricWidth"
             type="number"
             placeholder="1.45"
-            value={fabricWidth}
-            onChange={handelWidthChange}
+            value={newCard.fabricWidth}
+            onChange={handleChange}
           />
           m
         </label>
         <label>
           Color:{" "}
           <input
+            name="fabricColor"
             type="text"
             placeholder="blue"
-            value={fabricColor}
-            onChange={handleColorChange}
+            value={newCard.fabricColor}
+            onChange={handleChange}
           />
         </label>
       </FormContainer>
@@ -147,10 +133,11 @@ function Form() {
         <label>
           Price:{" "}
           <input
+            name="price"
             type="number"
             placeholder="10"
-            value={price}
-            onChange={handlePriceChange}
+            value={newCard.price}
+            onChange={handleChange}
           />
           Euro
         </label>

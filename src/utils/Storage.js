@@ -1,6 +1,6 @@
 export function getCardFromStorage() {
   try {
-    return JSON.parse(localStorage.getItem("Card")) || [];
+    return JSON.parse(localStorage.getItem("Card"));
   } catch (error) {
     return [];
   }
