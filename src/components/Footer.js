@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const FooterStyled = styled.div`
-  background-color: #ffe0c7;
+  background-color: #fdf7f5;
   width: 100vw;
   height: 60px;
   position: fixed;

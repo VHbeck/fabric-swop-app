@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import AddButton from "./AddButton";
 import { getCardFromStorage, setCardToStorage } from "../utils/Storage";
-// import { Redirect } from "react-router-dom";
 
 const FormContainer = styled.div`
   display: flex;
@@ -69,8 +68,7 @@ function Form() {
     setPrice(event.target.value);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
     const newCard = [
       {
         name: name,
@@ -80,7 +78,7 @@ function Form() {
         fabricColor: fabricColor,
         price: price,
         source: "images/sample-fabric.jpg",
-        bookmark: "true"
+        bookmark: false
       },
       ...cardState
     ];

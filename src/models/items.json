@@ -1,21 +1,21 @@
 [
   {
     "name": "Cotton Fabric",
-    "length": 3,
+    "fabricLength": 3,
     "price": 5,
     "source": "images/sample-fabric.jpg",
     "bookmark": true
   },
   {
     "name": "Linen Fabric",
-    "length": 3,
+    "fabricLength": 3,
     "price": 4,
     "source": "images/sample-fabric2.jpg",
     "bookmark": false
   },
   {
     "name": "Poly Fabric",
-    "length": 2,
+    "fabricLength": 2,
     "price": 8,
     "source": "images/sample-fabric3.jpg",
     "bookmark": true
