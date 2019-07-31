@@ -8,7 +8,7 @@ import Favorite from "./pages/Favorite";
 import { getCardFromStorage, setCardToStorage } from "./utils/Storage";
 const dummy = require("./models/items.json");
 
-function App() {
+function App(props) {
   const [cards, setCards] = React.useState(getCardFromStorage() || dummy);
   React.useEffect(() => {
     setCardToStorage(cards);
@@ -23,6 +23,10 @@ function App() {
     ]);
   }
 
+  function handleCreate(items) {
+    setCards([items, ...cards]);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -35,7 +39,11 @@ function App() {
               <List cards={cards} onBookmark={handleBookmarkChange} />
             )}
           />
-          <Route path="/create" exact component={Create} />
+          <Route
+            path="/create"
+            exact
+            render={props => <Create cards={cards} onCreate={handleCreate} />}
+          />
           <Route
             path="/favorite"
             exact

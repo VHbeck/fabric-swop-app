@@ -4,15 +4,16 @@ import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Form from "../components/Form";
 
-function Create() {
+function Create(props) {
   return (
     <>
       <Header headline="Create" />
       <Container>
-        <Form />
+        <Form cards={props.cards} onCreate={props.onCreate} />
       </Container>
       <Footer />
     </>
   );
 }
+
 export default Create;
