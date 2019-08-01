@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import AddButton from "./AddButton";
-
 import axios from "axios";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
@@ -83,8 +82,6 @@ function Form({ onCreate }) {
     });
   }
 
-  //console.log(newCard);
-
   function handleSubmit(event) {
     event.preventDefault();
     const item = {
@@ -107,7 +104,7 @@ function Form({ onCreate }) {
         <h2>Upload Image</h2>
         <StyledUpload>
           {image ? (
-            <img src={image} alt="" style={{ width: "20%" }} />
+            <img src={image} alt="" style={{ width: "30%" }} />
           ) : (
             <input type="file" name="file" onChange={upload} />
           )}
