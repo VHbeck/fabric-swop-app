@@ -62,8 +62,8 @@ function Card(props) {
 Card.propTypes = {
   source: PropTypes.string,
   name: PropTypes.string,
-  length: PropTypes.number,
-  price: PropTypes.number,
+  length: PropTypes.string,
+  price: PropTypes.string,
   bookmark: PropTypes.bool,
   onBookmarkClick: PropTypes.func,
   onDetailsClick: PropTypes.func

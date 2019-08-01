@@ -14,9 +14,8 @@ const MainImage = styled.img`
 
 const Description = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: 1fr 2fr;
   margin: 20px;
-  font-size: 20px;
 `;
 
 const Frame = styled.div`
@@ -53,7 +52,7 @@ function Details(props) {
             </StyledPrice>
           </Description>
           <Link to="/">
-            <GreyButton text="back" />
+            <GreyButton text="Back" />
           </Link>
         </Frame>
       </Container>
