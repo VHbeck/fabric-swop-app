@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Bookmark from "../components/Bookmark";
+import GreyButton from "./GreyButton";
 
 const CardFrame = styled.div`
   margin: 15px;
-  height: 300px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,6 @@ const CardPrice = styled.span`
 const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 15px;
 `;
 
 function Card(props) {
@@ -53,6 +52,7 @@ function Card(props) {
         <CardLengthText>Length: {props.length} m</CardLengthText>
         <CardPrice>{props.price} Euro</CardPrice>
       </TextContainer>
+      <GreyButton text="Details" />
     </CardFrame>
   );
 }

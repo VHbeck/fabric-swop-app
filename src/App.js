@@ -50,7 +50,11 @@ function App(props) {
             exact
             render={props => <Favorite cards={cards} />}
           />
-          <Route path="/details" exact render={props => <Details />} />
+          <Route
+            path="/details"
+            exact
+            render={props => <Details cards={cards} />}
+          />
           <Route component={NotFound} />
         </Switch>
       </Router>

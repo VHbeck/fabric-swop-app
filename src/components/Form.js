@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import AddButton from "./AddButton";
+import RedButton from "./RedButton";
 import axios from "axios";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
@@ -182,7 +182,7 @@ function Form({ onCreate }) {
             />
             Euro
           </label>
-          <AddButton type="submit">Add</AddButton>
+          <RedButton type="submit" text="Add" />
         </FormContainer>
       </form>
     </>
