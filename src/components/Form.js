@@ -9,6 +9,7 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 const StyledUpload = styled.div`
   text-align: center;
+  background: white;
 `;
 
 const FormContainer = styled.div`
@@ -17,10 +18,14 @@ const FormContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  input {
+  input,
+  select {
+    font-size: 14px;
     width: 245px;
     height: 25px;
     border: grey solid 1px;
+    padding: 3px;
+    border-radius: 15px;
   }
   label {
     margin: 7px;
@@ -127,13 +132,14 @@ function Form({ onCreate }) {
           </label>
           <label>
             Type:{" "}
-            <input
-              name="type"
-              type="text"
-              placeholder="cotton"
-              value={newCard.type}
-              onChange={handleChange}
-            />
+            <select name="type" value={newCard.type} onChange={handleChange}>
+              <option value="Cotton">Cotton</option>
+              <option value="Denim">Denim</option>
+              <option value="Jersey">Jersey</option>
+              <option value="Linen">Linen</option>
+              <option value="Muslin">Muslin</option>
+              <option value="Viscose">Viscose</option>
+            </select>
           </label>
           <label>
             Length:{" "}
