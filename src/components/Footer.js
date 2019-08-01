@@ -29,7 +29,7 @@ const Icons = styled.div`
   }
 `;
 
-function Footer(props) {
+function Footer() {
   return (
     <FooterStyled>
       <Icons>

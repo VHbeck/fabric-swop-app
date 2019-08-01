@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const BookmarkStyled = styled.div`
   position: absolute;
@@ -16,5 +17,10 @@ function Bookmark(props) {
     </BookmarkStyled>
   );
 }
+
+Bookmark.propTypes = {
+  active: PropTypes.bool,
+  onClick: PropTypes.func
+};
 
 export default Bookmark;

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import AddButton from "./AddButton";
 import axios from "axios";
 
@@ -167,7 +168,6 @@ function Form({ onCreate }) {
             />
           </label>
         </FormContainer>
-
         <FormContainer>
           <Number>3</Number>
           <h2>Price</h2>
@@ -188,5 +188,9 @@ function Form({ onCreate }) {
     </>
   );
 }
+
+Form.propTypes = {
+  onCreate: PropTypes.func
+};
 
 export default Form;

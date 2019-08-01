@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
@@ -16,7 +17,7 @@ function Favorite(props) {
           name: element.name,
           price: element.price,
           source: element.source,
-          length: element.length,
+          length: element.fabricLength,
           bookmark: element.bookmark
         };
       });
@@ -40,4 +41,9 @@ function Favorite(props) {
     </>
   );
 }
+
+Favorite.propTypes = {
+  cards: PropTypes.array
+};
+
 export default Favorite;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
@@ -15,5 +16,10 @@ function Create(props) {
     </>
   );
 }
+
+Create.propTypes = {
+  cards: PropTypes.array,
+  onCreate: PropTypes.func
+};
 
 export default Create;

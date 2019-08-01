@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../components/Card";
 import { withRouter } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -42,5 +42,9 @@ function List(props) {
     </>
   );
 }
+
+List.propTypes = {
+  cards: PropTypes.array
+};
 
 export default withRouter(List);

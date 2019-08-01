@@ -5,6 +5,7 @@ import List from "./pages/List";
 import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
 import Favorite from "./pages/Favorite";
+import Details from "./pages/Details";
 import { getCardFromStorage, setCardToStorage } from "./utils/Storage";
 const dummy = require("./models/items.json");
 
@@ -49,6 +50,7 @@ function App(props) {
             exact
             render={props => <Favorite cards={cards} />}
           />
+          <Route path="/details" exact render={props => <Details />} />
           <Route component={NotFound} />
         </Switch>
       </Router>
