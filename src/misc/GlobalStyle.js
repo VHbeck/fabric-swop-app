@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
 h2 {
   font-family: 'Nunito', sans-serif;
    color: #131426;
-   font-size: 16px;
+   font-size: 20px;
 }
 
 body {
@@ -16,6 +16,7 @@ background: linear-gradient(0deg, rgba(253,247,245,1) 76%, rgba(255,224,199,1) 8
    color: #131426;
    display: flex;
  flex-direction: column;
+ font-size: 18px;
 }
 `;
 
