@@ -11,6 +11,7 @@ const dummy = require("./models/items.json");
 
 function App(props) {
   const [cards, setCards] = React.useState(getCardFromStorage() || dummy);
+  const [detailPage, setDetailPage] = React.useState("");
   React.useEffect(() => {
     setCardToStorage(cards);
   }, [cards]);
@@ -28,6 +29,12 @@ function App(props) {
     setCards([items, ...cards]);
   }
 
+  function handleDetailsClick(index) {
+    const detail = cards[index];
+    setDetailPage(detail);
+    console.log(detail);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -37,7 +44,11 @@ function App(props) {
             path="/"
             exact
             render={props => (
-              <List cards={cards} onBookmark={handleBookmarkChange} />
+              <List
+                cards={cards}
+                onBookmark={handleBookmarkChange}
+                onDetailsClick={handleDetailsClick}
+              />
             )}
           />
           <Route
@@ -53,7 +64,7 @@ function App(props) {
           <Route
             path="/details"
             exact
-            render={props => <Details cards={cards} />}
+            render={props => <Details cards={detailPage} />}
           />
           <Route component={NotFound} />
         </Switch>

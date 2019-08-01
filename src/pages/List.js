@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 function List(props) {
-  console.log(props.history);
+  //console.log(props.history);
   const output = props.cards;
 
   const outputArray =
@@ -24,6 +24,7 @@ function List(props) {
 
   const initialOutput = outputArray.map((out, index) => (
     <Card
+      onDetailsClick={() => props.onDetailsClick(index)}
       onBookmarkClick={() => props.onBookmark(index)}
       key={out.name + index}
       name={out.name}

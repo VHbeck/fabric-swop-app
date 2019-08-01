@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const StyledButton = styled.button`
@@ -16,15 +15,10 @@ const StyledButton = styled.button`
 `;
 
 function GreyButton(props) {
-  return (
-    <Link to={props.to}>
-      <StyledButton>{props.text}</StyledButton>
-    </Link>
-  );
+  return <StyledButton onClick={props.onClick}>{props.text}</StyledButton>;
 }
 
 GreyButton.propTypes = {
-  to: PropTypes.string,
   text: PropTypes.string
 };
 

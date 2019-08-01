@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Bookmark from "../components/Bookmark";
+import { Link } from "react-router-dom";
 import GreyButton from "./GreyButton";
 
 const CardFrame = styled.div`
@@ -42,7 +43,6 @@ const TextContainer = styled.div`
 `;
 
 function Card(props) {
-  //console.log(props.bookmark);
   return (
     <CardFrame>
       <Bookmark active={props.bookmark} onClick={props.onBookmarkClick} />
@@ -52,7 +52,9 @@ function Card(props) {
         <CardLengthText>Length: {props.length} m</CardLengthText>
         <CardPrice>{props.price} Euro</CardPrice>
       </TextContainer>
-      <GreyButton text="Details" />
+      <Link to="/details">
+        <GreyButton text="Details" onClick={props.onDetailsClick} />
+      </Link>
     </CardFrame>
   );
 }

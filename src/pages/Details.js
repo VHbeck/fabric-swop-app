@@ -5,6 +5,7 @@ import Container from "../components/Container";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
+import { Link } from "react-router-dom";
 
 const MainImage = styled.img`
   width: 100%;
@@ -42,7 +43,7 @@ const StyledPrice = styled.div`
 `;
 
 function Details(props) {
-  const card = props.cards[0];
+  const card = props.cards;
   return (
     <>
       <Header headline={card.name} />
@@ -60,7 +61,9 @@ function Details(props) {
               <span>{card.price} Euro</span>
             </StyledPrice>
           </Description>
-          <GreyButton to="/" text="back" />
+          <Link to="/">
+            <GreyButton text="back" />
+          </Link>
         </Frame>
       </Container>
       <Footer />
