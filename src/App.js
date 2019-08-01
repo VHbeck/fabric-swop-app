@@ -58,7 +58,9 @@ function App(props) {
           <Route
             path="/favorite"
             exact
-            render={props => <Favorite cards={cards} />}
+            render={props => (
+              <Favorite cards={cards} onDetailsClick={handleDetailsClick} />
+            )}
           />
           <Route
             path="/details"
