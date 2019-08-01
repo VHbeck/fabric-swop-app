@@ -19,7 +19,6 @@ function RedButton(props) {
 }
 
 RedButton.propTypes = {
-  to: PropTypes.string,
   text: PropTypes.string
 };
 

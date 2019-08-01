@@ -62,8 +62,11 @@ function Card(props) {
 Card.propTypes = {
   source: PropTypes.string,
   name: PropTypes.string,
-  length: PropTypes.string,
-  price: PropTypes.string
+  length: PropTypes.number,
+  price: PropTypes.number,
+  bookmark: PropTypes.bool,
+  onBookmarkClick: PropTypes.func,
+  onDetailsClick: PropTypes.func
 };
 
 export default Card;

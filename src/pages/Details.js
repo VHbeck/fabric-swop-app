@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
@@ -10,12 +10,6 @@ import { Link } from "react-router-dom";
 const MainImage = styled.img`
   width: 100%;
   height: 215px;
-  align-self: center;
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
 `;
 
 const Description = styled.div`
@@ -28,7 +22,6 @@ const Description = styled.div`
 const Frame = styled.div`
   background: white;
   margin: 20px;
-  padding-bottom: 10px;
 `;
 
 const BoldText = styled.span`
@@ -49,9 +42,7 @@ function Details(props) {
       <Header headline={card.name} />
       <Container>
         <Frame>
-          <ImageContainer>
-            <MainImage src={card.source} alt={card.title} />
-          </ImageContainer>
+          <MainImage src={card.source} alt={card.title} />
           <Description>
             <BoldText>Type:</BoldText> <span>{card.type}</span>
             <BoldText>Length:</BoldText> <span>{card.fabricLength}</span>
@@ -70,5 +61,9 @@ function Details(props) {
     </>
   );
 }
+
+Details.propTypes = {
+  cards: PropTypes.object
+};
 
 export default Details;

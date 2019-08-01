@@ -32,7 +32,6 @@ function App(props) {
   function handleDetailsClick(index) {
     const detail = cards[index];
     setDetailPage(detail);
-    console.log(detail);
   }
 
   return (

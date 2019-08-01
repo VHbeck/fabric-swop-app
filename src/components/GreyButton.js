@@ -19,7 +19,8 @@ function GreyButton(props) {
 }
 
 GreyButton.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default GreyButton;
