@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Bookmark from "../components/Bookmark";
+import { Link } from "react-router-dom";
+import GreyButton from "./GreyButton";
 
 const CardFrame = styled.div`
   margin: 15px;
-  height: 300px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -39,11 +40,9 @@ const CardPrice = styled.span`
 const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 15px;
 `;
 
 function Card(props) {
-  //console.log(props.bookmark);
   return (
     <CardFrame>
       <Bookmark active={props.bookmark} onClick={props.onBookmarkClick} />
@@ -53,6 +52,9 @@ function Card(props) {
         <CardLengthText>Length: {props.length} m</CardLengthText>
         <CardPrice>{props.price} Euro</CardPrice>
       </TextContainer>
+      <Link to="/details">
+        <GreyButton text="Details" onClick={props.onDetailsClick} />
+      </Link>
     </CardFrame>
   );
 }

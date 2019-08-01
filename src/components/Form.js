@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import AddButton from "./AddButton";
+import PropTypes from "prop-types";
+import RedButton from "./RedButton";
 import axios from "axios";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
@@ -167,7 +168,6 @@ function Form({ onCreate }) {
             />
           </label>
         </FormContainer>
-
         <FormContainer>
           <Number>3</Number>
           <h2>Price</h2>
@@ -182,11 +182,15 @@ function Form({ onCreate }) {
             />
             Euro
           </label>
-          <AddButton type="submit">Add</AddButton>
+          <RedButton type="submit" text="Add" />
         </FormContainer>
       </form>
     </>
   );
 }
+
+Form.propTypes = {
+  onCreate: PropTypes.func
+};
 
 export default Form;
