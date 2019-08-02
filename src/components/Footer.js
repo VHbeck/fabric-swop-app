@@ -42,8 +42,16 @@ function Footer() {
           <i className="fas fa-plus" />
         </Link>
       </Icons>
-      <Icons />
-      <Icons />
+      <Icons>
+        <Link to="/search">
+          <i className="fas fa-search" />
+        </Link>
+      </Icons>
+      <Icons>
+        <Link to="/profile">
+          <i className="far fa-user" />
+        </Link>
+      </Icons>
 
       <Icons>
         <Link to="/favorite">

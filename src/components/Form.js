@@ -97,7 +97,7 @@ function Form({ onCreate, history }) {
       fabricWidth: newCard.fabricWidth,
       fabricColor: newCard.fabricColor,
       price: newCard.price,
-      source: image,
+      source: image ? image : "../../images/default-img.png",
       bookmark: false
     };
     onCreate(item);
@@ -129,6 +129,7 @@ function Form({ onCreate, history }) {
               placeholder="Cotton fabric with dots"
               value={newCard.name}
               onChange={handleChange}
+              required
             />
           </label>
           <label>
@@ -150,6 +151,7 @@ function Form({ onCreate, history }) {
               placeholder="3"
               value={newCard.fabricLength}
               onChange={handleChange}
+              required
             />
             m
           </label>
@@ -186,6 +188,7 @@ function Form({ onCreate, history }) {
               placeholder="10"
               value={newCard.price}
               onChange={handleChange}
+              required
             />
             Euro
           </label>
