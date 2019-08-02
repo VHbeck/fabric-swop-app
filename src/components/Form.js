@@ -126,7 +126,7 @@ function Form({ onCreate, history }) {
             <input
               name="name"
               type="text"
-              placeholder="Cotton fabric with dots"
+              placeholder="e.g. cotton fabric with dots"
               value={newCard.name}
               onChange={handleChange}
               required
@@ -135,6 +135,8 @@ function Form({ onCreate, history }) {
           <label>
             Type:{" "}
             <select name="type" value={newCard.type} onChange={handleChange}>
+              <option value="">Choose a fabric type</option>
+              <option value="">---</option>
               <option value="Cotton">Cotton</option>
               <option value="Denim">Denim</option>
               <option value="Jersey">Jersey</option>
@@ -148,7 +150,7 @@ function Form({ onCreate, history }) {
             <input
               name="fabricLength"
               type="number"
-              placeholder="3"
+              placeholder="e.g. 3"
               value={newCard.fabricLength}
               onChange={handleChange}
               required
@@ -160,7 +162,7 @@ function Form({ onCreate, history }) {
             <input
               name="fabricWidth"
               type="number"
-              placeholder="1.45"
+              placeholder="e.g. 1.45"
               value={newCard.fabricWidth}
               onChange={handleChange}
             />
@@ -171,7 +173,7 @@ function Form({ onCreate, history }) {
             <input
               name="fabricColor"
               type="text"
-              placeholder="blue"
+              placeholder="e.g. blue"
               value={newCard.fabricColor}
               onChange={handleChange}
             />
@@ -185,7 +187,7 @@ function Form({ onCreate, history }) {
             <input
               name="price"
               type="number"
-              placeholder="10"
+              placeholder="e.g. 10"
               value={newCard.price}
               onChange={handleChange}
               required

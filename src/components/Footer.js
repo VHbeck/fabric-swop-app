@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const FooterStyled = styled.div`
-  background-color: rgba(253, 247, 245, 0.9);
+  background-color: rgba(253, 247, 245, 0.85);
   width: 100vw;
   height: 60px;
   position: fixed;
@@ -26,6 +26,11 @@ const Icons = styled.div`
     :active {
       color: #ff979a;
     }
+  }
+  .fa-search {
+    border-radius: 50%;
+    background: white;
+    padding: 15px;
   }
 `;
 

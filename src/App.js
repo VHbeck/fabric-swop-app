@@ -57,7 +57,11 @@ function App(props) {
             exact
             render={props => <Create cards={cards} onCreate={handleCreate} />}
           />
-          <Route path="/search" exact render={props => <Search />} />
+          <Route
+            path="/search"
+            exact
+            render={props => <Search cards={cards} />}
+          />
           <Route path="/profile" exact render={props => <Profile />} />
           <Route
             path="/favorite"
