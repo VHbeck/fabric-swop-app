@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import List from "./pages/List";
 import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
+import Search from "./pages/Search";
+import Profile from "./pages/Profile";
 import Favorite from "./pages/Favorite";
 import Details from "./pages/Details";
 import { getCardFromStorage, setCardToStorage } from "./utils/Storage";
@@ -55,6 +57,14 @@ function App(props) {
             exact
             render={props => <Create cards={cards} onCreate={handleCreate} />}
           />
+          <Route
+            path="/search"
+            exact
+            render={props => (
+              <Search cards={cards} onDetailsClick={handleDetailsClick} />
+            )}
+          />
+          <Route path="/profile" exact render={props => <Profile />} />
           <Route
             path="/favorite"
             exact
