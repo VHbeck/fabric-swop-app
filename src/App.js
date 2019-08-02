@@ -60,7 +60,9 @@ function App(props) {
           <Route
             path="/search"
             exact
-            render={props => <Search cards={cards} />}
+            render={props => (
+              <Search cards={cards} onDetailsClick={handleDetailsClick} />
+            )}
           />
           <Route path="/profile" exact render={props => <Profile />} />
           <Route
