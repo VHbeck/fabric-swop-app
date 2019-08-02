@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Grow = styled.div`
-  height: 200px;
+  height: 90vh;
   width: 100%;
   background: transparent;
 `;

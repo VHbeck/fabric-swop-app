@@ -1,5 +1,5 @@
 import React from "react";
-//import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
@@ -75,5 +75,9 @@ function Search(props) {
     </>
   );
 }
+Search.propTypes = {
+  cards: PropTypes.object,
+  onDetailsClick: PropTypes.func
+};
 
 export default Search;
