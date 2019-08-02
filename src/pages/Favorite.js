@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
+import Grow from "../components/Grow";
 
 function Favorite(props) {
   const output = props.cards;
@@ -37,6 +38,7 @@ function Favorite(props) {
             bookmark={out.bookmark}
           />
         ))}
+        <Grow />
       </Container>
       <Footer />
     </>

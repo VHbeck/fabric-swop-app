@@ -20,7 +20,7 @@ const Description = styled.div`
 
 const Frame = styled.div`
   background: white;
-  margin: 20px;
+  margin: 20px 20px 90px 20px;
 `;
 
 const BoldText = styled.span`
@@ -29,9 +29,9 @@ const BoldText = styled.span`
 
 const StyledPrice = styled.div`
   color: #ff979a;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  padding: 15px 15px 0px 15px;
+  padding: 15px 15px 0px 0px;
 `;
 
 function Details(props) {

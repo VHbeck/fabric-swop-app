@@ -3,13 +3,13 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import RedButton from "./RedButton";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 const StyledUpload = styled.div`
   text-align: center;
-  background: white;
 `;
 
 const FormContainer = styled.div`
@@ -44,7 +44,7 @@ const Number = styled.div`
   margin-top: 10px;
 `;
 
-function Form({ onCreate }) {
+function Form({ onCreate, history }) {
   const [image, setImage] = React.useState("");
 
   function upload(event) {
@@ -101,6 +101,7 @@ function Form({ onCreate }) {
       bookmark: false
     };
     onCreate(item);
+    history.replace("/");
   }
 
   return (
@@ -199,4 +200,4 @@ Form.propTypes = {
   onCreate: PropTypes.func
 };
 
-export default Form;
+export default withRouter(Form);
