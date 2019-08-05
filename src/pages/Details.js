@@ -55,10 +55,13 @@ function Details(props) {
           <Link to="/">
             <GreyButton text="Back" />
           </Link>
-          <RedButton
-            text="Buy now"
-            onClick={() => props.onBuyClick(card._id)}
-          />
+          <Link to="/profile">
+            {" "}
+            <RedButton
+              text="Buy now"
+              onClick={() => props.onBuyClick(card._id)}
+            />
+          </Link>
         </Frame>
       </Container>
       <Footer />

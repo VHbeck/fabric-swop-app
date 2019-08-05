@@ -60,7 +60,9 @@ function Card(props) {
         <Link to="/details">
           <GreyButton text="Details" onClick={props.onDetailsClick} />
         </Link>
-        <RedButton text="Buy now" onClick={props.onBuyClick} />
+        <Link to="/profile">
+          <RedButton text="Buy now" onClick={props.onBuyClick} />
+        </Link>
       </TextContainer>
     </CardFrame>
   );

@@ -2,11 +2,13 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: auto;
+  margin-bottom: 100px;
   h2 {
     text-align: center;
   }
@@ -32,8 +34,11 @@ const Description = styled.div`
 
 const PurchaseContainer = styled.div`
   background: white;
-  margin: 10px 20px 80px 20px;
+  margin: 10px 20px 20px 20px;
   padding: 20px;
+  p {
+    margin: 0px;
+  }
 `;
 
 const BoldText = styled.span`
@@ -53,8 +58,15 @@ function Profile(props) {
       };
     });
 
-  console.log(yourPurchases);
-  const purchaseList = purchaseArray.map(out => <span>{out.name}</span>);
+  const purchaseList = purchaseArray.map(out => (
+    <PurchaseContainer key={out._id}>
+      <p>
+        {out.name}, {out.price} Euro
+      </p>
+      <br />
+    </PurchaseContainer>
+  ));
+
   return (
     <>
       <Header headline="Profile" />
@@ -72,13 +84,16 @@ function Profile(props) {
           <BoldText>Favorite Fabric:</BoldText>
           <span>Cotton</span>
         </Description>
-
         <h2>Your Purchases</h2>
+        {purchaseList}
       </ProfileContainer>
-      <PurchaseContainer>{purchaseList}</PurchaseContainer>
       <Footer />
     </>
   );
 }
+
+Profile.propTypes = {
+  purchases: PropTypes.array
+};
 
 export default Profile;
