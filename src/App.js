@@ -14,6 +14,7 @@ const dummy = require("./models/items.json");
 function App(props) {
   const [cards, setCards] = React.useState(getCardFromStorage() || dummy);
   const [detailPage, setDetailPage] = React.useState("");
+
   React.useEffect(() => {
     setCardToStorage(cards);
   }, [cards]);
