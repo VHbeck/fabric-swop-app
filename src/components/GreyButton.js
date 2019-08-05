@@ -8,7 +8,7 @@ const StyledButton = styled.button`
   background-color: lightgrey;
   border-radius: 15px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Nunito", sans-serif;
   margin: 15px;
   border: none;

@@ -5,6 +5,7 @@ import Container from "../components/Container";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
+import RedButton from "../components/RedButton";
 import { Link } from "react-router-dom";
 
 const MainImage = styled.img`
@@ -54,6 +55,10 @@ function Details(props) {
           <Link to="/">
             <GreyButton text="Back" />
           </Link>
+          <RedButton
+            text="Buy now"
+            onClick={() => props.onBuyClick(card._id)}
+          />
         </Frame>
       </Container>
       <Footer />
@@ -62,7 +67,8 @@ function Details(props) {
 }
 
 Details.propTypes = {
-  cards: PropTypes.object
+  cards: PropTypes.object,
+  onBuyClick: PropTypes.func
 };
 
 export default Details;
