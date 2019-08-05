@@ -14,6 +14,7 @@ function List(props) {
     output &&
     output.map(element => {
       return {
+        _id: element._id,
         name: element.name,
         price: element.price,
         source: element.source,
@@ -25,7 +26,7 @@ function List(props) {
   const initialOutput = outputArray.map((out, index) => (
     <Card
       onDetailsClick={() => props.onDetailsClick(index)}
-      onBookmarkClick={() => props.onBookmark(index)}
+      onBookmarkClick={() => props.onBookmark(out._id)}
       key={out.name + index}
       name={out.name}
       length={out.length}

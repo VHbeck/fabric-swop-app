@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import RedButton from "./RedButton";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import uuid from "uuid/v1";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -12,23 +13,50 @@ const StyledUpload = styled.div`
   text-align: center;
 `;
 
-const FormContainer = styled.div`
+const StepContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
+  width: 100vw;
+  input {
+    font-size: 18px;
+    width: 90%;
+    border: grey solid 1px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: white;
+  }
+  .smallinput {
+    width: 30%;
+  }
+  button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+`;
 
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0px 15px 30px 15px;
   input,
   select {
-    font-size: 14px;
-    width: 245px;
-    height: 25px;
+    font-size: 18px;
+    width: 95%;
     border: grey solid 1px;
-    padding: 3px;
+    padding: 5px;
     border-radius: 15px;
+    background-color: white;
   }
   label {
-    margin: 7px;
+    font-size: 18px;
+    margin-top: 15px;
+  }
+  .smallinput {
+    width: 30%;
   }
 `;
 
@@ -69,6 +97,7 @@ function Form({ onCreate, history }) {
   }
 
   const [newCard, setnewCard] = React.useState({
+    _id: "",
     name: "",
     type: "",
     fabricLength: "",
@@ -91,6 +120,7 @@ function Form({ onCreate, history }) {
   function handleSubmit(event) {
     event.preventDefault();
     const item = {
+      _id: uuid(),
       name: newCard.name,
       type: newCard.type,
       fabricLength: newCard.fabricLength,
@@ -106,7 +136,7 @@ function Form({ onCreate, history }) {
 
   return (
     <>
-      <FormContainer>
+      <StepContainer>
         <Number>1</Number>
         <h2>Upload Image</h2>
         <StyledUpload>
@@ -116,86 +146,83 @@ function Form({ onCreate, history }) {
             <input type="file" name="file" onChange={upload} />
           )}
         </StyledUpload>
-      </FormContainer>
+      </StepContainer>
       <form onSubmit={handleSubmit}>
-        <FormContainer>
+        <StepContainer>
           <Number>2</Number>
           <h2>Fabric Info</h2>
-          <label>
-            Name:{" "}
-            <input
-              name="name"
-              type="text"
-              placeholder="e.g. cotton fabric with dots"
-              value={newCard.name}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Type:{" "}
-            <select name="type" value={newCard.type} onChange={handleChange}>
-              <option value="">Choose a fabric type</option>
-              <option value="">---</option>
-              <option value="Cotton">Cotton</option>
-              <option value="Denim">Denim</option>
-              <option value="Jersey">Jersey</option>
-              <option value="Linen">Linen</option>
-              <option value="Muslin">Muslin</option>
-              <option value="Viscose">Viscose</option>
-            </select>
-          </label>
-          <label>
-            Length:{" "}
+        </StepContainer>
+        <FormContainer>
+          <label>Name: </label>
+          <input
+            name="name"
+            type="text"
+            placeholder="e.g. cotton fabric with dots"
+            value={newCard.name}
+            onChange={handleChange}
+            required
+          />
+          <label>Type:</label>
+          <select name="type" value={newCard.type} onChange={handleChange}>
+            <option value="">Choose a fabric type</option>
+            <option value="">---</option>
+            <option value="Cotton">Cotton</option>
+            <option value="Denim">Denim</option>
+            <option value="Jersey">Jersey</option>
+            <option value="Linen">Linen</option>
+            <option value="Muslin">Muslin</option>
+            <option value="Viscose">Viscose</option>
+          </select>
+
+          <label>Length:</label>
+          <div>
             <input
               name="fabricLength"
               type="number"
-              placeholder="e.g. 3"
+              placeholder="e.g. 3,0"
               value={newCard.fabricLength}
               onChange={handleChange}
               required
+              className="smallinput"
             />
-            m
-          </label>
-          <label>
-            Width:{" "}
+            <span> m</span>
+          </div>
+          <label>Width:</label>
+          <div>
             <input
               name="fabricWidth"
               type="number"
-              placeholder="e.g. 1.45"
+              placeholder="e.g. 1,45"
               value={newCard.fabricWidth}
               onChange={handleChange}
+              className="smallinput"
             />
-            m
-          </label>
-          <label>
-            Color:{" "}
-            <input
-              name="fabricColor"
-              type="text"
-              placeholder="e.g. blue"
-              value={newCard.fabricColor}
-              onChange={handleChange}
-            />
-          </label>
+            <span> m</span>
+          </div>
+          <label>Color:</label>
+          <input
+            name="fabricColor"
+            type="text"
+            placeholder="e.g. blue"
+            value={newCard.fabricColor}
+            onChange={handleChange}
+          />
         </FormContainer>
-        <FormContainer>
+
+        <StepContainer>
           <Number>3</Number>
-          <h2>Price</h2>
-          <label>
-            Price:{" "}
-            <input
-              name="price"
-              type="number"
-              placeholder="e.g. 10"
-              value={newCard.price}
-              onChange={handleChange}
-              required
-            />
-            Euro
-          </label>
+          <h2>Price in Euro</h2>
+          <input
+            name="price"
+            type="number"
+            placeholder="e.g. 9,95"
+            value={newCard.price}
+            onChange={handleChange}
+            required
+            className="smallinput"
+          />
           <RedButton type="submit" text="Add" />
-        </FormContainer>
+        </StepContainer>
       </form>
     </>
   );

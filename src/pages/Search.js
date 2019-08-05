@@ -33,6 +33,7 @@ function Search(props) {
       .filter(element => element.name.toLowerCase().includes(input))
       .map(element => {
         return {
+          _id: element._id,
           name: element.name,
           price: element.price,
           source: element.source,
@@ -60,6 +61,7 @@ function Search(props) {
       <Container>
         {outputArray.map((out, index) => (
           <Card
+            onBookmarkClick={() => props.onBookmark(out._id)}
             onDetailsClick={() => props.onDetailsClick(index)}
             key={out.source + index}
             name={out.name}
