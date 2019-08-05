@@ -45,7 +45,8 @@ function App(props) {
     setCards([items, ...cards]);
   }
 
-  function handleDetailsClick(index) {
+  function handleDetailsClick(id) {
+    const index = cards.findIndex(card => card._id === id);
     const detail = cards[index];
     setDetailPage(detail);
   }

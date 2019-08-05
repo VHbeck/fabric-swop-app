@@ -69,7 +69,10 @@ function Profile(props) {
         {out.day}.{out.month}.{out.year}: {out.name}, {out.price} Euro
       </p>
       <Link to="/details">
-        <GreyButton text="Details" />
+        <GreyButton
+          text="Details"
+          onClick={() => props.onDetailsClick(out._id)}
+        />
       </Link>
       <br />
     </PurchaseContainer>
