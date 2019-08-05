@@ -53,7 +53,18 @@ function App(props) {
   function handleBuyClick(id) {
     const index = cards.findIndex(card => card._id === id);
     const purchase = cards[index];
-    setPurchases([purchase, ...purchases]);
+    const day = new Date().getDate();
+    const month = new Date().getMonth();
+    const year = new Date().getFullYear();
+    setPurchases([
+      {
+        ...purchase,
+        purchaseDay: day,
+        purchaseMonth: month + 1,
+        purchaseYear: year
+      },
+      ...purchases
+    ]);
   }
 
   return (
@@ -92,7 +103,12 @@ function App(props) {
           <Route
             path="/profile"
             exact
-            render={props => <Profile purchases={purchases} />}
+            render={props => (
+              <Profile
+                purchases={purchases}
+                onDetailsClick={handleDetailsClick}
+              />
+            )}
           />
           <Route
             path="/favorite"

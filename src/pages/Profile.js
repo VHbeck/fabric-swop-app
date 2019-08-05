@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import GreyButton from "../components/GreyButton";
+import { Link } from "react-router-dom";
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -53,6 +55,9 @@ function Profile(props) {
     yourPurchases.map(element => {
       return {
         _id: element._id,
+        day: element.purchaseDay,
+        month: element.purchaseMonth,
+        year: element.purchaseYear,
         name: element.name,
         price: element.price
       };
@@ -61,8 +66,11 @@ function Profile(props) {
   const purchaseList = purchaseArray.map(out => (
     <PurchaseContainer key={out._id}>
       <p>
-        {out.name}, {out.price} Euro
+        {out.day}.{out.month}.{out.year}: {out.name}, {out.price} Euro
       </p>
+      <Link to="/details">
+        <GreyButton text="Details" />
+      </Link>
       <br />
     </PurchaseContainer>
   ));
