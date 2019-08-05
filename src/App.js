@@ -102,6 +102,7 @@ function App(props) {
                 cards={cards}
                 onDetailsClick={handleDetailsClick}
                 onBookmark={handleBookmarkChange}
+                onBuyClick={handleBuyClick}
               />
             )}
           />

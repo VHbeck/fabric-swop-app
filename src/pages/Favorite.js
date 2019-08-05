@@ -32,6 +32,7 @@ function Favorite(props) {
           <Card
             onDetailsClick={() => props.onDetailsClick(index)}
             onBookmarkClick={() => props.onBookmark(out._id)}
+            onBuyClick={() => props.onBuyClick(out._id)}
             key={out.source + index}
             name={out.name}
             length={out.length}
