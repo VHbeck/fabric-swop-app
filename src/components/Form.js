@@ -19,7 +19,6 @@ const StepContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 40px;
-  width: 100vw;
   input {
     font-size: 18px;
     width: 90%;
@@ -41,7 +40,7 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 0px 15px 30px 15px;
+  margin: 0px 30px 30px 30px;
   input,
   select {
     font-size: 18px;

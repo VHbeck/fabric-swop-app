@@ -15,11 +15,12 @@ const StyledButton = styled.button`
 `;
 
 function RedButton(props) {
-  return <StyledButton>{props.text}</StyledButton>;
+  return <StyledButton onClick={props.onClick}>{props.text}</StyledButton>;
 }
 
 RedButton.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default RedButton;

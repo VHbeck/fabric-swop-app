@@ -25,8 +25,9 @@ function List(props) {
 
   const initialOutput = outputArray.map((out, index) => (
     <Card
-      onDetailsClick={() => props.onDetailsClick(index)}
+      onDetailsClick={() => props.onDetailsClick(out._id)}
       onBookmarkClick={() => props.onBookmark(out._id)}
+      onBuyClick={() => props.onBuyClick(out._id)}
       key={out.name + index}
       name={out.name}
       length={out.length}

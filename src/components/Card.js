@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Bookmark from "../components/Bookmark";
 import { Link } from "react-router-dom";
 import GreyButton from "./GreyButton";
+import RedButton from "./RedButton";
 
 const CardFrame = styled.div`
   margin: 15px;
@@ -40,6 +41,9 @@ const CardPrice = styled.span`
 const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  button {
+    margin: 25px;
+  }
 `;
 
 function Card(props) {
@@ -52,9 +56,14 @@ function Card(props) {
         <CardLengthText>Length: {props.length} m</CardLengthText>
         <CardPrice>{props.price} Euro</CardPrice>
       </TextContainer>
-      <Link to="/details">
-        <GreyButton text="Details" onClick={props.onDetailsClick} />
-      </Link>
+      <TextContainer>
+        <Link to="/details">
+          <GreyButton text="Details" onClick={props.onDetailsClick} />
+        </Link>
+        <Link to="/profile">
+          <RedButton text="Buy now" onClick={props.onBuyClick} />
+        </Link>
+      </TextContainer>
     </CardFrame>
   );
 }
@@ -66,7 +75,8 @@ Card.propTypes = {
   price: PropTypes.string,
   bookmark: PropTypes.bool,
   onBookmarkClick: PropTypes.func,
-  onDetailsClick: PropTypes.func
+  onDetailsClick: PropTypes.func,
+  onBuyClick: PropTypes.func
 };
 
 export default Card;

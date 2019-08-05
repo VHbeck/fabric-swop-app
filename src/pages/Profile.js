@@ -2,12 +2,18 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import GreyButton from "../components/GreyButton";
+import { Link } from "react-router-dom";
 
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: auto;
-  height: 90vh;
+  margin-bottom: 100px;
+  h2 {
+    text-align: center;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -19,18 +25,59 @@ const StyledImage = styled.img`
 
 const Description = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  margin: 20px;
+  grid-template-columns: 2fr 3fr;
   background: white;
-  margin: 20px 20px 90px 20px;
+  margin: 20px;
   padding: 20px;
+  span {
+    padding-bottom: 7px;
+  }
+`;
+
+const PurchaseContainer = styled.div`
+  background: white;
+  margin: 10px 20px 20px 20px;
+  padding: 20px;
+  p {
+    margin: 0px;
+  }
 `;
 
 const BoldText = styled.span`
   font-weight: bold;
 `;
 
-function Profile() {
+function Profile(props) {
+  const yourPurchases = props.purchases;
+
+  const purchaseArray =
+    yourPurchases &&
+    yourPurchases.map(element => {
+      return {
+        _id: element._id,
+        day: element.purchaseDay,
+        month: element.purchaseMonth,
+        year: element.purchaseYear,
+        name: element.name,
+        price: element.price
+      };
+    });
+
+  const purchaseList = purchaseArray.map(out => (
+    <PurchaseContainer key={out._id}>
+      <p>
+        {out.day}.{out.month}.{out.year}: {out.name}, {out.price} Euro
+      </p>
+      <Link to="/details">
+        <GreyButton
+          text="Details"
+          onClick={() => props.onDetailsClick(out._id)}
+        />
+      </Link>
+      <br />
+    </PurchaseContainer>
+  ));
+
   return (
     <>
       <Header headline="Profile" />
@@ -38,16 +85,26 @@ function Profile() {
         <StyledImage src="../../images/lou.jpg" alt="Vanessa" />
         <Description>
           <BoldText>Name:</BoldText>
-          <span>Vanessa</span>
-          <BoldText>City:</BoldText>
-          <span>Hamburg</span>
-          <BoldText>Machine:</BoldText>
+          <span>Vanessa Harbeck</span>
+          <BoldText>Address:</BoldText>
+          <span>Gasstrasse 6A, Hamburg</span>
+          <BoldText>Birthday:</BoldText>
+          <span>01.02.1992</span>
+          <BoldText>Sewing Machine:</BoldText>
           <span>Janome Anniversay</span>
+          <BoldText>Favorite Fabric:</BoldText>
+          <span>Cotton</span>
         </Description>
+        <h2>Your Purchases</h2>
+        {purchaseList}
       </ProfileContainer>
       <Footer />
     </>
   );
 }
+
+Profile.propTypes = {
+  purchases: PropTypes.array
+};
 
 export default Profile;

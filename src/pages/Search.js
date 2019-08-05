@@ -62,7 +62,7 @@ function Search(props) {
         {outputArray.map((out, index) => (
           <Card
             onBookmarkClick={() => props.onBookmark(out._id)}
-            onDetailsClick={() => props.onDetailsClick(index)}
+            onDetailsClick={() => props.onDetailsClick(out._id)}
             key={out.source + index}
             name={out.name}
             length={out.length}
