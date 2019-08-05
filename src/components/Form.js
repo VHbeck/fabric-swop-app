@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import RedButton from "./RedButton";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import uuid from "uuid/v1";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -69,6 +70,7 @@ function Form({ onCreate, history }) {
   }
 
   const [newCard, setnewCard] = React.useState({
+    _id: "",
     name: "",
     type: "",
     fabricLength: "",
@@ -91,6 +93,7 @@ function Form({ onCreate, history }) {
   function handleSubmit(event) {
     event.preventDefault();
     const item = {
+      _id: uuid(),
       name: newCard.name,
       type: newCard.type,
       fabricLength: newCard.fabricLength,
