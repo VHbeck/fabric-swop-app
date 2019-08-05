@@ -15,6 +15,7 @@ function Favorite(props) {
       .filter(element => element.bookmark === true)
       .map(element => {
         return {
+          _id: element._id,
           name: element.name,
           price: element.price,
           source: element.source,
@@ -30,6 +31,7 @@ function Favorite(props) {
         {outputArray.map((out, index) => (
           <Card
             onDetailsClick={() => props.onDetailsClick(index)}
+            onBookmarkClick={() => props.onBookmark(out._id)}
             key={out.source + index}
             name={out.name}
             length={out.length}

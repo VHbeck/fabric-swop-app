@@ -18,8 +18,10 @@ function App(props) {
     setCardToStorage(cards);
   }, [cards]);
 
-  function handleBookmarkChange(index) {
+  function handleBookmarkChange(id) {
+    const index = cards.findIndex(card => card._id === id);
     const card = cards[index];
+
     setCards([
       ...cards.slice(0, index),
       { ...card, bookmark: !card.bookmark },
@@ -61,7 +63,11 @@ function App(props) {
             path="/search"
             exact
             render={props => (
-              <Search cards={cards} onDetailsClick={handleDetailsClick} />
+              <Search
+                cards={cards}
+                onDetailsClick={handleDetailsClick}
+                onBookmark={handleBookmarkChange}
+              />
             )}
           />
           <Route path="/profile" exact render={props => <Profile />} />
@@ -69,7 +75,11 @@ function App(props) {
             path="/favorite"
             exact
             render={props => (
-              <Favorite cards={cards} onDetailsClick={handleDetailsClick} />
+              <Favorite
+                cards={cards}
+                onDetailsClick={handleDetailsClick}
+                onBookmark={handleBookmarkChange}
+              />
             )}
           />
           <Route
