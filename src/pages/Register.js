@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import GreyButton from "../components/GreyButton";
+import RegisterForm from "../components/RegisterForm";
+import Header from "../components/Header";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   background: rgb(253, 247, 245);
@@ -18,31 +17,12 @@ const Container = styled.div`
   );
 `;
 
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledInput = styled.input`
-  width: 90%;
-  font-size: 18px;
-  align-self: center;
-  height: 25px;
-  border: grey solid 1px;
-  padding: 5px;
-  border-radius: 15px;
-  margin: 10px 0px 10px 0px;
-`;
-
 function Register() {
   return (
-    <>
-      <Container>
-        <Link to="/feed">
-          <GreyButton text="Register now" />
-        </Link>
-      </Container>
-    </>
+    <Container>
+      <Header headline="Register" />
+      <RegisterForm />
+    </Container>
   );
 }
 

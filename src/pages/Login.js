@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
+import Header from "../components/Header";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   background: rgb(253, 247, 245);
@@ -18,19 +18,8 @@ const Container = styled.div`
   );
 `;
 
-const StyledImage = styled.img`
-  width: 180px;
-  display: block;
-  margin: 30px;
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const StyledInput = styled.input`
-  width: 90%;
+  width: 70%;
   font-size: 18px;
   align-self: center;
   height: 25px;
@@ -44,11 +33,9 @@ function Login() {
   return (
     <>
       <Container>
-        <StyledImage src="logo-small.svg" />
-        <InputContainer>
-          <StyledInput type="text" placeholder="your username" />
-          <StyledInput type="text" placeholder="your password" />
-        </InputContainer>
+        <Header headline="Login" />
+        <StyledInput type="text" placeholder="your username" />
+        <StyledInput type="text" placeholder="your password" />
         <Link to="/feed">
           <GreyButton text="Login" />
         </Link>
