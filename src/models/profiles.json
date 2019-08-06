@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "1.0",
+    "firstName": "Vanessa",
+    "lastName": "Harbeck",
+    "address": "Gasstrasse 6A, Hamburg",
+    "birthday": "01.02.1992",
+    "sewingMachine": "Janome Anniversary",
+    "favoriteFabric": "Cotton",
+    "purchases": {
+      "_id": 2,
+      "day": 6,
+      "month": 8,
+      "year": 2019,
+      "name": "Linen Fabric"
+    }
+  },
+  {
+    "_id": "2.0",
+    "firstName": "Greta",
+    "lastName": "Mueller",
+    "address": "Strasse 1A, Buxtehude",
+    "birthday": "05.12.1976",
+    "sewingMachine": "Bernina",
+    "favoriteFabric": "Linen",
+    "purchases": {
+      "_id": 2,
+      "day": 6,
+      "month": 8,
+      "year": 2019,
+      "name": "Linen Fabric"
+    }
+  }
+]

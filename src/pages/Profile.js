@@ -77,7 +77,7 @@ function Profile(props) {
       <br />
     </PurchaseContainer>
   ));
-
+  console.log(purchaseArray);
   return (
     <>
       <Header headline="Profile" />

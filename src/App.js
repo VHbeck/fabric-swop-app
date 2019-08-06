@@ -15,10 +15,12 @@ import {
   getPurchaseFromStorage,
   setPurchaseToStorage
 } from "./utils/Storage";
-const dummy = require("./models/items.json");
+const dummyCards = require("./models/items.json");
+const dummyProfiles = require("./models/profiles.json");
 
 function App(props) {
-  const [cards, setCards] = React.useState(getCardFromStorage() || dummy);
+  const [cards, setCards] = React.useState(getCardFromStorage() || dummyCards);
+  const [profiles, setProfiles] = React.useState(dummyProfiles);
   const [detailPage, setDetailPage] = React.useState("");
   const [purchases, setPurchases] = React.useState(
     getPurchaseFromStorage() || []

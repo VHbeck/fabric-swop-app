@@ -38,7 +38,7 @@ function Footer() {
   return (
     <FooterStyled>
       <Icons>
-        <Link to="/">
+        <Link to="/feed">
           <i className="fas fa-home" />
         </Link>
       </Icons>

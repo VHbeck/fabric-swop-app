@@ -5,7 +5,7 @@ import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
 import { keyframes } from "styled-components";
 
-const rotate = keyframes`
+const Rotate = keyframes`
 0% {
     transform: scale(1) rotateZ(0);
   }
@@ -17,8 +17,15 @@ const rotate = keyframes`
   }
 `;
 
-const fadeIn = keyframes`
-
+const FadeIn = keyframes`
+0% {
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
 `;
 
 const Container = styled.div`
@@ -34,13 +41,16 @@ const Container = styled.div`
     rgba(255, 224, 199, 1) 69%,
     rgba(255, 200, 202, 1) 100%
   );
+  button {
+    animation: ${FadeIn} 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
+  }
 `;
 
 const StyledImage = styled.img`
-  width: 170px;
+  width: 180px;
   display: block;
-  margin-bottom: 50px;
-  animation: ${rotate} 0.65s linear both;
+  margin: 50px;
+  animation: ${Rotate} 0.8s linear both;
 `;
 
 function Login() {
