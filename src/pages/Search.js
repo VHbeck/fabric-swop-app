@@ -6,6 +6,7 @@ import Card from "../components/Card";
 import Container from "../components/Container";
 import styled from "styled-components";
 import Grow from "../components/Grow";
+import Fuse from "fuse.js";
 
 const InputContainer = styled.div`
   display: flex;
@@ -27,20 +28,17 @@ function Search(props) {
   const [input, setInput] = React.useState("");
   const output = props.cards;
 
-  const outputArray =
-    output &&
-    output
-      .filter(element => element.name.toLowerCase().includes(input))
-      .map(element => {
-        return {
-          _id: element._id,
-          name: element.name,
-          price: element.price,
-          source: element.source,
-          length: element.fabricLength,
-          bookmark: element.bookmark
-        };
-      });
+  var options = {
+    shouldSort: true,
+    threshold: 0.6,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: ["type", "name", "fabricColor", "fabricLength", "price"]
+  };
+  var fuse = new Fuse(output, options);
+  var result = fuse.search(input);
 
   function handleSearchChange(event) {
     const value = event.target.value.toLowerCase();
@@ -55,17 +53,17 @@ function Search(props) {
           type="text"
           value={input}
           onChange={handleSearchChange}
-          placeholder="type something"
+          placeholder="Search for fabric types, colors, names etc."
         />
       </InputContainer>
       <Container>
-        {outputArray.map((out, index) => (
+        {result.map((out, index) => (
           <Card
             onBookmarkClick={() => props.onBookmark(out._id)}
             onDetailsClick={() => props.onDetailsClick(out._id)}
             key={out.source + index}
             name={out.name}
-            length={out.length}
+            length={out.fabricLength}
             price={out.price}
             source={out.source}
             bookmark={out.bookmark}
