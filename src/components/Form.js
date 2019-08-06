@@ -130,7 +130,7 @@ function Form({ onCreate, history }) {
       bookmark: false
     };
     onCreate(item);
-    history.replace("/");
+    history.replace("/feed");
   }
 
   return (

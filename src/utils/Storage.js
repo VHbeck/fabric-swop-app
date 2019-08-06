@@ -1,23 +1,11 @@
-export function getCardFromStorage() {
+export function getFromStorage(name) {
   try {
-    return JSON.parse(localStorage.getItem("Card"));
+    return JSON.parse(localStorage.getItem(name));
   } catch (error) {
     return [];
   }
 }
 
-export function setCardToStorage(item) {
-  return localStorage.setItem("Card", JSON.stringify(item));
-}
-
-export function getPurchaseFromStorage() {
-  try {
-    return JSON.parse(localStorage.getItem("Purchase"));
-  } catch (error) {
-    return [];
-  }
-}
-
-export function setPurchaseToStorage(item) {
-  return localStorage.setItem("Purchase", JSON.stringify(item));
+export function setToStorage(name, item) {
+  return localStorage.setItem(name, JSON.stringify(item));
 }
