@@ -1,0 +1,62 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import GreyButton from "../components/GreyButton";
+import RedButton from "../components/RedButton";
+import { keyframes } from "styled-components";
+
+const rotate = keyframes`
+0% {
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(360deg);
+  }
+`;
+
+const fadeIn = keyframes`
+
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgb(253, 247, 245);
+  background: linear-gradient(
+    0deg,
+    rgba(253, 247, 245, 1) 36%,
+    rgba(255, 224, 199, 1) 69%,
+    rgba(255, 200, 202, 1) 100%
+  );
+`;
+
+const StyledImage = styled.img`
+  width: 170px;
+  display: block;
+  margin-bottom: 50px;
+  animation: ${rotate} 0.65s linear both;
+`;
+
+function Login() {
+  return (
+    <>
+      <Container>
+        <StyledImage src="logo-small.svg" />
+        <Link to="/feed">
+          <RedButton text="Register" />
+        </Link>
+        <Link to="/feed">
+          <GreyButton text="Login" />
+        </Link>
+      </Container>
+    </>
+  );
+}
+
+export default Login;

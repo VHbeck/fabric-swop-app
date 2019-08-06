@@ -52,7 +52,7 @@ function Details(props) {
               <span>{card.price} Euro</span>
             </StyledPrice>
           </Description>
-          <Link to="/">
+          <Link to="/feed">
             <GreyButton text="Back" />
           </Link>
           <Link to="/profile">

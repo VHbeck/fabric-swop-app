@@ -1,6 +1,7 @@
 import React from "react";
 import GlobalStyle from "./misc/GlobalStyle";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./pages/Login";
 import List from "./pages/List";
 import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
@@ -73,8 +74,9 @@ function App(props) {
       <GlobalStyle />
       <Router>
         <Switch>
+          <Route path="/" exact render={props => <Login />} />
           <Route
-            path="/"
+            path="/feed"
             exact
             render={props => (
               <List
