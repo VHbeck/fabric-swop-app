@@ -53,7 +53,7 @@ function Search(props) {
           type="text"
           value={input}
           onChange={handleSearchChange}
-          placeholder="type something"
+          placeholder="Search for fabric types, colors, names etc."
         />
       </InputContainer>
       <Container>
