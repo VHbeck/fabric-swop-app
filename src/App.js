@@ -1,7 +1,9 @@
 import React from "react";
 import GlobalStyle from "./misc/GlobalStyle";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Start from "./pages/Start";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import List from "./pages/List";
 import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
@@ -82,7 +84,7 @@ function App(props) {
       <GlobalStyle />
       <Router>
         <Switch>
-          <Route path="/" exact render={props => <Login />} />
+          <Route path="/" exact render={props => <Start />} />
           <Route
             path="/feed"
             exact
@@ -95,6 +97,8 @@ function App(props) {
               />
             )}
           />
+          <Route path="/login" exact render={props => <Login />} />
+          <Route path="/register" exact render={props => <Register />} />
           <Route
             path="/create"
             exact

@@ -40,21 +40,18 @@ const StyledInput = styled.input`
   margin: 10px 0px 10px 0px;
 `;
 
-function Login() {
+function Register() {
   return (
     <>
       <Container>
         <StyledImage src="logo-small.svg" />
-        <InputContainer>
-          <StyledInput type="text" placeholder="your username" />
-          <StyledInput type="text" placeholder="your password" />
-        </InputContainer>
+        <InputContainer />
         <Link to="/feed">
-          <GreyButton text="Login" />
+          <GreyButton text="Register" />
         </Link>
       </Container>
     </>
   );
 }
 
-export default Login;
+export default Register;
