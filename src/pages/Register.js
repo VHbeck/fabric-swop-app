@@ -18,12 +18,6 @@ const Container = styled.div`
   );
 `;
 
-const StyledImage = styled.img`
-  width: 180px;
-  display: block;
-  margin: 30px;
-`;
-
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,10 +38,8 @@ function Register() {
   return (
     <>
       <Container>
-        <StyledImage src="logo-small.svg" />
-        <InputContainer />
         <Link to="/feed">
-          <GreyButton text="Register" />
+          <GreyButton text="Register now" />
         </Link>
       </Container>
     </>
