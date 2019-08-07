@@ -10,7 +10,7 @@
     "birthday": "01.02.1992",
     "sewingMachine": "Janome Anniversary",
     "favoriteFabric": "Cotton",
-    "imageSource": "images/lou.jpg",
+    "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
     "purchases": {
       "_id": 2,
       "day": 6,
@@ -30,7 +30,7 @@
     "birthday": "05.12.1976",
     "sewingMachine": "Bernina",
     "favoriteFabric": "Linen",
-    "imageSource": "images/lou.jpg",
+    "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
     "purchases": {
       "_id": 2,
       "day": 6,
