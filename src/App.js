@@ -93,6 +93,10 @@ function App() {
     setActiveProfile(profile);
   }
 
+  function handleLogoutClick() {
+    setActiveProfile("");
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -155,6 +159,7 @@ function App() {
                 purchases={purchases}
                 activeProfile={activeProfile}
                 onDetailsClick={handleDetailsClick}
+                onLogout={handleLogoutClick}
                 {...props}
               />
             )}

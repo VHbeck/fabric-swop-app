@@ -14,6 +14,9 @@ const ProfileContainer = styled.div`
   h2 {
     text-align: center;
   }
+  button {
+    align-self: center;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -100,6 +103,7 @@ function Profile(props) {
         </Description>
         <h2>Your Purchases</h2>
         {purchaseList}
+        <GreyButton text="Logout" onClick={() => props.onLogout()} />
       </ProfileContainer>
       <Footer />
     </>
