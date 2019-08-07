@@ -3,30 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
-import { keyframes } from "styled-components";
-
-const Rotate = keyframes`
-0% {
-    transform: scale(1) rotateZ(0);
-  }
-  50% {
-    transform: scale(2) rotateZ(180deg);
-  }
-  100% {
-    transform: scale(1) rotateZ(360deg);
-  }
-`;
-
-const FadeIn = keyframes`
-0% {
-    transform: translateZ(-80px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateZ(0);
-    opacity: 1;
-  }
-`;
+import { FadeIn, Rotate } from "../utils/Animations";
 
 const Container = styled.div`
   display: flex;

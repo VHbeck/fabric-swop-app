@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Start from "./pages/Start";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import List from "./pages/List";
+import Feed from "./pages/Feed";
 import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
 import Search from "./pages/Search";
@@ -15,7 +15,7 @@ import { getFromStorage, setToStorage } from "./utils/Storage";
 const dummyCards = require("./models/items.json");
 const dummyProfiles = require("./models/profiles.json");
 
-function App(props) {
+function App() {
   const [cards, setCards] = React.useState(
     getFromStorage("Card") || dummyCards
   );
@@ -112,7 +112,7 @@ function App(props) {
             path="/feed"
             exact
             render={props => (
-              <List
+              <Feed
                 cards={cards}
                 onBookmark={handleBookmarkChange}
                 onDetailsClick={handleDetailsClick}

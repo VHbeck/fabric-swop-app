@@ -6,7 +6,7 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-function List(props) {
+function Feed(props) {
   //console.log(props.history);
   const output = props.cards;
 
@@ -46,8 +46,8 @@ function List(props) {
   );
 }
 
-List.propTypes = {
+Feed.propTypes = {
   cards: PropTypes.array
 };
 
-export default withRouter(List);
+export default withRouter(Feed);
