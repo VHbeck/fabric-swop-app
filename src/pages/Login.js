@@ -75,7 +75,7 @@ function Login(props) {
 
         <GreyButton
           text="Login"
-          onClick={() => props.onLogin(username, password)}
+          onClick={() => props.onLogin(username)}
           login={props.login}
         />
       </Container>

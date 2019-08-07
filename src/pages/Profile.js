@@ -50,6 +50,10 @@ const BoldText = styled.span`
   font-weight: bold;
 `;
 
+const Logout = styled.span`
+  align-self: center;
+`;
+
 function Profile(props) {
   const yourPurchases = props.purchases;
   const yourProfile = props.activeProfile;
@@ -103,7 +107,11 @@ function Profile(props) {
         </Description>
         <h2>Your Purchases</h2>
         {purchaseList}
-        <GreyButton text="Logout" onClick={() => props.onLogout()} />
+        <Logout>
+          <Link to="login">
+            <GreyButton text="Logout" onClick={() => props.onLogout()} />
+          </Link>
+        </Logout>
       </ProfileContainer>
       <Footer />
     </>

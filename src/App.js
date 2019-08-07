@@ -15,7 +15,7 @@ import { getFromStorage, setToStorage } from "./utils/Storage";
 const dummyCards = require("./models/items.json");
 const dummyProfiles = require("./models/profiles.json");
 
-function App() {
+function App(props) {
   const [cards, setCards] = React.useState(
     getFromStorage("Card") || dummyCards
   );
@@ -87,7 +87,7 @@ function App() {
     ]);
   }
 
-  function handleLoginClick(username, password) {
+  function handleLoginClick(username) {
     const index = profiles.findIndex(profile => profile.username === username);
     const profile = profiles[index];
     setActiveProfile(profile);
