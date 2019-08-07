@@ -17,11 +17,11 @@ const Container = styled.div`
   );
 `;
 
-function Register() {
+function Register(props) {
   return (
     <Container>
       <Header headline="Register" />
-      <RegisterForm />
+      <RegisterForm onCreateProfile={props.onCreateProfile} />
     </Container>
   );
 }

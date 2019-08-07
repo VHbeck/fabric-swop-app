@@ -64,6 +64,11 @@ function App(props) {
     setCards([items, ...cards]);
   }
 
+  function handleCreateProfile(items) {
+    setProfiles([items, ...profiles]);
+    setActiveProfile(items);
+  }
+
   function handleDetailsClick(id) {
     const index = cards.findIndex(card => card._id === id);
     const detail = cards[index];
@@ -130,7 +135,9 @@ function App(props) {
           <Route
             path="/register"
             exact
-            render={props => <Register {...props} />}
+            render={props => (
+              <Register onCreateProfile={handleCreateProfile} {...props} />
+            )}
           />
           <Route
             path="/create"
