@@ -15,7 +15,7 @@ import { getFromStorage, setToStorage } from "./utils/Storage";
 const dummyCards = require("./models/items.json");
 const dummyProfiles = require("./models/profiles.json");
 
-function App(props) {
+function App() {
   const [cards, setCards] = React.useState(
     getFromStorage("Card") || dummyCards
   );
@@ -97,14 +97,13 @@ function App(props) {
       console.log("wrong Password");
     }
   }
-  console.log(activeProfile);
 
   return (
     <>
       <GlobalStyle />
       <Router>
         <Switch>
-          <Route path="/" exact render={props => <Start />} />
+          <Route path="/" exact render={props => <Start {...props} />} />
           <Route
             path="/feed"
             exact
@@ -114,19 +113,26 @@ function App(props) {
                 onBookmark={handleBookmarkChange}
                 onDetailsClick={handleDetailsClick}
                 onBuyClick={handleBuyClick}
+                {...props}
               />
             )}
           />
           <Route
             path="/login"
             exact
-            render={props => <Login onLogin={handleLoginClick} />}
+            render={props => <Login onLogin={handleLoginClick} {...props} />}
           />
-          <Route path="/register" exact render={props => <Register />} />
+          <Route
+            path="/register"
+            exact
+            render={props => <Register {...props} />}
+          />
           <Route
             path="/create"
             exact
-            render={props => <Create cards={cards} onCreate={handleCreate} />}
+            render={props => (
+              <Create cards={cards} onCreate={handleCreate} {...props} />
+            )}
           />
           <Route
             path="/search"
@@ -136,6 +142,7 @@ function App(props) {
                 cards={cards}
                 onDetailsClick={handleDetailsClick}
                 onBookmark={handleBookmarkChange}
+                {...props}
               />
             )}
           />
@@ -147,6 +154,7 @@ function App(props) {
                 purchases={purchases}
                 activeProfile={activeProfile}
                 onDetailsClick={handleDetailsClick}
+                {...props}
               />
             )}
           />
@@ -166,7 +174,11 @@ function App(props) {
             path="/details"
             exact
             render={props => (
-              <Details cards={detailPage} onBuyClick={handleBuyClick} />
+              <Details
+                cards={detailPage}
+                onBuyClick={handleBuyClick}
+                {...props}
+              />
             )}
           />
           <Route component={NotFound} />
