@@ -31,6 +31,7 @@ const StyledInput = styled.input`
 function Login(props) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const profile = props.activeProfile;
 
   function handleUsernameChange(event) {
     const value = event.target.value;
@@ -40,6 +41,17 @@ function Login(props) {
   function handlePasswordChange(event) {
     const value = event.target.value;
     setPassword(value);
+  }
+
+  if (profile.username === username && profile.password === password) {
+    console.log("right Password");
+    login();
+  } else {
+    console.log("wrong Password");
+  }
+
+  function login() {
+    props.history.replace("/feed");
   }
 
   return (
@@ -64,6 +76,7 @@ function Login(props) {
         <GreyButton
           text="Login"
           onClick={() => props.onLogin(username, password)}
+          login={props.login}
         />
       </Container>
     </>

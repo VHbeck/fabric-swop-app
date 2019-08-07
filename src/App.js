@@ -90,12 +90,7 @@ function App() {
   function handleLoginClick(username, password) {
     const index = profiles.findIndex(profile => profile.username === username);
     const profile = profiles[index];
-    if (profile.username === username && profile.password === password) {
-      console.log("right Password");
-      setActiveProfile(profile);
-    } else {
-      console.log("wrong Password");
-    }
+    setActiveProfile(profile);
   }
 
   return (
@@ -120,7 +115,13 @@ function App() {
           <Route
             path="/login"
             exact
-            render={props => <Login onLogin={handleLoginClick} {...props} />}
+            render={props => (
+              <Login
+                onLogin={handleLoginClick}
+                activeProfile={activeProfile}
+                {...props}
+              />
+            )}
           />
           <Route
             path="/register"
