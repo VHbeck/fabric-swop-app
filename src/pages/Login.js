@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import Header from "../components/Header";
@@ -29,16 +28,43 @@ const StyledInput = styled.input`
   margin: 10px 0px 10px 0px;
 `;
 
-function Login() {
+function Login(props) {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  function handleUsernameChange(event) {
+    const value = event.target.value;
+    setUsername(value);
+  }
+
+  function handlePasswordChange(event) {
+    const value = event.target.value;
+    setPassword(value);
+  }
+
   return (
     <>
       <Container>
         <Header headline="Login" />
-        <StyledInput type="text" placeholder="your username" />
-        <StyledInput type="text" placeholder="your password" />
-        <Link to="/feed">
-          <GreyButton text="Login" />
-        </Link>
+        <StyledInput
+          type="text"
+          placeholder="your username"
+          value={username}
+          onChange={handleUsernameChange}
+          required
+        />
+        <StyledInput
+          type="password"
+          placeholder="your password"
+          value={password}
+          onChange={handlePasswordChange}
+          required
+        />
+
+        <GreyButton
+          text="Login"
+          onClick={() => props.onLogin(username, password)}
+        />
       </Container>
     </>
   );

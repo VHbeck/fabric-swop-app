@@ -22,6 +22,9 @@ function App(props) {
   const [profiles, setProfiles] = React.useState(
     getFromStorage("Profile") || dummyProfiles
   );
+  const [activeProfile, setActiveProfile] = React.useState(
+    getFromStorage("ActiveProfile") || dummyProfiles
+  );
   const [detailPage, setDetailPage] = React.useState("");
   const [purchases, setPurchases] = React.useState(
     getFromStorage("Purchase") || []
@@ -41,6 +44,11 @@ function App(props) {
     const name = "Profile";
     setToStorage(name, profiles);
   }, [profiles]);
+
+  React.useEffect(() => {
+    const name = "ActiveProfile";
+    setToStorage(name, activeProfile);
+  }, [activeProfile]);
 
   function handleBookmarkChange(id) {
     const index = cards.findIndex(card => card._id === id);
@@ -79,6 +87,18 @@ function App(props) {
     ]);
   }
 
+  function handleLoginClick(username, password) {
+    const index = profiles.findIndex(profile => profile.username === username);
+    const profile = profiles[index];
+    if (profile.username === username && profile.password === password) {
+      console.log("right Password");
+      setActiveProfile(profile);
+    } else {
+      console.log("wrong Password");
+    }
+  }
+  console.log(activeProfile);
+
   return (
     <>
       <GlobalStyle />
@@ -97,7 +117,11 @@ function App(props) {
               />
             )}
           />
-          <Route path="/login" exact render={props => <Login />} />
+          <Route
+            path="/login"
+            exact
+            render={props => <Login onLogin={handleLoginClick} />}
+          />
           <Route path="/register" exact render={props => <Register />} />
           <Route
             path="/create"
@@ -121,7 +145,7 @@ function App(props) {
             render={props => (
               <Profile
                 purchases={purchases}
-                profiles={profiles}
+                activeProfile={activeProfile}
                 onDetailsClick={handleDetailsClick}
               />
             )}

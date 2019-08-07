@@ -49,7 +49,7 @@ const BoldText = styled.span`
 
 function Profile(props) {
   const yourPurchases = props.purchases;
-  const yourProfile = props.profiles[1];
+  const yourProfile = props.activeProfile;
 
   const purchaseArray =
     yourPurchases &&
