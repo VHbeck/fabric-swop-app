@@ -7,6 +7,7 @@ import Container from "../components/Container";
 import styled from "styled-components";
 import Grow from "../components/Grow";
 import Fuse from "fuse.js";
+import { withRouter } from "react-router-dom";
 
 const InputContainer = styled.div`
   display: flex;
@@ -24,9 +25,9 @@ const StyledInput = styled.input`
   margin: 10px 0px 10px 0px;
 `;
 
-function Search(props) {
+function Search({ onBookmark, history, cards }) {
   const [input, setInput] = React.useState("");
-  const output = props.cards;
+  const output = cards;
 
   var options = {
     shouldSort: true,
@@ -45,6 +46,10 @@ function Search(props) {
     setInput(value);
   }
 
+  function onDetailsClick(id) {
+    history.replace(`/details/${id}`);
+  }
+
   return (
     <>
       <Header headline="Search" />
@@ -59,8 +64,8 @@ function Search(props) {
       <Container>
         {result.map((out, index) => (
           <Card
-            onBookmarkClick={() => props.onBookmark(out._id)}
-            onDetailsClick={() => props.onDetailsClick(out._id)}
+            onBookmarkClick={() => onBookmark(out._id)}
+            onDetailsClick={() => onDetailsClick(out._id)}
             key={out.source + index}
             name={out.name}
             length={out.fabricLength}
@@ -80,4 +85,4 @@ Search.propTypes = {
   onDetailsClick: PropTypes.func
 };
 
-export default Search;
+export default withRouter(Search);

@@ -25,7 +25,7 @@ function App() {
   const [activeProfile, setActiveProfile] = React.useState(
     getFromStorage("ActiveProfile") || dummyProfiles
   );
-  const [detailPage, setDetailPage] = React.useState("");
+
   const [purchases, setPurchases] = React.useState(
     getFromStorage("Purchase") || []
   );
@@ -69,12 +69,10 @@ function App() {
     setActiveProfile(items);
   }
 
-  function handleDetailsClick(id) {
-    const index = cards.findIndex(card => card._id === id);
-    const detail = cards[index];
-    setDetailPage(detail);
+  /*function handleDetailsClick(id, history) {
+    history.replace(`/details/${id}`);
   }
-
+*/
   function handleBuyClick(id) {
     const index = cards.findIndex(card => card._id === id);
     const purchase = cards[index];
@@ -115,7 +113,6 @@ function App() {
               <Feed
                 cards={cards}
                 onBookmark={handleBookmarkChange}
-                onDetailsClick={handleDetailsClick}
                 onBuyClick={handleBuyClick}
                 {...props}
               />
@@ -152,7 +149,6 @@ function App() {
             render={props => (
               <Search
                 cards={cards}
-                onDetailsClick={handleDetailsClick}
                 onBookmark={handleBookmarkChange}
                 {...props}
               />
@@ -165,7 +161,6 @@ function App() {
               <Profile
                 purchases={purchases}
                 activeProfile={activeProfile}
-                onDetailsClick={handleDetailsClick}
                 onLogout={handleLogoutClick}
                 {...props}
               />
@@ -177,21 +172,16 @@ function App() {
             render={props => (
               <Favorite
                 cards={cards}
-                onDetailsClick={handleDetailsClick}
                 onBookmark={handleBookmarkChange}
                 onBuyClick={handleBuyClick}
               />
             )}
           />
           <Route
-            path="/details"
+            path="/details/:id"
             exact
             render={props => (
-              <Details
-                cards={detailPage}
-                onBuyClick={handleBuyClick}
-                {...props}
-              />
+              <Details cards={cards} onBuyClick={handleBuyClick} {...props} />
             )}
           />
           <Route component={NotFound} />

@@ -5,9 +5,10 @@ import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Grow from "../components/Grow";
+import { withRouter } from "react-router-dom";
 
-function Favorite(props) {
-  const output = props.cards;
+function Favorite({ cards, history, onBookmark, onBuyClick }) {
+  const output = cards;
 
   const outputArray =
     output &&
@@ -24,15 +25,19 @@ function Favorite(props) {
         };
       });
 
+  function onDetailsClick(id) {
+    history.replace(`/details/${id}`);
+  }
+
   return (
     <>
       <Header headline="Favorite" />
       <Container>
         {outputArray.map((out, index) => (
           <Card
-            onDetailsClick={() => props.onDetailsClick(out._id)}
-            onBookmarkClick={() => props.onBookmark(out._id)}
-            onBuyClick={() => props.onBuyClick(out._id)}
+            onDetailsClick={() => onDetailsClick(out._id)}
+            onBookmarkClick={() => onBookmark(out._id)}
+            onBuyClick={() => onBuyClick(out._id)}
             key={out.source + index}
             name={out.name}
             length={out.length}
@@ -52,4 +57,4 @@ Favorite.propTypes = {
   cards: PropTypes.array
 };
 
-export default Favorite;
+export default withRouter(Favorite);

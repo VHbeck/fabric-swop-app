@@ -5,6 +5,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import GreyButton from "../components/GreyButton";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -54,9 +55,9 @@ const Logout = styled.span`
   align-self: center;
 `;
 
-function Profile(props) {
-  const yourPurchases = props.purchases;
-  const yourProfile = props.activeProfile;
+function Profile({ onLogout, activeProfile, purchases, history }) {
+  const yourPurchases = purchases;
+  const yourProfile = activeProfile;
 
   const purchaseArray =
     yourPurchases &&
@@ -71,17 +72,16 @@ function Profile(props) {
       };
     });
 
+  function onDetailsClick(id) {
+    history.replace(`/details/${id}`);
+  }
+
   const purchaseList = purchaseArray.map(out => (
     <PurchaseContainer key={out._id}>
       <p>
         {out.day}.{out.month}.{out.year}: {out.name}, {out.price} Euro
       </p>
-      <Link to="/details">
-        <GreyButton
-          text="Details"
-          onClick={() => props.onDetailsClick(out._id)}
-        />
-      </Link>
+      <GreyButton text="Details" onClick={() => onDetailsClick(out._id)} />
       <br />
     </PurchaseContainer>
   ));
@@ -109,7 +109,7 @@ function Profile(props) {
         {purchaseList}
         <Logout>
           <Link to="login">
-            <GreyButton text="Logout" onClick={() => props.onLogout()} />
+            <GreyButton text="Logout" onClick={() => onLogout()} />
           </Link>
         </Logout>
       </ProfileContainer>
@@ -123,4 +123,4 @@ Profile.propTypes = {
   profiles: PropTypes.array
 };
 
-export default Profile;
+export default withRouter(Profile);

@@ -57,9 +57,7 @@ function Card(props) {
         <CardPrice>{props.price} Euro</CardPrice>
       </TextContainer>
       <TextContainer>
-        <Link to="/details">
-          <GreyButton text="Details" onClick={props.onDetailsClick} />
-        </Link>
+        <GreyButton text="Details" onClick={props.onDetailsClick} />
         <Link to="/profile">
           <RedButton text="Buy now" onClick={props.onBuyClick} />
         </Link>

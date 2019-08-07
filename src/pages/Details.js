@@ -35,8 +35,12 @@ const StyledPrice = styled.div`
   padding: 15px 15px 0px 0px;
 `;
 
-function Details(props) {
-  const card = props.cards;
+function Details({ match, cards, onBuyClick }) {
+  const card = cards && cards.find(card => card._id === match.params.id);
+  if (!card) {
+    return null;
+  }
+  console.log(card);
   return (
     <>
       <Header headline={card.name} />
@@ -57,10 +61,7 @@ function Details(props) {
           </Link>
           <Link to="/profile">
             {" "}
-            <RedButton
-              text="Buy now"
-              onClick={() => props.onBuyClick(card._id)}
-            />
+            <RedButton text="Buy now" onClick={() => onBuyClick(card._id)} />
           </Link>
         </Frame>
       </Container>
