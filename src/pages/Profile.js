@@ -14,6 +14,9 @@ const ProfileContainer = styled.div`
   h2 {
     text-align: center;
   }
+  button {
+    align-self: center;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -47,8 +50,13 @@ const BoldText = styled.span`
   font-weight: bold;
 `;
 
+const Logout = styled.span`
+  align-self: center;
+`;
+
 function Profile(props) {
   const yourPurchases = props.purchases;
+  const yourProfile = props.activeProfile;
 
   const purchaseArray =
     yourPurchases &&
@@ -80,23 +88,30 @@ function Profile(props) {
 
   return (
     <>
-      <Header headline="Profile" />
+      <Header headline={yourProfile.username} />
       <ProfileContainer>
-        <StyledImage src="../../images/lou.jpg" alt="Vanessa" />
+        <StyledImage src={yourProfile.imageSource} alt="User Image" />
         <Description>
           <BoldText>Name:</BoldText>
-          <span>Vanessa Harbeck</span>
+          <span>
+            {yourProfile.firstName} {yourProfile.lastName}
+          </span>
           <BoldText>Address:</BoldText>
-          <span>Gasstrasse 6A, Hamburg</span>
+          <span>{yourProfile.address}</span>
           <BoldText>Birthday:</BoldText>
-          <span>01.02.1992</span>
+          <span>{yourProfile.birthday}</span>
           <BoldText>Sewing Machine:</BoldText>
-          <span>Janome Anniversay</span>
+          <span>{yourProfile.sewingMachine}</span>
           <BoldText>Favorite Fabric:</BoldText>
-          <span>Cotton</span>
+          <span>{yourProfile.favoriteFabric}</span>
         </Description>
         <h2>Your Purchases</h2>
         {purchaseList}
+        <Logout>
+          <Link to="login">
+            <GreyButton text="Logout" onClick={() => props.onLogout()} />
+          </Link>
+        </Logout>
       </ProfileContainer>
       <Footer />
     </>
@@ -104,7 +119,8 @@ function Profile(props) {
 }
 
 Profile.propTypes = {
-  purchases: PropTypes.array
+  purchases: PropTypes.array,
+  profiles: PropTypes.array
 };
 
 export default Profile;

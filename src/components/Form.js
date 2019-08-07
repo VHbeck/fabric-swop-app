@@ -121,16 +121,16 @@ function Form({ onCreate, history }) {
     const item = {
       _id: uuid(),
       name: newCard.name,
-      type: newCard.type,
+      type: newCard.type ? newCard.type : "no type",
       fabricLength: newCard.fabricLength,
-      fabricWidth: newCard.fabricWidth,
-      fabricColor: newCard.fabricColor,
+      fabricWidth: newCard.fabricWidth ? newCard.fabricWidth : "no width",
+      fabricColor: newCard.fabricColor ? newCard.fabricColor : "no color",
       price: newCard.price,
       source: image ? image : "../../images/default-img.png",
       bookmark: false
     };
     onCreate(item);
-    history.replace("/");
+    history.replace("/feed");
   }
 
   return (

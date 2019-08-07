@@ -19,7 +19,7 @@ function NotFound() {
       <Header headline="Not Found" />
       <NotFoundContainer>
         <p>Sorry, page not Found.</p>
-        <Link to="/">
+        <Link to="/feed">
           <GreyButton text="Back" />
         </Link>
       </NotFoundContainer>

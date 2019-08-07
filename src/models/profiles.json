@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "1.0",
+    "username": "Nessa",
+    "password": "1234",
+    "firstName": "Vanessa",
+    "lastName": "Harbeck",
+    "address": "Gasstrasse 6A, Hamburg",
+    "email": "nessah@bla.de",
+    "birthday": "01.02.1992",
+    "sewingMachine": "Janome Anniversary",
+    "favoriteFabric": "Cotton",
+    "imageSource": "images/lou.jpg",
+    "purchases": {
+      "_id": 2,
+      "day": 6,
+      "month": 8,
+      "year": 2019,
+      "name": "Cotton Fabric"
+    }
+  },
+  {
+    "_id": "2.0",
+    "username": "Greta",
+    "password": "5678",
+    "firstName": "Greta",
+    "lastName": "Mueller",
+    "address": "Strasse 1A, Buxtehude",
+    "email": "greta@bla.de",
+    "birthday": "05.12.1976",
+    "sewingMachine": "Bernina",
+    "favoriteFabric": "Linen",
+    "imageSource": "images/lou.jpg",
+    "purchases": {
+      "_id": 2,
+      "day": 6,
+      "month": 8,
+      "year": 2019,
+      "name": "Linen Fabric"
+    }
+  }
+]

@@ -76,7 +76,7 @@ function Search(props) {
   );
 }
 Search.propTypes = {
-  cards: PropTypes.object,
+  cards: PropTypes.array,
   onDetailsClick: PropTypes.func
 };
 
