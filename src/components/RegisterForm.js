@@ -13,7 +13,9 @@ const StyledUpload = styled.div`
 `;
 
 const FormContainer = styled.div`
-  margin: 0px 30px 0px 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px 30px 30px;
   input {
     font-size: 18px;
     width: 95%;
@@ -25,7 +27,10 @@ const FormContainer = styled.div`
   }
   label {
     font-size: 18px;
-    margin: 10px;
+    margin: 10px 10px 0px 10px;
+  }
+  button {
+    align-self: center;
   }
 `;
 
