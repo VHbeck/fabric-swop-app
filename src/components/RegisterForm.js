@@ -29,6 +29,17 @@ const FormContainer = styled.div`
   }
 `;
 
+const PasswordInput = styled.input`
+  &:focus {
+    background: hsl(
+      ${props => Math.min(props.value.length * 10, 100)},
+      60%,
+      60%
+    );
+    color: black;
+  }
+`;
+
 function RegisterForm({ onCreateProfile, history }) {
   const [image, setImage] = React.useState("");
 
@@ -169,13 +180,14 @@ function RegisterForm({ onCreateProfile, history }) {
           onChange={handleChange}
         />
         <label>Password</label>
-        <input
+        <PasswordInput
           placeholder="Password"
           type="password"
           required
           name="password"
           value={newProfile.password}
           onChange={handleChange}
+          minLength="7"
         />
         <GreyButton text="Register now" type="submit" />
       </FormContainer>
