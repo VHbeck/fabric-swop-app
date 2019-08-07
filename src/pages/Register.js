@@ -7,7 +7,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   background: rgb(253, 247, 245);
   background: linear-gradient(
     0deg,

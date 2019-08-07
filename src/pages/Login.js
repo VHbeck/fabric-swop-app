@@ -4,9 +4,6 @@ import GreyButton from "../components/GreyButton";
 import Header from "../components/Header";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   height: 100vh;
   background: rgb(253, 247, 245);
   background: linear-gradient(
@@ -28,6 +25,12 @@ const StyledInput = styled.input`
   margin: 10px 0px 10px 0px;
 `;
 
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 function Login(props) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -43,41 +46,42 @@ function Login(props) {
     setPassword(value);
   }
 
-  if (profile.username === username && profile.password === password) {
-    console.log("right Password");
-    login();
-  } else {
-    console.log("wrong Password");
-  }
-
-  function login() {
-    props.history.replace("/feed");
+  function handleSubmit() {
+    if (profile.username === username && profile.password === password) {
+      console.log("right Password");
+      props.history.replace("/feed");
+    } else {
+      console.log("wrong Password");
+    }
   }
 
   return (
     <>
       <Container>
         <Header headline="Login" />
-        <StyledInput
-          type="text"
-          placeholder="your username"
-          value={username}
-          onChange={handleUsernameChange}
-          required
-        />
-        <StyledInput
-          type="password"
-          placeholder="your password"
-          value={password}
-          onChange={handlePasswordChange}
-          required
-        />
+        <StyledForm onSubmit={handleSubmit}>
+          <StyledInput
+            type="text"
+            placeholder="your username"
+            value={username}
+            onChange={handleUsernameChange}
+            required
+          />
+          <StyledInput
+            type="password"
+            placeholder="your password"
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
 
-        <GreyButton
-          text="Login"
-          onClick={() => props.onLogin(username)}
-          login={props.login}
-        />
+          <GreyButton
+            type="submit"
+            text="Login"
+            onClick={() => props.onLogin(username)}
+            login={props.login}
+          />
+        </StyledForm>
       </Container>
     </>
   );

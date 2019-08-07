@@ -88,9 +88,9 @@ function Profile(props) {
 
   return (
     <>
-      <Header headline="Profile" />
+      <Header headline={yourProfile.username} />
       <ProfileContainer>
-        <StyledImage src="../../images/lou.jpg" alt="Vanessa" />
+        <StyledImage src={yourProfile.imageSource} alt="User Image" />
         <Description>
           <BoldText>Name:</BoldText>
           <span>
