@@ -1,75 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import RedButton from "./RedButton";
-import axios from "axios";
 import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import axios from "axios";
 import uuid from "uuid/v1";
+import RedButton from "./RedButton";
+import Number from "./Number";
+import { FormContainer, StyledUpload, StepContainer } from "./FormContainer";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
-
-const StyledUpload = styled.div`
-  text-align: center;
-`;
-
-const StepContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-  input {
-    font-size: 18px;
-    width: 90%;
-    border: grey solid 1px;
-    padding: 5px;
-    border-radius: 15px;
-    background-color: white;
-  }
-  .smallinput {
-    width: 30%;
-  }
-  button {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-`;
-
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 0px 30px 30px 30px;
-  input,
-  select {
-    font-size: 18px;
-    width: 95%;
-    border: grey solid 1px;
-    padding: 5px;
-    border-radius: 15px;
-    background-color: white;
-  }
-  label {
-    font-size: 18px;
-    margin-top: 15px;
-  }
-  .smallinput {
-    width: 30%;
-  }
-`;
-
-const Number = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 28px;
-  height: 28px;
-  background-color: #131426;
-  border-radius: 50%;
-  color: white;
-  margin-top: 10px;
-`;
 
 function Form({ onCreate, history }) {
   const [image, setImage] = React.useState("");
@@ -207,7 +146,6 @@ function Form({ onCreate, history }) {
             onChange={handleChange}
           />
         </FormContainer>
-
         <StepContainer>
           <Number>3</Number>
           <h2>Price in Euro</h2>

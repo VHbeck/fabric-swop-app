@@ -4,20 +4,13 @@ import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
 import { FadeIn, Rotate } from "../utils/Animations";
+import { Background } from "../components/Background";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: rgb(253, 247, 245);
-  background: linear-gradient(
-    0deg,
-    rgba(253, 247, 245, 1) 36%,
-    rgba(255, 224, 199, 1) 69%,
-    rgba(255, 200, 202, 1) 100%
-  );
   button {
     animation: ${FadeIn} 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
   }
@@ -32,7 +25,7 @@ const StyledImage = styled.img`
 
 function Start() {
   return (
-    <>
+    <Background>
       <Container>
         <StyledImage src="logo-small.svg" />
         <Link to="/register">
@@ -42,7 +35,7 @@ function Start() {
           <GreyButton text="Login" />
         </Link>
       </Container>
-    </>
+    </Background>
   );
 }
 

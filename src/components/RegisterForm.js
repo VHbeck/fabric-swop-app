@@ -1,44 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import GreyButton from "./GreyButton";
 import axios from "axios";
 import uuid from "uuid/v1";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RedButton from "./RedButton";
+import GreyButton from "./GreyButton";
+import { StyledUpload, FormContainer } from "./FormContainer";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
-
-const StyledUpload = styled.div`
-  text-align: center;
-`;
-
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0px 30px 30px 30px;
-  input {
-    font-size: 18px;
-    width: 95%;
-    border: grey solid 1px;
-    padding: 5px;
-    border-radius: 15px;
-    background-color: white;
-    margin: 0px 10px 15px 10px;
-  }
-  label {
-    font-size: 18px;
-    margin: 10px 10px 0px 10px;
-  }
-  button {
-    display: block;
-    align-self: center;
-  }
-  a {
-    align-self: center;
-  }
-`;
 
 const PasswordInput = styled.input`
   &:focus {
