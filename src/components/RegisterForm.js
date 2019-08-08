@@ -4,6 +4,8 @@ import GreyButton from "./GreyButton";
 import axios from "axios";
 import uuid from "uuid/v1";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import RedButton from "./RedButton";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -30,6 +32,10 @@ const FormContainer = styled.div`
     margin: 10px 10px 0px 10px;
   }
   button {
+    display: block;
+    align-self: center;
+  }
+  a {
     align-self: center;
   }
 `;
@@ -194,7 +200,10 @@ function RegisterForm({ onCreateProfile, history }) {
           onChange={handleChange}
           minLength="7"
         />
-        <GreyButton text="Register now" type="submit" />
+        <RedButton text="Register now" type="submit" />
+        <Link to="/login">
+          <GreyButton text="Login" />
+        </Link>
       </FormContainer>
     </form>
   );

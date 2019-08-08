@@ -6,9 +6,8 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-function List(props) {
-  //console.log(props.history);
-  const output = props.cards;
+function Feed({ history, cards, onBookmark, onBuyClick }) {
+  const output = cards;
 
   const outputArray =
     output &&
@@ -23,11 +22,15 @@ function List(props) {
       };
     });
 
+  function onDetailsClick(id) {
+    history.replace(`/details/${id}`);
+  }
+
   const initialOutput = outputArray.map((out, index) => (
     <Card
-      onDetailsClick={() => props.onDetailsClick(out._id)}
-      onBookmarkClick={() => props.onBookmark(out._id)}
-      onBuyClick={() => props.onBuyClick(out._id)}
+      onDetailsClick={() => onDetailsClick(out._id)}
+      onBookmarkClick={() => onBookmark(out._id)}
+      onBuyClick={() => onBuyClick(out._id)}
       key={out.name + index}
       name={out.name}
       length={out.length}
@@ -46,8 +49,8 @@ function List(props) {
   );
 }
 
-List.propTypes = {
+Feed.propTypes = {
   cards: PropTypes.array
 };
 
-export default withRouter(List);
+export default withRouter(Feed);

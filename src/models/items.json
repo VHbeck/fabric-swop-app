@@ -7,7 +7,7 @@
     "fabricWidth": "1.45",
     "fabricColor": "striped",
     "price": "5",
-    "source": "images/sample-fabric.jpg",
+    "source": "https://res.cloudinary.com/fab-swop/image/upload/v1564675826/sample-fabric_en0o7u.jpg",
     "bookmark": true
   },
   {
@@ -18,7 +18,7 @@
     "fabricWidth": "1.45",
     "fabricColor": "blue",
     "price": "4",
-    "source": "images/sample-fabric2.jpg",
+    "source": "https://res.cloudinary.com/fab-swop/image/upload/v1564675805/sample-fabric2_k3rytp.jpg",
     "bookmark": false
   },
   {
@@ -29,7 +29,7 @@
     "fabricWidth": "1.45",
     "fabricColor": "pink",
     "price": "8",
-    "source": "images/sample-fabric3.jpg",
+    "source": "https://res.cloudinary.com/fab-swop/image/upload/v1564667218/sample-fabric3_uahuuk.jpg",
     "bookmark": true
   }
 ]

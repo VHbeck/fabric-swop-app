@@ -4,18 +4,19 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Start from "./pages/Start";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import List from "./pages/List";
+import Feed from "./pages/Feed";
 import NotFound from "./pages/NotFound";
 import Create from "./pages/Create";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import Favorite from "./pages/Favorite";
 import Details from "./pages/Details";
+import ScrollToTop from "./utils/ScrollToTop";
 import { getFromStorage, setToStorage } from "./utils/Storage";
 const dummyCards = require("./models/items.json");
 const dummyProfiles = require("./models/profiles.json");
 
-function App(props) {
+function App() {
   const [cards, setCards] = React.useState(
     getFromStorage("Card") || dummyCards
   );
@@ -25,7 +26,7 @@ function App(props) {
   const [activeProfile, setActiveProfile] = React.useState(
     getFromStorage("ActiveProfile") || dummyProfiles
   );
-  const [detailPage, setDetailPage] = React.useState("");
+
   const [purchases, setPurchases] = React.useState(
     getFromStorage("Purchase") || []
   );
@@ -69,12 +70,6 @@ function App(props) {
     setActiveProfile(items);
   }
 
-  function handleDetailsClick(id) {
-    const index = cards.findIndex(card => card._id === id);
-    const detail = cards[index];
-    setDetailPage(detail);
-  }
-
   function handleBuyClick(id) {
     const index = cards.findIndex(card => card._id === id);
     const purchase = cards[index];
@@ -107,93 +102,87 @@ function App(props) {
       <GlobalStyle />
       <Router>
         <Switch>
-          <Route path="/" exact render={props => <Start {...props} />} />
-          <Route
-            path="/feed"
-            exact
-            render={props => (
-              <List
-                cards={cards}
-                onBookmark={handleBookmarkChange}
-                onDetailsClick={handleDetailsClick}
-                onBuyClick={handleBuyClick}
-                {...props}
-              />
-            )}
-          />
-          <Route
-            path="/login"
-            exact
-            render={props => (
-              <Login
-                onLogin={handleLoginClick}
-                activeProfile={activeProfile}
-                {...props}
-              />
-            )}
-          />
-          <Route
-            path="/register"
-            exact
-            render={props => (
-              <Register onCreateProfile={handleCreateProfile} {...props} />
-            )}
-          />
-          <Route
-            path="/create"
-            exact
-            render={props => (
-              <Create cards={cards} onCreate={handleCreate} {...props} />
-            )}
-          />
-          <Route
-            path="/search"
-            exact
-            render={props => (
-              <Search
-                cards={cards}
-                onDetailsClick={handleDetailsClick}
-                onBookmark={handleBookmarkChange}
-                {...props}
-              />
-            )}
-          />
-          <Route
-            path="/profile"
-            exact
-            render={props => (
-              <Profile
-                purchases={purchases}
-                activeProfile={activeProfile}
-                onDetailsClick={handleDetailsClick}
-                onLogout={handleLogoutClick}
-                {...props}
-              />
-            )}
-          />
-          <Route
-            path="/favorite"
-            exact
-            render={props => (
-              <Favorite
-                cards={cards}
-                onDetailsClick={handleDetailsClick}
-                onBookmark={handleBookmarkChange}
-                onBuyClick={handleBuyClick}
-              />
-            )}
-          />
-          <Route
-            path="/details"
-            exact
-            render={props => (
-              <Details
-                cards={detailPage}
-                onBuyClick={handleBuyClick}
-                {...props}
-              />
-            )}
-          />
+          <ScrollToTop>
+            <Route path="/" exact render={props => <Start {...props} />} />
+            <Route
+              path="/feed"
+              exact
+              render={props => (
+                <Feed
+                  cards={cards}
+                  onBookmark={handleBookmarkChange}
+                  onBuyClick={handleBuyClick}
+                  {...props}
+                />
+              )}
+            />
+            <Route
+              path="/login"
+              exact
+              render={props => (
+                <Login
+                  onLogin={handleLoginClick}
+                  activeProfile={activeProfile}
+                  {...props}
+                />
+              )}
+            />
+            <Route
+              path="/register"
+              exact
+              render={props => (
+                <Register onCreateProfile={handleCreateProfile} {...props} />
+              )}
+            />
+            <Route
+              path="/create"
+              exact
+              render={props => (
+                <Create cards={cards} onCreate={handleCreate} {...props} />
+              )}
+            />
+            <Route
+              path="/search"
+              exact
+              render={props => (
+                <Search
+                  cards={cards}
+                  onBookmark={handleBookmarkChange}
+                  {...props}
+                />
+              )}
+            />
+            <Route
+              path="/profile"
+              exact
+              render={props => (
+                <Profile
+                  purchases={purchases}
+                  activeProfile={activeProfile}
+                  onLogout={handleLogoutClick}
+                  {...props}
+                />
+              )}
+            />
+            <Route
+              path="/favorite"
+              exact
+              render={props => (
+                <Favorite
+                  cards={cards}
+                  onBookmark={handleBookmarkChange}
+                  onBuyClick={handleBuyClick}
+                />
+              )}
+            />
+            <Route
+              path="/details/:id"
+              exact
+              render={props => (
+                <Details cards={cards} onBuyClick={handleBuyClick} {...props} />
+              )}
+            />
+          </ScrollToTop>
           <Route component={NotFound} />
         </Switch>
       </Router>

@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
+import RedButton from "../components/RedButton";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 100vh;
@@ -75,12 +77,15 @@ function Login(props) {
             required
           />
 
-          <GreyButton
+          <RedButton
             type="submit"
             text="Login"
             onClick={() => props.onLogin(username)}
             login={props.login}
           />
+          <Link to="/register">
+            <GreyButton text="Register" />
+          </Link>
         </StyledForm>
       </Container>
     </>
