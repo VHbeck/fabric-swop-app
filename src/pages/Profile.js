@@ -55,9 +55,11 @@ const Logout = styled.span`
   align-self: center;
 `;
 
-function Profile({ onLogout, activeProfile, purchases, history }) {
-  const yourPurchases = purchases;
+function Profile({ onLogout, activeProfile, history }) {
+  const yourPurchases = activeProfile.purchases;
   const yourProfile = activeProfile;
+
+  console.log(activeProfile.purchases);
 
   const purchaseArray =
     yourPurchases &&

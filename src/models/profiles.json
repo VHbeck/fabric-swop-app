@@ -11,14 +11,24 @@
     "sewingMachine": "",
     "favoriteFabric": "",
     "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
-    "purchases": {
-      "_id": 2,
-      "purchaseDay": 6,
-      "purchaseMonth": 8,
-      "purchaseYear": 2019,
-      "name": "Cotton Fabric",
-      "price": "3"
-    }
+    "purchases": [
+      {
+        "_id": 2,
+        "purchaseDay": 6,
+        "purchaseMonth": 8,
+        "purchaseYear": 2019,
+        "name": "Cotton Fabric",
+        "price": "3"
+      },
+      {
+        "_id": 5,
+        "purchaseDay": 9,
+        "purchaseMonth": 8,
+        "purchaseYear": 2019,
+        "name": "Muslin Fabric",
+        "price": "3"
+      }
+    ]
   },
   {
     "_id": "1.0",
@@ -32,14 +42,16 @@
     "sewingMachine": "Janome Anniversary",
     "favoriteFabric": "Cotton",
     "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
-    "purchases": {
-      "_id": 2,
-      "purchaseDay": 6,
-      "purchaseMonth": 8,
-      "purchaseYear": 2019,
-      "name": "Cotton Fabric",
-      "price": "4"
-    }
+    "purchases": [
+      {
+        "_id": 2,
+        "purchaseDay": 6,
+        "purchaseMonth": 8,
+        "purchaseYear": 2019,
+        "name": "Cotton Fabric",
+        "price": "4"
+      }
+    ]
   },
   {
     "_id": "2.0",
@@ -53,13 +65,15 @@
     "sewingMachine": "Bernina",
     "favoriteFabric": "Linen",
     "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
-    "purchases": {
-      "_id": 2,
-      "purchaseDay": 6,
-      "purchaseMonth": 8,
-      "purchaseYear": 2019,
-      "name": "Linen Fabric",
-      "price": "5"
-    }
+    "purchases": [
+      {
+        "_id": 2,
+        "purchaseDay": 6,
+        "purchaseMonth": 8,
+        "purchaseYear": 2019,
+        "name": "Linen Fabric",
+        "price": "5"
+      }
+    ]
   }
 ]
