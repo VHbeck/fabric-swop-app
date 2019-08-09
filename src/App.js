@@ -27,20 +27,10 @@ function App() {
     getFromStorage("ActiveProfile") || dummyProfiles[0]
   );
 
-  /*const [purchases, setPurchases] = React.useState(
-    getFromStorage("Purchase") || []
-  );*/
-
   React.useEffect(() => {
     const name = "Card";
     setToStorage(name, cards);
   }, [cards]);
-
-  /*React.useEffect(() => {
-    const name = "Purchase";
-    setToStorage(name, purchases);
-  }, [purchases]);
-*/
   React.useEffect(() => {
     const name = "Profile";
     setToStorage(name, profiles);
@@ -76,15 +66,6 @@ function App() {
     const day = new Date().getDate();
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
-    /*setPurchases([
-      {
-        ...purchase,
-        purchaseDay: day,
-        purchaseMonth: month + 1,
-        purchaseYear: year
-      },
-      ...purchases
-    ]);*/
     const userIndex = profiles.findIndex(
       user => user._id === activeProfile._id
     );
@@ -201,7 +182,6 @@ function App() {
               exact
               render={props => (
                 <Profile
-                  /*purchases={purchases}*/
                   activeProfile={activeProfile}
                   onLogout={handleLogoutClick}
                   {...props}
@@ -232,7 +212,6 @@ function App() {
                 />
               )}
             />
-
             <Route component={NotFound} />
           </Switch>
         </ScrollToTop>
