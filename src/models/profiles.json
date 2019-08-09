@@ -1,5 +1,26 @@
 [
   {
+    "_id": "0.0",
+    "username": "No Name",
+    "password": "1234",
+    "firstName": "Hans",
+    "lastName": "im Glück",
+    "address": "Musterstraße 1A, Hamburg",
+    "email": "test@test.de",
+    "birthday": "01.01.1970",
+    "sewingMachine": "",
+    "favoriteFabric": "",
+    "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
+    "purchases": {
+      "_id": 2,
+      "purchaseDay": 6,
+      "purchaseMonth": 8,
+      "purchaseYear": 2019,
+      "name": "Cotton Fabric",
+      "price": "3"
+    }
+  },
+  {
     "_id": "1.0",
     "username": "Nessa",
     "password": "1234",
@@ -16,7 +37,8 @@
       "purchaseDay": 6,
       "purchaseMonth": 8,
       "purchaseYear": 2019,
-      "name": "Cotton Fabric"
+      "name": "Cotton Fabric",
+      "price": "4"
     }
   },
   {
@@ -33,10 +55,11 @@
     "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
     "purchases": {
       "_id": 2,
-      "day": 6,
-      "month": 8,
-      "year": 2019,
-      "name": "Linen Fabric"
+      "purchaseDay": 6,
+      "purchaseMonth": 8,
+      "purchaseYear": 2019,
+      "name": "Linen Fabric",
+      "price": "5"
     }
   }
 ]

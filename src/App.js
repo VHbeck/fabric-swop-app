@@ -24,7 +24,7 @@ function App() {
     getFromStorage("Profile") || dummyProfiles
   );
   const [activeProfile, setActiveProfile] = React.useState(
-    getFromStorage("ActiveProfile") || dummyProfiles
+    getFromStorage("ActiveProfile") || dummyProfiles[0]
   );
 
   const [purchases, setPurchases] = React.useState(
@@ -67,7 +67,7 @@ function App() {
 
   function handleCreateProfile(items) {
     setProfiles([items, ...profiles]);
-    setActiveProfile(items);
+    setActiveProfile([items]);
   }
 
   function handleBuyClick(id) {
