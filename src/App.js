@@ -24,23 +24,13 @@ function App() {
     getFromStorage("Profile") || dummyProfiles
   );
   const [activeProfile, setActiveProfile] = React.useState(
-    getFromStorage("ActiveProfile") || dummyProfiles
-  );
-
-  const [purchases, setPurchases] = React.useState(
-    getFromStorage("Purchase") || []
+    getFromStorage("ActiveProfile") || dummyProfiles[0]
   );
 
   React.useEffect(() => {
     const name = "Card";
     setToStorage(name, cards);
   }, [cards]);
-
-  React.useEffect(() => {
-    const name = "Purchase";
-    setToStorage(name, purchases);
-  }, [purchases]);
-
   React.useEffect(() => {
     const name = "Profile";
     setToStorage(name, profiles);
@@ -67,7 +57,7 @@ function App() {
 
   function handleCreateProfile(items) {
     setProfiles([items, ...profiles]);
-    setActiveProfile(items);
+    setActiveProfile([items]);
   }
 
   function handleBuyClick(id) {
@@ -76,16 +66,48 @@ function App() {
     const day = new Date().getDate();
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
-    setPurchases([
+    const userIndex = profiles.findIndex(
+      user => user._id === activeProfile._id
+    );
+    const user = profiles[userIndex];
+    const userPurchases = user.purchases;
+    setProfiles([
+      ...profiles.slice(0, index),
       {
-        ...purchase,
-        purchaseDay: day,
-        purchaseMonth: month + 1,
-        purchaseYear: year
+        ...user,
+        purchases: [
+          {
+            ...purchase,
+            purchaseDay: day,
+            purchaseMonth: month + 1,
+            purchaseYear: year
+          },
+          ...userPurchases
+        ]
       },
-      ...purchases
+      ...profiles.slice(index + 1)
+    ]);
+    setActiveProfile({
+      ...activeProfile,
+      purchases: [
+        {
+          ...purchase,
+          purchaseDay: day,
+          purchaseMonth: month + 1,
+          purchaseYear: year
+        },
+        ...activeProfile.purchases
+      ]
+    });
+
+    setCards([
+      ...cards.slice(0, index),
+      { ...purchase, dis: !dis },
+      ...cards.slice(index + 1)
     ]);
   }
+  console.log(activeProfile);
+  console.log(profiles);
 
   function handleLoginClick(username) {
     const index = profiles.findIndex(profile => profile.username === username);
@@ -96,13 +118,14 @@ function App() {
   function handleLogoutClick() {
     setActiveProfile("");
   }
+  let dis = false;
 
   return (
     <>
       <GlobalStyle />
       <Router>
-        <Switch>
-          <ScrollToTop>
+        <ScrollToTop>
+          <Switch>
             <Route path="/" exact render={props => <Start {...props} />} />
             <Route
               path="/feed"
@@ -112,6 +135,7 @@ function App() {
                   cards={cards}
                   onBookmark={handleBookmarkChange}
                   onBuyClick={handleBuyClick}
+                  dis={dis}
                   {...props}
                 />
               )}
@@ -148,6 +172,7 @@ function App() {
                 <Search
                   cards={cards}
                   onBookmark={handleBookmarkChange}
+                  dis={dis}
                   {...props}
                 />
               )}
@@ -157,7 +182,6 @@ function App() {
               exact
               render={props => (
                 <Profile
-                  purchases={purchases}
                   activeProfile={activeProfile}
                   onLogout={handleLogoutClick}
                   {...props}
@@ -172,6 +196,7 @@ function App() {
                   cards={cards}
                   onBookmark={handleBookmarkChange}
                   onBuyClick={handleBuyClick}
+                  dis={dis}
                 />
               )}
             />
@@ -179,12 +204,17 @@ function App() {
               path="/details/:id"
               exact
               render={props => (
-                <Details cards={cards} onBuyClick={handleBuyClick} {...props} />
+                <Details
+                  cards={cards}
+                  onBuyClick={handleBuyClick}
+                  dis={dis}
+                  {...props}
+                />
               )}
             />
-          </ScrollToTop>
-          <Route component={NotFound} />
-        </Switch>
+            <Route component={NotFound} />
+          </Switch>
+        </ScrollToTop>
       </Router>
     </>
   );

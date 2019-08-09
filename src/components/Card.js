@@ -7,7 +7,7 @@ import GreyButton from "./GreyButton";
 import RedButton from "./RedButton";
 
 const CardFrame = styled.div`
-  margin: 15px;
+  margin: 15px 15px 30px 15px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@ const CardFrame = styled.div`
 const CardImage = styled.img`
   width: 100%;
   height: 215px;
+  object-fit: cover;
 `;
 
 const CardTitle = styled.p`
@@ -46,20 +47,30 @@ const TextContainer = styled.div`
   }
 `;
 
-function Card(props) {
+function Card({
+  onBookmarkClick,
+  name,
+  source,
+  length,
+  price,
+  onDetailsClick,
+  onBuyClick,
+  bookmark,
+  dis
+}) {
   return (
     <CardFrame>
-      <Bookmark active={props.bookmark} onClick={props.onBookmarkClick} />
-      <CardImage src={props.source} alt={props.name} />
-      <CardTitle>{props.name}</CardTitle>
+      <Bookmark active={bookmark} onClick={onBookmarkClick} />
+      <CardImage src={source} alt={name} />
+      <CardTitle>{name}</CardTitle>
       <TextContainer>
-        <CardLengthText>Length: {props.length} m</CardLengthText>
-        <CardPrice>{props.price} Euro</CardPrice>
+        <CardLengthText>Length: {length} m</CardLengthText>
+        <CardPrice>{price} Euro</CardPrice>
       </TextContainer>
       <TextContainer>
-        <GreyButton text="Details" onClick={props.onDetailsClick} />
+        <GreyButton text="Details" onClick={onDetailsClick} />
         <Link to="/profile">
-          <RedButton text="Buy now" onClick={props.onBuyClick} />
+          <RedButton text="Buy now" onClick={onBuyClick} dis={dis} />
         </Link>
       </TextContainer>
     </CardFrame>

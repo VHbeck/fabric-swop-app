@@ -40,7 +40,6 @@ function Details({ match, cards, onBuyClick }) {
   if (!card) {
     return null;
   }
-  console.log(card);
   return (
     <>
       <Header headline={card.name} />

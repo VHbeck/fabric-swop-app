@@ -3,18 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
-import { FadeIn, Rotate } from "../utils/Animations";
-import { Background } from "../components/Background";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  button {
-    animation: ${FadeIn} 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
-  }
-`;
+import { Rotate } from "../utils/Animations";
+import { Background, StartContainer } from "../components/Background";
 
 const StyledImage = styled.img`
   width: 180px;
@@ -26,7 +16,7 @@ const StyledImage = styled.img`
 function Start() {
   return (
     <Background>
-      <Container>
+      <StartContainer>
         <StyledImage src="logo-small.svg" />
         <Link to="/register">
           <RedButton text="Register" />
@@ -34,7 +24,7 @@ function Start() {
         <Link to="/login">
           <GreyButton text="Login" />
         </Link>
-      </Container>
+      </StartContainer>
     </Background>
   );
 }

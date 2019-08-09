@@ -1,11 +1,13 @@
 import React from "react";
+import { withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Grow from "../components/Grow";
-import { withRouter } from "react-router-dom";
+import GreyButton from "../components/GreyButton";
 
 function Favorite({ cards, history, onBookmark, onBuyClick }) {
   const output = cards;
@@ -21,9 +23,13 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
           price: element.price,
           source: element.source,
           length: element.fabricLength,
-          bookmark: element.bookmark
+          bookmark: element.bookmark,
+          dis: element.dis
         };
       });
+  const StyledParagraph = styled.p`
+    text-align: center;
+  `;
 
   function onDetailsClick(id) {
     history.replace(`/details/${id}`);
@@ -33,6 +39,14 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
     <>
       <Header headline="Favorite" />
       <Container>
+        {outputArray.length === 0 && (
+          <StyledParagraph>
+            Go to your feed and add your favorite articles.
+            <Link to="/feed">
+              <GreyButton text="Go to feed" />
+            </Link>
+          </StyledParagraph>
+        )}
         {outputArray.map((out, index) => (
           <Card
             onDetailsClick={() => onDetailsClick(out._id)}
@@ -44,6 +58,7 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
             price={out.price}
             source={out.source}
             bookmark={out.bookmark}
+            dis={out.dis}
           />
         ))}
         <Grow />

@@ -25,13 +25,17 @@ const StyledInput = styled.input`
   margin: 10px 0px 10px 0px;
 `;
 
+const StyledParagraph = styled.p`
+  text-align: center;
+`;
+
 function Search({ onBookmark, history, cards }) {
   const [input, setInput] = React.useState("");
   const output = cards;
 
   var options = {
     shouldSort: true,
-    threshold: 0.6,
+    threshold: 0.4,
     location: 0,
     distance: 100,
     maxPatternLength: 32,
@@ -62,6 +66,11 @@ function Search({ onBookmark, history, cards }) {
         />
       </InputContainer>
       <Container>
+        {result.length === 0 && (
+          <StyledParagraph>
+            Nothing found. Search for something else.
+          </StyledParagraph>
+        )}
         {result.map((out, index) => (
           <Card
             onBookmarkClick={() => onBookmark(out._id)}
@@ -72,6 +81,7 @@ function Search({ onBookmark, history, cards }) {
             price={out.price}
             source={out.source}
             bookmark={out.bookmark}
+            dis={out.dis}
           />
         ))}
         <Grow />

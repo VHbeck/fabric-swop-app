@@ -43,7 +43,8 @@ function Form({ onCreate, history }) {
     fabricColor: "",
     price: "",
     source: "",
-    bookmark: false
+    bookmark: false,
+    dis: false
   });
 
   function handleChange(event) {
@@ -66,7 +67,8 @@ function Form({ onCreate, history }) {
       fabricColor: newCard.fabricColor ? newCard.fabricColor : "no color",
       price: newCard.price,
       source: image ? image : "../../images/default-img.png",
-      bookmark: false
+      bookmark: false,
+      dis: false
     };
     onCreate(item);
     history.replace(`/details/${item._id}`);
