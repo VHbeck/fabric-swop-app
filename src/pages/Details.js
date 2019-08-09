@@ -60,7 +60,11 @@ function Details({ match, cards, onBuyClick }) {
           </Link>
           <Link to="/profile">
             {" "}
-            <RedButton text="Buy now" onClick={() => onBuyClick(card._id)} />
+            <RedButton
+              text="Buy now"
+              onClick={() => onBuyClick(card._id)}
+              dis={card.dis}
+            />
           </Link>
         </Frame>
       </Container>
