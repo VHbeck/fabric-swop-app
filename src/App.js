@@ -89,6 +89,7 @@ function App() {
       user => user._id === activeProfile._id
     );
     const user = profiles[userIndex];
+    const userPurchases = user.purchases;
     setProfiles([
       ...profiles.slice(0, index),
       {
@@ -99,7 +100,8 @@ function App() {
             purchaseDay: day,
             purchaseMonth: month + 1,
             purchaseYear: year
-          }
+          },
+          ...userPurchases
         ]
       },
       ...profiles.slice(index + 1)
@@ -112,7 +114,8 @@ function App() {
           purchaseDay: day,
           purchaseMonth: month + 1,
           purchaseYear: year
-        }
+        },
+        ...activeProfile.purchases
       ]
     });
 
