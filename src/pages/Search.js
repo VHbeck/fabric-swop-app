@@ -81,6 +81,7 @@ function Search({ onBookmark, history, cards }) {
             price={out.price}
             source={out.source}
             bookmark={out.bookmark}
+            dis={out.dis}
           />
         ))}
         <Grow />

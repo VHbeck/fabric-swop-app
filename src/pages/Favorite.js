@@ -23,7 +23,8 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
           price: element.price,
           source: element.source,
           length: element.fabricLength,
-          bookmark: element.bookmark
+          bookmark: element.bookmark,
+          dis: element.dis
         };
       });
   const StyledParagraph = styled.p`
@@ -57,6 +58,7 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
             price={out.price}
             source={out.source}
             bookmark={out.bookmark}
+            dis={out.dis}
           />
         ))}
         <Grow />

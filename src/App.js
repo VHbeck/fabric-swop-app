@@ -155,6 +155,7 @@ function App() {
                 <Search
                   cards={cards}
                   onBookmark={handleBookmarkChange}
+                  dis={dis}
                   {...props}
                 />
               )}
@@ -179,6 +180,7 @@ function App() {
                   cards={cards}
                   onBookmark={handleBookmarkChange}
                   onBuyClick={handleBuyClick}
+                  dis={dis}
                 />
               )}
             />
@@ -186,7 +188,12 @@ function App() {
               path="/details/:id"
               exact
               render={props => (
-                <Details cards={cards} onBuyClick={handleBuyClick} {...props} />
+                <Details
+                  cards={cards}
+                  onBuyClick={handleBuyClick}
+                  dis={dis}
+                  {...props}
+                />
               )}
             />
 
