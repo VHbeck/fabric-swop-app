@@ -4,7 +4,6 @@ import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
 import Header from "../components/Header";
-import { Background } from "../components/Background";
 
 const StyledInput = styled.input`
   width: 70%;
@@ -21,6 +20,19 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: rgb(253, 247, 245);
+  background: linear-gradient(
+    0deg,
+    rgba(253, 247, 245, 1) 36%,
+    rgba(255, 224, 199, 1) 69%,
+    rgba(255, 200, 202, 1) 100%
+  );
 `;
 
 function Login(props) {
@@ -49,7 +61,7 @@ function Login(props) {
 
   return (
     <>
-      <Background>
+      <LoginContainer>
         <Header headline="Login" />
         <StyledForm onSubmit={handleSubmit}>
           <StyledInput
@@ -77,7 +89,7 @@ function Login(props) {
             <GreyButton text="Register" />
           </Link>
         </StyledForm>
-      </Background>
+      </LoginContainer>
     </>
   );
 }

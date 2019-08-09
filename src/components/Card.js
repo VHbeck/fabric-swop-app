@@ -17,6 +17,7 @@ const CardFrame = styled.div`
 const CardImage = styled.img`
   width: 100%;
   height: 215px;
+  object-fit: cover;
 `;
 
 const CardTitle = styled.p`
