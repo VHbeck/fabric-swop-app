@@ -46,20 +46,29 @@ const TextContainer = styled.div`
   }
 `;
 
-function Card(props) {
+function Card({
+  onBookmarkClick,
+  name,
+  source,
+  length,
+  price,
+  onDetailsClick,
+  onBuyClick,
+  bookmark
+}) {
   return (
     <CardFrame>
-      <Bookmark active={props.bookmark} onClick={props.onBookmarkClick} />
-      <CardImage src={props.source} alt={props.name} />
-      <CardTitle>{props.name}</CardTitle>
+      <Bookmark active={bookmark} onClick={onBookmarkClick} />
+      <CardImage src={source} alt={name} />
+      <CardTitle>{name}</CardTitle>
       <TextContainer>
-        <CardLengthText>Length: {props.length} m</CardLengthText>
-        <CardPrice>{props.price} Euro</CardPrice>
+        <CardLengthText>Length: {length} m</CardLengthText>
+        <CardPrice>{price} Euro</CardPrice>
       </TextContainer>
       <TextContainer>
-        <GreyButton text="Details" onClick={props.onDetailsClick} />
+        <GreyButton text="Details" onClick={onDetailsClick} />
         <Link to="/profile">
-          <RedButton text="Buy now" onClick={props.onBuyClick} />
+          <RedButton text="Buy now" onClick={onBuyClick} />
         </Link>
       </TextContainer>
     </CardFrame>

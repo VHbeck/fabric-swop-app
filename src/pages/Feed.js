@@ -26,7 +26,7 @@ function Feed({ history, cards, onBookmark, onBuyClick }) {
     history.replace(`/details/${id}`);
   }
 
-  const initialOutput = outputArray.map((out, index) => (
+  const content = outputArray.map((out, index) => (
     <Card
       onDetailsClick={() => onDetailsClick(out._id)}
       onBookmarkClick={() => onBookmark(out._id)}
@@ -43,7 +43,7 @@ function Feed({ history, cards, onBookmark, onBuyClick }) {
   return (
     <>
       <Header headline="Feed" />
-      <Container>{initialOutput}</Container>
+      <Container>{content}</Container>
       <Footer />
     </>
   );
