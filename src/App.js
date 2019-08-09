@@ -101,8 +101,8 @@ function App() {
     <>
       <GlobalStyle />
       <Router>
-        <Switch>
-          <ScrollToTop>
+        <ScrollToTop>
+          <Switch>
             <Route path="/" exact render={props => <Start {...props} />} />
             <Route
               path="/feed"
@@ -182,9 +182,10 @@ function App() {
                 <Details cards={cards} onBuyClick={handleBuyClick} {...props} />
               )}
             />
-          </ScrollToTop>
-          <Route component={NotFound} />
-        </Switch>
+
+            <Route component={NotFound} />
+          </Switch>
+        </ScrollToTop>
       </Router>
     </>
   );

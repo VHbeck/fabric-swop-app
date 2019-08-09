@@ -13,9 +13,9 @@
     "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
     "purchases": {
       "_id": 2,
-      "day": 6,
-      "month": 8,
-      "year": 2019,
+      "purchaseDay": 6,
+      "purchaseMonth": 8,
+      "purchaseYear": 2019,
       "name": "Cotton Fabric"
     }
   },

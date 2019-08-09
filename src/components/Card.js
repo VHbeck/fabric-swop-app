@@ -7,7 +7,7 @@ import GreyButton from "./GreyButton";
 import RedButton from "./RedButton";
 
 const CardFrame = styled.div`
-  margin: 15px;
+  margin: 15px 15px 30px 15px;
   background-color: white;
   display: flex;
   flex-direction: column;

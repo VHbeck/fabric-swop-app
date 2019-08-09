@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0px 30px 30px 30px;
+  margin: 0px 15px 30px 15px;
   input,
   select {
     font-size: 18px;
@@ -12,7 +12,7 @@ export const FormContainer = styled.div`
     padding: 5px;
     border-radius: 15px;
     background-color: white;
-    margin: 0px 10px 15px 10px;
+    margin-bottom: 15px;
   }
   label {
     font-size: 18px;
