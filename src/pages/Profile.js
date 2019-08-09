@@ -7,6 +7,10 @@ import GreyButton from "../components/GreyButton";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
+const StyledParagraph = styled.p`
+  text-align: center;
+`;
+
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -107,6 +111,9 @@ function Profile({ onLogout, activeProfile, history }) {
         </Description>
         <h2>Your Purchases</h2>
         {purchaseList}
+        {purchaseList.length === 0 && (
+          <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
+        )}
         <Logout>
           <Link to="login">
             <GreyButton text="Logout" onClick={() => onLogout()} />

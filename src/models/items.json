@@ -8,7 +8,7 @@
     "fabricColor": "striped",
     "price": "5",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1564675826/sample-fabric_en0o7u.jpg",
-    "bookmark": true,
+    "bookmark": false,
     "dis": false
   },
   {
