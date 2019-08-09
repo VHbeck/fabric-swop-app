@@ -14,8 +14,12 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-function RedButton({ onClick, text }) {
-  return <StyledButton onClick={onClick}>{text}</StyledButton>;
+function RedButton({ onClick, text, dis }) {
+  return (
+    <StyledButton onClick={onClick} disabled={dis}>
+      {text}
+    </StyledButton>
+  );
 }
 
 RedButton.propTypes = {

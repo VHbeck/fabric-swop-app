@@ -85,6 +85,11 @@ function App() {
       },
       ...purchases
     ]);
+    setCards([
+      ...cards.slice(0, index),
+      { ...purchase, dis: !dis },
+      ...cards.slice(index + 1)
+    ]);
   }
 
   function handleLoginClick(username) {
@@ -96,6 +101,7 @@ function App() {
   function handleLogoutClick() {
     setActiveProfile("");
   }
+  let dis = false;
 
   return (
     <>
@@ -112,6 +118,7 @@ function App() {
                   cards={cards}
                   onBookmark={handleBookmarkChange}
                   onBuyClick={handleBuyClick}
+                  dis={dis}
                   {...props}
                 />
               )}

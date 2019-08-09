@@ -54,7 +54,8 @@ function Card({
   price,
   onDetailsClick,
   onBuyClick,
-  bookmark
+  bookmark,
+  dis
 }) {
   return (
     <CardFrame>
@@ -68,7 +69,7 @@ function Card({
       <TextContainer>
         <GreyButton text="Details" onClick={onDetailsClick} />
         <Link to="/profile">
-          <RedButton text="Buy now" onClick={onBuyClick} />
+          <RedButton text="Buy now" onClick={onBuyClick} dis={dis} />
         </Link>
       </TextContainer>
     </CardFrame>

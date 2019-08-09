@@ -6,7 +6,7 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-function Feed({ history, cards, onBookmark, onBuyClick }) {
+function Feed({ history, cards, onBookmark, onBuyClick, dis }) {
   const output = cards;
 
   const outputArray =
@@ -18,7 +18,8 @@ function Feed({ history, cards, onBookmark, onBuyClick }) {
         price: element.price,
         source: element.source,
         length: element.fabricLength,
-        bookmark: element.bookmark
+        bookmark: element.bookmark,
+        dis: element.dis
       };
     });
 
@@ -37,6 +38,7 @@ function Feed({ history, cards, onBookmark, onBuyClick }) {
       price={out.price}
       source={out.source}
       bookmark={out.bookmark}
+      dis={out.dis}
     />
   ));
 
