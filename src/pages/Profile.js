@@ -29,6 +29,7 @@ const StyledImage = styled.img`
   width: 200px;
   height: 200px;
   align-self: center;
+  object-fit: cover;
 `;
 
 const Description = styled.div`
@@ -126,8 +127,9 @@ function Profile({ onLogout, activeProfile, history }) {
 }
 
 Profile.propTypes = {
-  purchases: PropTypes.array,
-  profiles: PropTypes.array
+  activeProfile: PropTypes.array,
+  profiles: PropTypes.array,
+  onLogout: PropTypes.func
 };
 
 export default withRouter(Profile);

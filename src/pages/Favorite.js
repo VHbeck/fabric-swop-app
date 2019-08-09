@@ -69,7 +69,9 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
 }
 
 Favorite.propTypes = {
-  cards: PropTypes.array
+  cards: PropTypes.array,
+  onBookmark: PropTypes.func,
+  onBuyClick: PropTypes.func
 };
 
 export default withRouter(Favorite);

@@ -5,12 +5,12 @@ import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Form from "../components/Form";
 
-function Create(props) {
+function Create({ cards, onCreate }) {
   return (
     <>
       <Header headline="Create" />
       <Container>
-        <Form cards={props.cards} onCreate={props.onCreate} />
+        <Form cards={cards} onCreate={onCreate} />
       </Container>
       <Footer />
     </>

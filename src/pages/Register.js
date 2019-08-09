@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import RegisterForm from "../components/RegisterForm";
 import Header from "../components/Header";
 
@@ -16,13 +17,17 @@ const Container = styled.div`
   );
 `;
 
-function Register(props) {
+function Register({ onCreateProfile }) {
   return (
     <Container>
       <Header headline="Register" />
-      <RegisterForm onCreateProfile={props.onCreateProfile} />
+      <RegisterForm onCreateProfile={onCreateProfile} />
     </Container>
   );
 }
+
+Register.propTypes = {
+  onCreateProfile: PropTypes.func
+};
 
 export default Register;

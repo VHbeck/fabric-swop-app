@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
@@ -35,10 +36,10 @@ const LoginContainer = styled.div`
   );
 `;
 
-function Login(props) {
+function Login({ onLogin, activeProfile, login, history }) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const profile = props.activeProfile;
+  const profile = activeProfile;
 
   function handleUsernameChange(event) {
     const value = event.target.value;
@@ -53,7 +54,7 @@ function Login(props) {
   function handleSubmit() {
     if (profile.username === username && profile.password === password) {
       console.log("right Password");
-      props.history.replace("/feed");
+      history.replace("/feed");
     } else {
       console.log("wrong Password");
     }
@@ -82,8 +83,8 @@ function Login(props) {
           <RedButton
             type="submit"
             text="Login"
-            onClick={() => props.onLogin(username)}
-            login={props.login}
+            onClick={() => onLogin(username)}
+            login={login}
           />
           <Link to="/register">
             <GreyButton text="Register" />
@@ -93,5 +94,10 @@ function Login(props) {
     </>
   );
 }
+
+Login.propTypes = {
+  onLogin: PropTypes.func,
+  activeProfile: PropTypes.array
+};
 
 export default Login;

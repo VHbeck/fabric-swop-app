@@ -10,9 +10,9 @@ const BookmarkStyled = styled.div`
   color: ${p => (p.active ? "#ff979a" : "white")};
 `;
 
-function Bookmark(props) {
+function Bookmark({ active, onClick }) {
   return (
-    <BookmarkStyled active={props.active} onClick={props.onClick}>
+    <BookmarkStyled active={active} onClick={onClick}>
       <i className="fas fa-heart" />
     </BookmarkStyled>
   );

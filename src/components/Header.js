@@ -15,10 +15,10 @@ const HeaderStyled = styled.div`
   margin-top: 15px;
 `;
 
-function Header(props) {
+function Header({ headline }) {
   return (
     <HeaderStyled>
-      <Headline>{props.headline}</Headline>
+      <Headline>{headline}</Headline>
     </HeaderStyled>
   );
 }

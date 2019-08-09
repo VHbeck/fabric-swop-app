@@ -57,7 +57,7 @@ function App() {
 
   function handleCreateProfile(items) {
     setProfiles([items, ...profiles]);
-    setActiveProfile([items]);
+    setActiveProfile(items);
   }
 
   function handleBuyClick(id) {
@@ -106,8 +106,6 @@ function App() {
       ...cards.slice(index + 1)
     ]);
   }
-  console.log(activeProfile);
-  console.log(profiles);
 
   function handleLoginClick(username) {
     const index = profiles.findIndex(profile => profile.username === username);
@@ -116,7 +114,7 @@ function App() {
   }
 
   function handleLogoutClick() {
-    setActiveProfile("");
+    setActiveProfile([]);
   }
   let dis = false;
 

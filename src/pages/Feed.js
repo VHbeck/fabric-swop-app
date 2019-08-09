@@ -6,7 +6,7 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-function Feed({ history, cards, onBookmark, onBuyClick, dis }) {
+function Feed({ history, cards, onBookmark, onBuyClick }) {
   const output = cards;
 
   const outputArray =
@@ -52,7 +52,9 @@ function Feed({ history, cards, onBookmark, onBuyClick, dis }) {
 }
 
 Feed.propTypes = {
-  cards: PropTypes.array
+  cards: PropTypes.array,
+  onDetailsClick: PropTypes.func,
+  onBookmark: PropTypes.func
 };
 
 export default withRouter(Feed);

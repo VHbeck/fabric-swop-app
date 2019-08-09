@@ -58,7 +58,7 @@ function RegisterForm({ onCreateProfile, history }) {
     sewingMachine: "",
     favoriteFabric: "",
     imageSource: "",
-    purchases: ""
+    purchases: []
   });
 
   function handleChange(event) {
@@ -84,7 +84,7 @@ function RegisterForm({ onCreateProfile, history }) {
       sewingMachine: newProfile.sewingMachine,
       favoriteFabric: newProfile.favoriteFabric,
       imageSource: image ? image : "images/lou.jpg",
-      purchases: ""
+      purchases: []
     };
     onCreateProfile(item);
     history.replace("/feed");
