@@ -27,20 +27,20 @@ function App() {
     getFromStorage("ActiveProfile") || dummyProfiles[0]
   );
 
-  const [purchases, setPurchases] = React.useState(
+  /*const [purchases, setPurchases] = React.useState(
     getFromStorage("Purchase") || []
-  );
+  );*/
 
   React.useEffect(() => {
     const name = "Card";
     setToStorage(name, cards);
   }, [cards]);
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     const name = "Purchase";
     setToStorage(name, purchases);
   }, [purchases]);
-
+*/
   React.useEffect(() => {
     const name = "Profile";
     setToStorage(name, profiles);
@@ -76,7 +76,7 @@ function App() {
     const day = new Date().getDate();
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
-    setPurchases([
+    /*setPurchases([
       {
         ...purchase,
         purchaseDay: day,
@@ -84,13 +84,46 @@ function App() {
         purchaseYear: year
       },
       ...purchases
+    ]);*/
+    const userIndex = profiles.findIndex(
+      user => user._id === activeProfile._id
+    );
+    const user = profiles[userIndex];
+    setProfiles([
+      ...profiles.slice(0, index),
+      {
+        ...user,
+        purchases: [
+          {
+            ...purchase,
+            purchaseDay: day,
+            purchaseMonth: month + 1,
+            purchaseYear: year
+          }
+        ]
+      },
+      ...profiles.slice(index + 1)
     ]);
+    setActiveProfile({
+      ...activeProfile,
+      purchases: [
+        {
+          ...purchase,
+          purchaseDay: day,
+          purchaseMonth: month + 1,
+          purchaseYear: year
+        }
+      ]
+    });
+
     setCards([
       ...cards.slice(0, index),
       { ...purchase, dis: !dis },
       ...cards.slice(index + 1)
     ]);
   }
+  console.log(activeProfile);
+  console.log(profiles);
 
   function handleLoginClick(username) {
     const index = profiles.findIndex(profile => profile.username === username);
@@ -165,7 +198,7 @@ function App() {
               exact
               render={props => (
                 <Profile
-                  purchases={purchases}
+                  /*purchases={purchases}*/
                   activeProfile={activeProfile}
                   onLogout={handleLogoutClick}
                   {...props}

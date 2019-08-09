@@ -59,8 +59,6 @@ function Profile({ onLogout, activeProfile, history }) {
   const yourPurchases = activeProfile.purchases;
   const yourProfile = activeProfile;
 
-  console.log(activeProfile.purchases);
-
   const purchaseArray =
     yourPurchases &&
     yourPurchases.map(element => {
