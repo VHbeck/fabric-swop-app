@@ -11,6 +11,12 @@ import { StyledUpload, FormContainer } from "./FormContainer";
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+`;
+
 const PasswordInput = styled.input`
   &:focus {
     background: hsl(
@@ -54,9 +60,6 @@ function RegisterForm({ onCreateProfile, history }) {
     lastName: "",
     address: "",
     email: "",
-    birthday: "",
-    sewingMachine: "",
-    favoriteFabric: "",
     imageSource: "",
     purchases: []
   });
@@ -81,8 +84,6 @@ function RegisterForm({ onCreateProfile, history }) {
       address: newProfile.address,
       email: newProfile.email,
       birthday: newProfile.birthday,
-      sewingMachine: newProfile.sewingMachine,
-      favoriteFabric: newProfile.favoriteFabric,
       imageSource: image ? image : "images/lou.jpg",
       purchases: []
     };
@@ -139,28 +140,6 @@ function RegisterForm({ onCreateProfile, history }) {
           value={newProfile.email}
           onChange={handleChange}
         />
-        <label>Birthday</label>
-        <input
-          placeholder="Birthday"
-          type="date"
-          name="birthday"
-          value={newProfile.birthday}
-          onChange={handleChange}
-        />
-        <label>Your sewing machine</label>
-        <input
-          placeholder="Sewing Machine"
-          name="sewingMachine"
-          value={newProfile.sewingMachine}
-          onChange={handleChange}
-        />
-        <label>Favorite fabric</label>
-        <input
-          placeholder="Favorite Fabric"
-          name="favoriteFabric"
-          value={newProfile.favoriteFabric}
-          onChange={handleChange}
-        />
         <label>Password</label>
         <PasswordInput
           placeholder="Password"
@@ -172,10 +151,12 @@ function RegisterForm({ onCreateProfile, history }) {
           minLength="7"
         />
         <RedButton text="Register now" type="submit" />
-        <Link to="/login">
-          <GreyButton text="Login" />
-        </Link>
       </FormContainer>
+      <ButtonContainer>
+        <Link to="/">
+          <GreyButton text="Back" />
+        </Link>
+      </ButtonContainer>
     </form>
   );
 }
