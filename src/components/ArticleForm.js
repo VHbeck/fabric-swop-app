@@ -5,13 +5,31 @@ import axios from "axios";
 import uuid from "uuid/v1";
 import RedButton from "./RedButton";
 import Number from "./Number";
-import { FormContainer, StyledUpload, StepContainer } from "./FormContainer";
+import {
+  FormContainer,
+  StyledUpload,
+  StepContainer,
+  StyledError
+} from "./FormContainer";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
-function Form({ onCreate, history }) {
+function ArticleForm({ onCreate, history }) {
+  const [newCard, setnewCard] = React.useState({
+    _id: "",
+    name: "",
+    type: "",
+    fabricLength: "",
+    fabricWidth: "",
+    fabricColor: "",
+    price: "",
+    source: "",
+    bookmark: false,
+    dis: false
+  });
   const [image, setImage] = React.useState("");
+  const [errors, setErrors] = React.useState({});
 
   function upload(event) {
     const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
@@ -34,19 +52,6 @@ function Form({ onCreate, history }) {
     setImage(response.data.url);
   }
 
-  const [newCard, setnewCard] = React.useState({
-    _id: "",
-    name: "",
-    type: "",
-    fabricLength: "",
-    fabricWidth: "",
-    fabricColor: "",
-    price: "",
-    source: "",
-    bookmark: false,
-    dis: false
-  });
-
   function handleChange(event) {
     event.preventDefault();
     const { name, value } = event.target;
@@ -56,8 +61,32 @@ function Form({ onCreate, history }) {
     });
   }
 
+  function validate() {
+    const errors = {};
+
+    if (newCard.name.trim() < 3) {
+      errors.name = "Please put in a name with at least three characters";
+    }
+    if (newCard.fabricLength.trim() === "") {
+      errors.fabricLength = "Please put in a fabric length";
+    }
+    if (newCard.fabricWidth.trim() === "") {
+      errors.fabricWidth = "Please put in a fabric width";
+    }
+    if (newCard.price.trim() === "") {
+      errors.price = "Please put in a price";
+    }
+    return Object.keys(errors).length === 0 ? null : errors;
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+    const errors = validate();
+
+    if (errors) {
+      setErrors(errors);
+      return;
+    }
     const item = {
       _id: uuid(),
       name: newCard.name,
@@ -100,8 +129,9 @@ function Form({ onCreate, history }) {
             placeholder="e.g. cotton fabric with dots"
             value={newCard.name}
             onChange={handleChange}
-            required
+            error={errors.name}
           />
+          {errors.name && <StyledError>{errors.name}</StyledError>}
           <label>Type:</label>
           <select name="type" value={newCard.type} onChange={handleChange}>
             <option value="">Choose a fabric type</option>
@@ -122,9 +152,12 @@ function Form({ onCreate, history }) {
               placeholder="e.g. 3,0"
               value={newCard.fabricLength}
               onChange={handleChange}
-              required
               className="smallinput"
+              error={errors.fabricLength}
             />
+            {errors.fabricLength && (
+              <StyledError>{errors.fabricLength}</StyledError>
+            )}
             <span> m</span>
           </div>
           <label>Width:</label>
@@ -136,7 +169,11 @@ function Form({ onCreate, history }) {
               value={newCard.fabricWidth}
               onChange={handleChange}
               className="smallinput"
+              error={errors.fabricWidth}
             />
+            {errors.fabricWidth && (
+              <StyledError>{errors.fabricWidth}</StyledError>
+            )}
             <span> m</span>
           </div>
           <label>Color:</label>
@@ -157,9 +194,10 @@ function Form({ onCreate, history }) {
             placeholder="e.g. 9,95"
             value={newCard.price}
             onChange={handleChange}
-            required
             className="smallinput"
+            error={errors.price}
           />
+          {errors.price && <StyledError>{errors.price}</StyledError>}
           <RedButton type="submit" text="Add" />
         </StepContainer>
       </form>
@@ -167,8 +205,8 @@ function Form({ onCreate, history }) {
   );
 }
 
-Form.propTypes = {
+ArticleForm.propTypes = {
   onCreate: PropTypes.func
 };
 
-export default withRouter(Form);
+export default withRouter(ArticleForm);

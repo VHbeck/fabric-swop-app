@@ -75,7 +75,7 @@ function Details({ match, cards, onBuyClick }) {
 }
 
 Details.propTypes = {
-  cards: PropTypes.object,
+  cards: PropTypes.array,
   onBuyClick: PropTypes.func
 };
 
