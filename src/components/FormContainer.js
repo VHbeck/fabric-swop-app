@@ -56,3 +56,9 @@ export const StepContainer = styled.div`
 export const StyledUpload = styled.div`
   text-align: center;
 `;
+
+export const StyledError = styled.div`
+  background-color: #ff5666;
+  padding: 5px;
+  margin: 5px;
+`;

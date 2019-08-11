@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RedButton from "./RedButton";
 import GreyButton from "./GreyButton";
-import { StyledUpload, FormContainer } from "./FormContainer";
+import { StyledUpload, FormContainer, StyledError } from "./FormContainer";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -29,7 +29,19 @@ const PasswordInput = styled.input`
 `;
 
 function RegisterForm({ onCreateProfile, history }) {
+  const [newProfile, setNewProfile] = React.useState({
+    _id: "",
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    email: "",
+    imageSource: "",
+    purchases: []
+  });
   const [image, setImage] = React.useState("");
+  const [errors, setErrors] = React.useState({});
 
   function upload(event) {
     const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
@@ -52,18 +64,6 @@ function RegisterForm({ onCreateProfile, history }) {
     setImage(response.data.url);
   }
 
-  const [newProfile, setNewProfile] = React.useState({
-    _id: "",
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    address: "",
-    email: "",
-    imageSource: "",
-    purchases: []
-  });
-
   function handleChange(event) {
     event.preventDefault();
     const { name, value } = event.target;
@@ -73,8 +73,27 @@ function RegisterForm({ onCreateProfile, history }) {
     });
   }
 
+  function validate() {
+    const errors = {};
+
+    if (newProfile.username.trim() < 3) {
+      errors.username =
+        "Please put in a username with at least three characters";
+    }
+    if (newProfile.password.length < 7) {
+      errors.password = "The password must contain at least seven characters";
+    }
+    return Object.keys(errors).length === 0 ? null : errors;
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+    const errors = validate();
+
+    if (errors) {
+      setErrors(errors);
+      return;
+    }
     const item = {
       _id: uuid(),
       username: newProfile.username,
@@ -105,15 +124,15 @@ function RegisterForm({ onCreateProfile, history }) {
         <label>Username</label>
         <input
           placeholder="Username"
-          required
           name="username"
           value={newProfile.username}
           onChange={handleChange}
+          error={errors.username}
         />
+        {errors.username && <StyledError>{errors.username}</StyledError>}
         <label>First Name</label>
         <input
           placeholder="First name"
-          required
           name="firstName"
           value={newProfile.firstName}
           onChange={handleChange}
@@ -144,12 +163,12 @@ function RegisterForm({ onCreateProfile, history }) {
         <PasswordInput
           placeholder="Password"
           type="password"
-          required
           name="password"
           value={newProfile.password}
           onChange={handleChange}
-          minLength="7"
+          error={errors.password}
         />
+        {errors.password && <StyledError>{errors.password}</StyledError>}
         <RedButton text="Register now" type="submit" />
       </FormContainer>
       <ButtonContainer>
