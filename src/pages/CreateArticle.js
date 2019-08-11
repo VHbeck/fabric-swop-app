@@ -3,23 +3,23 @@ import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
-import Form from "../components/Form";
+import ArticleForm from "../components/ArticleForm";
 
-function Create({ cards, onCreate }) {
+function CreateArticle({ cards, onCreate }) {
   return (
     <>
       <Header headline="Create" />
       <Container>
-        <Form cards={cards} onCreate={onCreate} />
+        <ArticleForm cards={cards} onCreate={onCreate} />
       </Container>
       <Footer />
     </>
   );
 }
 
-Create.propTypes = {
+CreateArticle.propTypes = {
   cards: PropTypes.array,
   onCreate: PropTypes.func
 };
 
-export default Create;
+export default CreateArticle;

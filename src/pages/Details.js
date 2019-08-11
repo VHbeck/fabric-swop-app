@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 const MainImage = styled.img`
   width: 100%;
   height: 215px;
+  object-fit: cover;
 `;
 
 const Description = styled.div`
@@ -74,7 +75,7 @@ function Details({ match, cards, onBuyClick }) {
 }
 
 Details.propTypes = {
-  cards: PropTypes.object,
+  cards: PropTypes.array,
   onBuyClick: PropTypes.func
 };
 

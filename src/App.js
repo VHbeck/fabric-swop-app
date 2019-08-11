@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Feed from "./pages/Feed";
 import NotFound from "./pages/NotFound";
-import Create from "./pages/Create";
+import CreateArticle from "./pages/CreateArticle";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import Favorite from "./pages/Favorite";
@@ -114,7 +114,7 @@ function App() {
   }
 
   function handleLogoutClick() {
-    setActiveProfile([]);
+    setActiveProfile({});
   }
   let dis = false;
 
@@ -157,10 +157,14 @@ function App() {
               )}
             />
             <Route
-              path="/create"
+              path="/create-article"
               exact
               render={props => (
-                <Create cards={cards} onCreate={handleCreate} {...props} />
+                <CreateArticle
+                  cards={cards}
+                  onCreate={handleCreate}
+                  {...props}
+                />
               )}
             />
             <Route

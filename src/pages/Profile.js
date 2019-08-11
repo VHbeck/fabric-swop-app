@@ -103,12 +103,6 @@ function Profile({ onLogout, activeProfile, history }) {
           </span>
           <BoldText>Address:</BoldText>
           <span>{yourProfile.address}</span>
-          <BoldText>Birthday:</BoldText>
-          <span>{yourProfile.birthday}</span>
-          <BoldText>Sewing Machine:</BoldText>
-          <span>{yourProfile.sewingMachine}</span>
-          <BoldText>Favorite Fabric:</BoldText>
-          <span>{yourProfile.favoriteFabric}</span>
         </Description>
         <h2>Your Purchases</h2>
         {purchaseList}
@@ -127,7 +121,7 @@ function Profile({ onLogout, activeProfile, history }) {
 }
 
 Profile.propTypes = {
-  activeProfile: PropTypes.array,
+  activeProfile: PropTypes.object,
   profiles: PropTypes.array,
   onLogout: PropTypes.func
 };

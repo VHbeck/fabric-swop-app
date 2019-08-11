@@ -43,7 +43,7 @@ function Footer() {
         </Link>
       </Icons>
       <Icons>
-        <Link to="/create">
+        <Link to="/create-article">
           <i className="fas fa-plus" />
         </Link>
       </Icons>

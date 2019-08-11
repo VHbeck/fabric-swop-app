@@ -51,7 +51,8 @@ function Login({ onLogin, activeProfile, login, history }) {
     setPassword(value);
   }
 
-  function handleSubmit() {
+  function handleSubmit(event) {
+    event.preventDefault();
     if (profile.username === username && profile.password === password) {
       console.log("right Password");
       history.replace("/feed");
