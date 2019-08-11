@@ -114,7 +114,7 @@ function App() {
   }
 
   function handleLogoutClick() {
-    setActiveProfile([]);
+    setActiveProfile({});
   }
   let dis = false;
 
