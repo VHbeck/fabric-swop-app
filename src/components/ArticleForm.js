@@ -73,6 +73,12 @@ function ArticleForm({ onCreate, history }) {
     if (newCard.price.trim() === "") {
       errors.price = "Please put in a price";
     }
+    if (newCard.fabricColor.trim() === "") {
+      errors.fabricColor = "Please put in at least one color";
+    }
+    if (newCard.type.trim() === "") {
+      errors.type = "Please choose a fabric type";
+    }
     return Object.keys(errors).length === 0 ? null : errors;
   }
 
@@ -125,7 +131,12 @@ function ArticleForm({ onCreate, history }) {
           />
           {errors.name && <StyledError>{errors.name}</StyledError>}
           <label>Type:</label>
-          <select name="type" value={newCard.type} onChange={handleChange}>
+          <select
+            name="type"
+            value={newCard.type}
+            onChange={handleChange}
+            error={errors.fabricLength}
+          >
             <option value="">Choose a fabric type</option>
             <option value="">---</option>
             <option value="Cotton">Cotton</option>
@@ -135,7 +146,7 @@ function ArticleForm({ onCreate, history }) {
             <option value="Muslin">Muslin</option>
             <option value="Viscose">Viscose</option>
           </select>
-
+          {errors.type && <StyledError>{errors.type}</StyledError>}
           <label>Length:</label>
           <div>
             <input
@@ -176,6 +187,9 @@ function ArticleForm({ onCreate, history }) {
             value={newCard.fabricColor}
             onChange={handleChange}
           />
+          {errors.fabricColor && (
+            <StyledError>{errors.fabricColor}</StyledError>
+          )}
         </FormContainer>
         <StepContainer>
           <Number>3</Number>

@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
-import Grow from "../components/Grow";
 import GreyButton from "../components/GreyButton";
 
 function Favorite({ cards, history, onBookmark, onBuyClick }) {
@@ -61,7 +60,6 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
             dis={out.dis}
           />
         ))}
-        <Grow />
       </Container>
       <Footer />
     </>

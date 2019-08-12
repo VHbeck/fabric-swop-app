@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Container from "../components/Container";
 import styled from "styled-components";
-import Grow from "../components/Grow";
 import Fuse from "fuse.js";
 import { withRouter } from "react-router-dom";
 
@@ -78,13 +77,13 @@ function Search({ onBookmark, history, cards }) {
             key={out.source + index}
             name={out.name}
             length={out.fabricLength}
-            price={out.price}
+            price={out.price || "no price"}
             source={out.source || "../../images/default-img.png"}
+            color={out.color || "no color"}
             bookmark={out.bookmark}
             dis={out.dis}
           />
         ))}
-        <Grow />
       </Container>
       <Footer />
     </>
