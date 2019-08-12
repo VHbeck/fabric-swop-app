@@ -1,14 +1,12 @@
 import React from "react";
-import Card from "../components/Card";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Card from "../components/Card";
 
-function Feed({ history, cards, onBookmark, onBuyClick }) {
-  const output = cards;
-
+function Feed({ history, cards: output, onBookmark, onBuyClick }) {
   const outputArray =
     output &&
     output.map(element => {

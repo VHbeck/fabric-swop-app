@@ -79,7 +79,7 @@ function Search({ onBookmark, history, cards }) {
             name={out.name}
             length={out.fabricLength}
             price={out.price}
-            source={out.source}
+            source={out.source || "../../images/default-img.png"}
             bookmark={out.bookmark}
             dis={out.dis}
           />

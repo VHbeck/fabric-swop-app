@@ -33,13 +33,11 @@ function App() {
   }, [cards]);
 
   React.useEffect(() => {
-    const name = "Profile";
-    setToStorage(name, profiles);
+    setToStorage("Profile", profiles);
   }, [profiles]);
 
   React.useEffect(() => {
-    const name = "ActiveProfile";
-    setToStorage(name, activeProfile);
+    setToStorage("ActiveProfile", activeProfile);
   }, [activeProfile]);
 
   function handleBookmarkChange(id) {

@@ -56,7 +56,7 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
             name={out.name}
             length={out.length}
             price={out.price}
-            source={out.source}
+            source={out.source || "../../images/default-img.png"}
             bookmark={out.bookmark}
             dis={out.dis}
           />
