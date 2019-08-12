@@ -98,7 +98,7 @@ function Login({ onLogin, activeProfile, login, history }) {
 
 Login.propTypes = {
   onLogin: PropTypes.func,
-  activeProfile: PropTypes.array
+  activeProfile: PropTypes.object
 };
 
 export default Login;
