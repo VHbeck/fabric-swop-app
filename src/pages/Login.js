@@ -5,6 +5,7 @@ import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
 import Header from "../components/Header";
+import { StyledError } from "../components/FormContainer";
 
 const StyledInput = styled.input`
   width: 70%;
@@ -39,6 +40,7 @@ const LoginContainer = styled.div`
 function Login({ onLogin, activeProfile, login, history }) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [errors, setErrors] = React.useState({});
   const profile = activeProfile;
 
   function handleUsernameChange(event) {
@@ -51,13 +53,35 @@ function Login({ onLogin, activeProfile, login, history }) {
     setPassword(value);
   }
 
+  function validate() {
+    const errors = {};
+
+    if (username.trim() === "") {
+      errors.username = "Please put in a valid username";
+    }
+    if (password.length === 0) {
+      errors.password = "Please put in a valid password";
+    }
+    return Object.keys(errors).length === 0 ? null : errors;
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    if (profile.username === username && profile.password === password) {
-      console.log("right Password");
-      history.replace("/feed");
-    } else {
-      console.log("wrong Password");
+    const errors = validate();
+
+    if (errors) {
+      setErrors(errors);
+      return;
+    }
+    try {
+      if (profile.username === username && profile.password === password) {
+        console.log("right Password");
+        history.replace("/feed");
+      } else {
+        console.log("wrong Password");
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -71,15 +95,17 @@ function Login({ onLogin, activeProfile, login, history }) {
             placeholder="your username"
             value={username}
             onChange={handleUsernameChange}
-            required
+            error={errors.username}
           />
+          {errors.username && <StyledError>{errors.username}</StyledError>}
           <StyledInput
             type="password"
             placeholder="your password"
             value={password}
             onChange={handlePasswordChange}
-            required
+            error={errors.password}
           />
+          {errors.password && <StyledError>{errors.password}</StyledError>}
 
           <RedButton
             type="submit"
