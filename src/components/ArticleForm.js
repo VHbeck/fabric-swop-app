@@ -17,16 +17,13 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 function ArticleForm({ onCreate, history }) {
   const [newCard, setnewCard] = React.useState({
-    _id: "",
     name: "",
     type: "",
     fabricLength: "",
     fabricWidth: "",
     fabricColor: "",
     price: "",
-    source: "",
-    bookmark: false,
-    dis: false
+    source: ""
   });
   const [image, setImage] = React.useState("");
   const [errors, setErrors] = React.useState({});
@@ -89,13 +86,8 @@ function ArticleForm({ onCreate, history }) {
     }
     const item = {
       _id: uuid(),
-      name: newCard.name,
-      type: newCard.type ? newCard.type : "no type",
-      fabricLength: newCard.fabricLength,
-      fabricWidth: newCard.fabricWidth ? newCard.fabricWidth : "no width",
-      fabricColor: newCard.fabricColor ? newCard.fabricColor : "no color",
-      price: newCard.price,
-      source: image ? image : "../../images/default-img.png",
+      ...newCard,
+      source: image,
       bookmark: false,
       dis: false
     };

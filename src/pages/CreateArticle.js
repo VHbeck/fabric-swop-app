@@ -5,12 +5,12 @@ import Container from "../components/Container";
 import Footer from "../components/Footer";
 import ArticleForm from "../components/ArticleForm";
 
-function CreateArticle({ cards, onCreate }) {
+function CreateArticle({ onCreate }) {
   return (
     <>
       <Header headline="Create" />
       <Container>
-        <ArticleForm cards={cards} onCreate={onCreate} />
+        <ArticleForm onCreate={onCreate} />
       </Container>
       <Footer />
     </>

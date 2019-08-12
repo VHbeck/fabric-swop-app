@@ -60,49 +60,37 @@ const Logout = styled.span`
   align-self: center;
 `;
 
-function Profile({ onLogout, activeProfile, history }) {
-  const yourPurchases = activeProfile.purchases;
-  const yourProfile = activeProfile;
-
-  const purchaseArray =
-    yourPurchases &&
-    yourPurchases.map(element => {
-      return {
-        _id: element._id,
-        day: element.purchaseDay,
-        month: element.purchaseMonth,
-        year: element.purchaseYear,
-        name: element.name,
-        price: element.price
-      };
-    });
-
+function Profile({ onLogout, profile, history }) {
   function onDetailsClick(id) {
     history.replace(`/details/${id}`);
   }
 
-  const purchaseList = purchaseArray.map(out => (
-    <PurchaseContainer key={out._id}>
-      <p>
-        {out.day}.{out.month}.{out.year}: {out.name}, {out.price} Euro
-      </p>
-      <GreyButton text="Details" onClick={() => onDetailsClick(out._id)} />
-      <br />
-    </PurchaseContainer>
-  ));
+  const purchaseList = profile.purchases.map(out => {
+    const date = new Date(out.purchaseDate);
+    return (
+      <PurchaseContainer key={out._id}>
+        <p>
+          {date.getDate()}.{date.getMonth() + 1}.{date.getFullYear()}:{" "}
+          {out.name}, {out.price} Euro
+        </p>
+        <GreyButton text="Details" onClick={() => onDetailsClick(out._id)} />
+        <br />
+      </PurchaseContainer>
+    );
+  });
 
   return (
     <>
-      <Header headline={yourProfile.username} />
+      <Header headline={profile.username} />
       <ProfileContainer>
-        <StyledImage src={yourProfile.imageSource} alt="User Image" />
+        <StyledImage src={profile.imageSource} alt="User Image" />
         <Description>
           <BoldText>Name:</BoldText>
           <span>
-            {yourProfile.firstName} {yourProfile.lastName}
+            {profile.firstName} {profile.lastName}
           </span>
           <BoldText>Address:</BoldText>
-          <span>{yourProfile.address}</span>
+          <span>{profile.address}</span>
         </Description>
         <h2>Your Purchases</h2>
         {purchaseList}

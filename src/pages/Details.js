@@ -46,11 +46,16 @@ function Details({ match, cards, onBuyClick }) {
       <Header headline={card.name} />
       <Container>
         <Frame>
-          <MainImage src={card.source} alt={card.title} />
+          <MainImage
+            src={card.source || "../../images/default-img.png"}
+            alt={card.title}
+          />
           <Description>
-            <BoldText>Type:</BoldText> <span>{card.type}</span>
-            <BoldText>Length:</BoldText> <span>{card.fabricLength}</span>
-            <BoldText>Width:</BoldText> <span>{card.fabricWidth}</span>
+            <BoldText>Type:</BoldText> <span>{card.type || "no type"}</span>
+            <BoldText>Length:</BoldText>
+            <span>{card.fabricLength || "no length"}</span>
+            <BoldText>Width:</BoldText>
+            <span>{card.fabricWidth || "no width"}</span>
             <BoldText>Color:</BoldText> <span>{card.fabricColor}</span>
             <StyledPrice>
               <span>{card.price} Euro</span>
@@ -60,7 +65,6 @@ function Details({ match, cards, onBuyClick }) {
             <GreyButton text="Back" />
           </Link>
           <Link to="/profile">
-            {" "}
             <RedButton
               text="Buy now"
               onClick={() => onBuyClick(card._id)}
