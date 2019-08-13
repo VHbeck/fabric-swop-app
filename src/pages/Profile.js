@@ -74,6 +74,7 @@ function Profile({ onLogout, onPayClick, profile, history }) {
           {out.name}, {out.price} Euro
         </p>
         <GreyButton text="Details" onClick={() => onDetailsClick(out._id)} />
+        <GreyButton text="Pay now" onClick={() => onPayClick(out._id)} />
         <br />
       </PurchaseContainer>
     );
