@@ -30,9 +30,8 @@ const StyledParagraph = styled.p`
 
 function Search({ onBookmark, history, cards }) {
   const [input, setInput] = React.useState("");
-  const output = cards;
 
-  var options = {
+  const options = {
     shouldSort: true,
     threshold: 0.4,
     location: 0,
@@ -41,11 +40,11 @@ function Search({ onBookmark, history, cards }) {
     minMatchCharLength: 1,
     keys: ["type", "name", "fabricColor", "fabricLength", "price"]
   };
-  var fuse = new Fuse(output, options);
-  var result = fuse.search(input);
+  const fuse = new Fuse(cards, options);
+  const result = fuse.search(input);
 
   function handleSearchChange(event) {
-    const value = event.target.value.toLowerCase();
+    const value = event.target.value;
     setInput(value);
   }
 

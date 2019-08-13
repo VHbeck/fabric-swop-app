@@ -102,125 +102,123 @@ function ArticleForm({ onCreate, history }) {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <StepContainer>
-          <Number>1</Number>
-          <h2>Upload Image</h2>
-          <StyledUpload>
-            {image ? (
-              <img src={image} alt="" style={{ width: "30%" }} />
-            ) : (
-              <input type="file" name="file" onChange={upload} />
-            )}
-          </StyledUpload>
-        </StepContainer>
+    <form onSubmit={handleSubmit}>
+      <StepContainer>
+        <Number>1</Number>
+        <h2>Upload Image</h2>
+        <StyledUpload>
+          {image ? (
+            <img src={image} alt="" style={{ width: "30%" }} />
+          ) : (
+            <input type="file" name="file" onChange={upload} />
+          )}
+        </StyledUpload>
+      </StepContainer>
 
-        <StepContainer>
-          <Number>2</Number>
-          <h2>Fabric Info</h2>
-        </StepContainer>
-        <FormContainer>
-          <label>Name: </label>
+      <StepContainer>
+        <Number>2</Number>
+        <h2>Fabric Info</h2>
+      </StepContainer>
+      <FormContainer>
+        <label>Name: </label>
+        <input
+          name="name"
+          type="text"
+          placeholder="e.g. cotton fabric with dots"
+          value={newCard.name}
+          onChange={handleChange}
+          error={errors.name}
+        />
+        {errors.name && (
+          <StyledError data-cy="error-name">{errors.name}</StyledError>
+        )}
+        <label>Type:</label>
+        <select
+          name="type"
+          value={newCard.type}
+          onChange={handleChange}
+          error={errors.fabricLength}
+        >
+          <option value="">Choose a fabric type</option>
+          <option value="">---</option>
+          <option value="Cotton">Cotton</option>
+          <option value="Denim">Denim</option>
+          <option value="Jersey">Jersey</option>
+          <option value="Linen">Linen</option>
+          <option value="Muslin">Muslin</option>
+          <option value="Viscose">Viscose</option>
+        </select>
+        {errors.type && (
+          <StyledError data-cy="error-type">{errors.type}</StyledError>
+        )}
+        <label>Length:</label>
+        <div>
           <input
-            name="name"
-            type="text"
-            placeholder="e.g. cotton fabric with dots"
-            value={newCard.name}
-            onChange={handleChange}
-            error={errors.name}
-          />
-          {errors.name && (
-            <StyledError data-cy="error-name">{errors.name}</StyledError>
-          )}
-          <label>Type:</label>
-          <select
-            name="type"
-            value={newCard.type}
-            onChange={handleChange}
-            error={errors.fabricLength}
-          >
-            <option value="">Choose a fabric type</option>
-            <option value="">---</option>
-            <option value="Cotton">Cotton</option>
-            <option value="Denim">Denim</option>
-            <option value="Jersey">Jersey</option>
-            <option value="Linen">Linen</option>
-            <option value="Muslin">Muslin</option>
-            <option value="Viscose">Viscose</option>
-          </select>
-          {errors.type && (
-            <StyledError data-cy="error-type">{errors.type}</StyledError>
-          )}
-          <label>Length:</label>
-          <div>
-            <input
-              name="fabricLength"
-              type="number"
-              placeholder="e.g. 3,0"
-              value={newCard.fabricLength}
-              onChange={handleChange}
-              className="smallinput"
-              error={errors.fabricLength}
-            />
-            {errors.fabricLength && (
-              <StyledError data-cy="error-fabricLength">
-                {errors.fabricLength}
-              </StyledError>
-            )}
-            <span> m</span>
-          </div>
-          <label>Width:</label>
-          <div>
-            <input
-              name="fabricWidth"
-              type="number"
-              placeholder="e.g. 1,45"
-              value={newCard.fabricWidth}
-              onChange={handleChange}
-              className="smallinput"
-              error={errors.fabricWidth}
-            />
-            {errors.fabricWidth && (
-              <StyledError data-cy="error-fabricWidth">
-                {errors.fabricWidth}
-              </StyledError>
-            )}
-            <span> m</span>
-          </div>
-          <label>Color:</label>
-          <input
-            name="fabricColor"
-            type="text"
-            placeholder="e.g. blue"
-            value={newCard.fabricColor}
-            onChange={handleChange}
-          />
-          {errors.fabricColor && (
-            <StyledError data-cy="error-fabricColor">
-              {errors.fabricColor}
-            </StyledError>
-          )}
-        </FormContainer>
-        <StepContainer>
-          <Number>3</Number>
-          <h2>Price in Euro</h2>
-          <input
-            name="price"
+            name="fabricLength"
             type="number"
-            placeholder="e.g. 9,95"
-            value={newCard.price}
+            placeholder="e.g. 3,0"
+            value={newCard.fabricLength}
             onChange={handleChange}
             className="smallinput"
-            error={errors.price}
+            error={errors.fabricLength}
           />
-          {errors.price && (
-            <StyledError data-cy="error-price">{errors.price}</StyledError>
+          {errors.fabricLength && (
+            <StyledError data-cy="error-fabricLength">
+              {errors.fabricLength}
+            </StyledError>
           )}
-          <RedButton type="submit" text="Add" data-cy="submit-button" />
-        </StepContainer>
-      </form>
-    </>
+          <span> m</span>
+        </div>
+        <label>Width:</label>
+        <div>
+          <input
+            name="fabricWidth"
+            type="number"
+            placeholder="e.g. 1,45"
+            value={newCard.fabricWidth}
+            onChange={handleChange}
+            className="smallinput"
+            error={errors.fabricWidth}
+          />
+          {errors.fabricWidth && (
+            <StyledError data-cy="error-fabricWidth">
+              {errors.fabricWidth}
+            </StyledError>
+          )}
+          <span> m</span>
+        </div>
+        <label>Color:</label>
+        <input
+          name="fabricColor"
+          type="text"
+          placeholder="e.g. blue"
+          value={newCard.fabricColor}
+          onChange={handleChange}
+        />
+        {errors.fabricColor && (
+          <StyledError data-cy="error-fabricColor">
+            {errors.fabricColor}
+          </StyledError>
+        )}
+      </FormContainer>
+      <StepContainer>
+        <Number>3</Number>
+        <h2>Price in Euro</h2>
+        <input
+          name="price"
+          type="number"
+          placeholder="e.g. 9,95"
+          value={newCard.price}
+          onChange={handleChange}
+          className="smallinput"
+          error={errors.price}
+        />
+        {errors.price && (
+          <StyledError data-cy="error-price">{errors.price}</StyledError>
+        )}
+        <RedButton type="submit" text="Add" data-cy="submit-button" />
+      </StepContainer>
+    </form>
   );
 }
 
