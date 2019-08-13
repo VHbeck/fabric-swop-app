@@ -14,9 +14,9 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-function GreyButton({ onClick, text, "data-cy": dataCy }) {
+function GreyButton({ onClick, text, "data-cy": dataCy, disabled }) {
   return (
-    <StyledButton onClick={onClick} data-cy={dataCy}>
+    <StyledButton onClick={onClick} data-cy={dataCy} disabled={disabled}>
       {text}
     </StyledButton>
   );

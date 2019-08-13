@@ -161,6 +161,7 @@ function App() {
                 <Search
                   cards={cards}
                   onBookmark={handleBookmarkChange}
+                  onBuyClick={handleBuyClick}
                   dis={dis}
                   {...props}
                 />

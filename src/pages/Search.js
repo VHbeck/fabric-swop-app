@@ -28,7 +28,7 @@ const StyledParagraph = styled.p`
   text-align: center;
 `;
 
-function Search({ onBookmark, history, cards }) {
+function Search({ onBookmark, history, cards, onBuyClick }) {
   const [input, setInput] = React.useState("");
 
   const options = {
@@ -73,6 +73,7 @@ function Search({ onBookmark, history, cards }) {
           <Card
             onBookmarkClick={() => onBookmark(out._id)}
             onDetailsClick={() => onDetailsClick(out._id)}
+            onBuyClick={() => onBuyClick(out._id)}
             key={out.source + index}
             name={out.name}
             length={out.fabricLength}
