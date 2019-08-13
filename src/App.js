@@ -79,9 +79,9 @@ function App() {
     };
 
     setProfiles([
-      ...profiles.slice(0, index),
+      ...profiles.slice(0, userIndex),
       newProfile,
-      ...profiles.slice(index + 1)
+      ...profiles.slice(userIndex + 1)
     ]);
     setActiveProfile(newProfile);
 
@@ -105,6 +105,7 @@ function App() {
   function handlePayClick(id) {
     const index = cards.findIndex(card => card._id === id);
     setCards([...cards.splice(0, index), ...cards.splice(index + 1)]);
+    alert("You payed your purchase!");
   }
 
   let dis = false;
