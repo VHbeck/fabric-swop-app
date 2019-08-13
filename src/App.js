@@ -101,6 +101,12 @@ function App() {
   function handleLogoutClick() {
     setActiveProfile({});
   }
+
+  function handlePayClick(id) {
+    const index = cards.findIndex(card => card._id === id);
+    setCards([...cards.splice(0, index), ...cards.splice(index + 1)]);
+  }
+
   let dis = false;
 
   return (
@@ -167,6 +173,7 @@ function App() {
                 <Profile
                   profile={activeProfile}
                   onLogout={handleLogoutClick}
+                  onPayClick={handlePayClick}
                   {...props}
                 />
               )}
