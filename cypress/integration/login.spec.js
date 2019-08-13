@@ -11,13 +11,17 @@ describe("Fabric Swop", () => {
     cy.get("form input").should("have.length", 2);
     cy.get("form button").should("have.length", 2);
   });
-  it("shows a error for invalid input", () => {
+  it("shows errors for invalid input", () => {
     cy.get('[data-cy="submit-button"]').click();
-    cy.get('[data-cy="error"]').should("have.length", 1);
-
-    cy.get('[data-cy="error"]').should(
+    cy.get('[data-cy="error-username"]').should("have.length", 1);
+    cy.get('[data-cy="error-username"]').should(
       "contain",
       "Please put in a valid username"
+    );
+    cy.get('[data-cy="error-password"]').should("have.length", 1);
+    cy.get('[data-cy="error-password"]').should(
+      "contain",
+      "Please put in a valid password"
     );
   });
 });

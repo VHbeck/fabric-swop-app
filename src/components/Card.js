@@ -74,7 +74,12 @@ function Card({
           data-cy="nav-details"
         />
         <Link to="/profile">
-          <RedButton text="Buy now" onClick={onBuyClick} dis={dis} />
+          <RedButton
+            text="Buy now"
+            onClick={onBuyClick}
+            dis={dis}
+            data-cy="nav-feed-profile"
+          />
         </Link>
       </TextContainer>
     </CardFrame>

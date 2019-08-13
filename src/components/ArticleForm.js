@@ -130,7 +130,9 @@ function ArticleForm({ onCreate, history }) {
             onChange={handleChange}
             error={errors.name}
           />
-          {errors.name && <StyledError>{errors.name}</StyledError>}
+          {errors.name && (
+            <StyledError data-cy="error-name">{errors.name}</StyledError>
+          )}
           <label>Type:</label>
           <select
             name="type"
@@ -147,7 +149,9 @@ function ArticleForm({ onCreate, history }) {
             <option value="Muslin">Muslin</option>
             <option value="Viscose">Viscose</option>
           </select>
-          {errors.type && <StyledError>{errors.type}</StyledError>}
+          {errors.type && (
+            <StyledError data-cy="error-type">{errors.type}</StyledError>
+          )}
           <label>Length:</label>
           <div>
             <input
@@ -160,7 +164,9 @@ function ArticleForm({ onCreate, history }) {
               error={errors.fabricLength}
             />
             {errors.fabricLength && (
-              <StyledError>{errors.fabricLength}</StyledError>
+              <StyledError data-cy="error-fabricLength">
+                {errors.fabricLength}
+              </StyledError>
             )}
             <span> m</span>
           </div>
@@ -176,7 +182,9 @@ function ArticleForm({ onCreate, history }) {
               error={errors.fabricWidth}
             />
             {errors.fabricWidth && (
-              <StyledError>{errors.fabricWidth}</StyledError>
+              <StyledError data-cy="error-fabricWidth">
+                {errors.fabricWidth}
+              </StyledError>
             )}
             <span> m</span>
           </div>
@@ -189,7 +197,9 @@ function ArticleForm({ onCreate, history }) {
             onChange={handleChange}
           />
           {errors.fabricColor && (
-            <StyledError>{errors.fabricColor}</StyledError>
+            <StyledError data-cy="error-fabricColor">
+              {errors.fabricColor}
+            </StyledError>
           )}
         </FormContainer>
         <StepContainer>
@@ -204,8 +214,10 @@ function ArticleForm({ onCreate, history }) {
             className="smallinput"
             error={errors.price}
           />
-          {errors.price && <StyledError>{errors.price}</StyledError>}
-          <RedButton type="submit" text="Add" />
+          {errors.price && (
+            <StyledError data-cy="error-price">{errors.price}</StyledError>
+          )}
+          <RedButton type="submit" text="Add" data-cy="submit-button" />
         </StepContainer>
       </form>
     </>

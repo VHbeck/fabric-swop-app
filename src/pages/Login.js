@@ -98,7 +98,9 @@ function Login({ onLogin, activeProfile, login, history }) {
             error={errors.username}
           />
           {errors.username && (
-            <StyledError data-cy="error">{errors.username}</StyledError>
+            <StyledError data-cy="error-username">
+              {errors.username}
+            </StyledError>
           )}
           <StyledInput
             type="password"
@@ -107,7 +109,11 @@ function Login({ onLogin, activeProfile, login, history }) {
             onChange={handlePasswordChange}
             error={errors.password}
           />
-          {errors.password && <StyledError>{errors.password}</StyledError>}
+          {errors.password && (
+            <StyledError data-cy="error-password">
+              {errors.password}
+            </StyledError>
+          )}
 
           <RedButton
             data-cy="submit-button"
