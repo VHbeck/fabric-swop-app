@@ -74,9 +74,6 @@ function Profile({ onLogout, onPayClick, profile, history }) {
           {out.name}, {out.price} Euro
         </p>
         <GreyButton text="Details" onClick={() => onDetailsClick(out._id)} />
-        <Link to="feed">
-          <GreyButton text="Pay" onClick={() => onPayClick(out._id)} />
-        </Link>
         <br />
       </PurchaseContainer>
     );
