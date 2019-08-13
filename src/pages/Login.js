@@ -97,7 +97,11 @@ function Login({ onLogin, activeProfile, login, history }) {
             onChange={handleUsernameChange}
             error={errors.username}
           />
-          {errors.username && <StyledError>{errors.username}</StyledError>}
+          {errors.username && (
+            <StyledError data-cy="error-username">
+              {errors.username}
+            </StyledError>
+          )}
           <StyledInput
             type="password"
             placeholder="your password"
@@ -105,15 +109,20 @@ function Login({ onLogin, activeProfile, login, history }) {
             onChange={handlePasswordChange}
             error={errors.password}
           />
-          {errors.password && <StyledError>{errors.password}</StyledError>}
+          {errors.password && (
+            <StyledError data-cy="error-password">
+              {errors.password}
+            </StyledError>
+          )}
 
           <RedButton
+            data-cy="submit-button"
             type="submit"
             text="Login"
             onClick={() => onLogin(username)}
             login={login}
           />
-          <Link to="/register">
+          <Link to="/register" data-cy="nav-register">
             <GreyButton text="Register" />
           </Link>
         </StyledForm>

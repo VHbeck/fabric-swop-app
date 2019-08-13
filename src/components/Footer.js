@@ -38,28 +38,28 @@ function Footer() {
   return (
     <FooterStyled>
       <Icons>
-        <Link to="/feed">
+        <Link to="/feed" data-cy="nav-feed">
           <i className="fas fa-home" />
         </Link>
       </Icons>
       <Icons>
-        <Link to="/create-article">
+        <Link to="/create-article" data-cy="nav-create-article">
           <i className="fas fa-plus" />
         </Link>
       </Icons>
       <Icons>
-        <Link to="/search">
+        <Link to="/search" data-cy="nav-search">
           <i className="fas fa-search" />
         </Link>
       </Icons>
       <Icons>
-        <Link to="/profile">
+        <Link to="/profile" data-cy="nav-profile">
           <i className="far fa-user" />
         </Link>
       </Icons>
 
       <Icons>
-        <Link to="/favorite">
+        <Link to="/favorite" data-cy="nav-favorite">
           <i className="far fa-heart" />
         </Link>
       </Icons>

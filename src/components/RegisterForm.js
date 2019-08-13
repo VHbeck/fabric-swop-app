@@ -129,7 +129,9 @@ function RegisterForm({ onCreateProfile, history }) {
           onChange={handleChange}
           error={errors.username}
         />
-        {errors.username && <StyledError>{errors.username}</StyledError>}
+        {errors.username && (
+          <StyledError data-cy="error-username">{errors.username}</StyledError>
+        )}
         <label>First Name</label>
         <input
           placeholder="First name"
@@ -168,11 +170,13 @@ function RegisterForm({ onCreateProfile, history }) {
           onChange={handleChange}
           error={errors.password}
         />
-        {errors.password && <StyledError>{errors.password}</StyledError>}
-        <RedButton text="Register now" type="submit" />
+        {errors.password && (
+          <StyledError data-cy="error-password">{errors.password}</StyledError>
+        )}
+        <RedButton text="Register now" type="submit" data-cy="submit-button" />
       </FormContainer>
       <ButtonContainer>
-        <Link to="/">
+        <Link to="/" data-cy="nav-start">
           <GreyButton text="Back" />
         </Link>
       </ButtonContainer>
