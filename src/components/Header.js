@@ -17,7 +17,7 @@ const HeaderStyled = styled.div`
 
 function Header({ headline }) {
   return (
-    <HeaderStyled>
+    <HeaderStyled data-cy="header-title">
       <Headline>{headline}</Headline>
     </HeaderStyled>
   );

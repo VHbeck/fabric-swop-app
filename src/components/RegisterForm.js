@@ -172,7 +172,7 @@ function RegisterForm({ onCreateProfile, history }) {
         <RedButton text="Register now" type="submit" />
       </FormContainer>
       <ButtonContainer>
-        <Link to="/">
+        <Link to="/" data-cy="nav-start">
           <GreyButton text="Back" />
         </Link>
       </ButtonContainer>

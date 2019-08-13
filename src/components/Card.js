@@ -68,7 +68,11 @@ function Card({
         <CardPrice>{price} Euro</CardPrice>
       </TextContainer>
       <TextContainer>
-        <GreyButton text="Details" onClick={onDetailsClick} />
+        <GreyButton
+          text="Details"
+          onClick={onDetailsClick}
+          data-cy="nav-details"
+        />
         <Link to="/profile">
           <RedButton text="Buy now" onClick={onBuyClick} dis={dis} />
         </Link>

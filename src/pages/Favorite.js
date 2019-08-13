@@ -41,7 +41,7 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
         {outputArray.length === 0 && (
           <StyledParagraph>
             Go to your feed and add your favorite articles.
-            <Link to="/feed">
+            <Link to="/feed" data-cy="nav-favorite-feed">
               <GreyButton text="Go to feed" />
             </Link>
           </StyledParagraph>

@@ -18,10 +18,10 @@ function Start() {
     <Background>
       <StartContainer>
         <StyledImage src="logo-small.svg" />
-        <Link to="/register">
+        <Link to="/register" data-cy="register-button">
           <RedButton text="Register" />
         </Link>
-        <Link to="/login">
+        <Link to="/login" data-cy="login-button">
           <GreyButton text="Login" />
         </Link>
       </StartContainer>

@@ -14,9 +14,9 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-function RedButton({ onClick, text, dis }) {
+function RedButton({ onClick, text, dis, "data-cy": dataCy }) {
   return (
-    <StyledButton onClick={onClick} disabled={dis}>
+    <StyledButton onClick={onClick} disabled={dis} data-cy={dataCy}>
       {text}
     </StyledButton>
   );

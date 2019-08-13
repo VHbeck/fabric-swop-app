@@ -1,10 +1,23 @@
 describe("Fabric Swop", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:3000/login");
   });
-  describe("Login", () => {
-    it("show the correct browser title", () => {
-      cy.title().should("include", "Fabric Swop");
-    });
+  it("navigates to register page on click", () => {
+    cy.get('[data-cy="nav-register"]').click();
+    cy.location("pathname").should("include", "register");
+  });
+  it("has a complete form", () => {
+    cy.get("form").should("have.length", 1);
+    cy.get("form input").should("have.length", 2);
+    cy.get("form button").should("have.length", 2);
+  });
+  it("shows a error for invalid input", () => {
+    cy.get('[data-cy="submit-button"]').click();
+    cy.get('[data-cy="error"]').should("have.length", 1);
+
+    cy.get('[data-cy="error"]').should(
+      "contain",
+      "Please put in a valid username"
+    );
   });
 });

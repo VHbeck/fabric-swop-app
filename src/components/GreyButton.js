@@ -14,8 +14,12 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-function GreyButton(props) {
-  return <StyledButton onClick={props.onClick}>{props.text}</StyledButton>;
+function GreyButton({ onClick, text, "data-cy": dataCy }) {
+  return (
+    <StyledButton onClick={onClick} data-cy={dataCy}>
+      {text}
+    </StyledButton>
+  );
 }
 
 GreyButton.propTypes = {

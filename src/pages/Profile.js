@@ -98,7 +98,7 @@ function Profile({ onLogout, onPayClick, profile, history }) {
           <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
         )}
         <Logout>
-          <Link to="login">
+          <Link to="login" data-cy="nav-logout">
             <GreyButton text="Logout" onClick={() => onLogout()} />
           </Link>
         </Logout>

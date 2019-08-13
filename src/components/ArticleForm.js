@@ -103,18 +103,19 @@ function ArticleForm({ onCreate, history }) {
 
   return (
     <>
-      <StepContainer>
-        <Number>1</Number>
-        <h2>Upload Image</h2>
-        <StyledUpload>
-          {image ? (
-            <img src={image} alt="" style={{ width: "30%" }} />
-          ) : (
-            <input type="file" name="file" onChange={upload} />
-          )}
-        </StyledUpload>
-      </StepContainer>
       <form onSubmit={handleSubmit}>
+        <StepContainer>
+          <Number>1</Number>
+          <h2>Upload Image</h2>
+          <StyledUpload>
+            {image ? (
+              <img src={image} alt="" style={{ width: "30%" }} />
+            ) : (
+              <input type="file" name="file" onChange={upload} />
+            )}
+          </StyledUpload>
+        </StepContainer>
+
         <StepContainer>
           <Number>2</Number>
           <h2>Fabric Info</h2>
