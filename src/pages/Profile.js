@@ -73,8 +73,16 @@ function Profile({ onLogout, onPayClick, profile, history }) {
           {date.getDate()}.{date.getMonth() + 1}.{date.getFullYear()}:{" "}
           {out.name}, {out.price} Euro
         </p>
-        <GreyButton text="Details" onClick={() => onDetailsClick(out._id)} />
-        <GreyButton text="Pay now" onClick={() => onPayClick(out._id)} />
+        <GreyButton
+          text="Details"
+          onClick={() => onDetailsClick(out._id)}
+          disabled={out.disable}
+        />
+        <GreyButton
+          text="Pay now"
+          onClick={() => onPayClick(out._id)}
+          disabled={out.disable}
+        />
         <br />
       </PurchaseContainer>
     );

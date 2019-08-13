@@ -106,6 +106,27 @@ function App() {
     const index = cards.findIndex(card => card._id === id);
     setCards([...cards.splice(0, index), ...cards.splice(index + 1)]);
     alert("You payed your purchase!");
+    const profileIndex = profiles.findIndex(
+      profile => profile._id === activeProfile._id
+    );
+    const profile = profiles[profileIndex];
+    const profilePurchases = profile.purchases;
+    const purchaseIndex = profilePurchases.findIndex(
+      purchase => purchase._id === id
+    );
+    const purchase = profilePurchases[purchaseIndex];
+    const disabledPurchase = [
+      ...profilePurchases.slice(0, purchaseIndex),
+      { ...purchase, disable: true, ...purchase },
+      ...profilePurchases.slice(purchaseIndex + 1)
+    ];
+    const updatedProfile = { ...profile, purchases: disabledPurchase };
+    setActiveProfile(updatedProfile);
+    setProfiles([
+      ...profiles.slice(0, profileIndex),
+      updatedProfile,
+      ...profiles.slice(profileIndex + 1)
+    ]);
   }
 
   let dis = false;
