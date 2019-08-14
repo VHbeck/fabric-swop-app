@@ -60,7 +60,14 @@ const Logout = styled.span`
   align-self: center;
 `;
 
-function Profile({ match, onLogout, onPayClick, profiles, history }) {
+function Profile({
+  match,
+  onLogout,
+  onPayClick,
+  profiles,
+  history,
+  activeProfile
+}) {
   const profile =
     profiles && profiles.find(profile => profile._id === match.params.id);
 
@@ -104,11 +111,18 @@ function Profile({ match, onLogout, onPayClick, profiles, history }) {
           <BoldText>Address:</BoldText>
           <span>{profile.address}</span>
         </Description>
-        <h2>Your Purchases</h2>
-        {purchaseList}
-        {purchaseList.length === 0 && (
-          <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
+        {profile.username === activeProfile.username ? (
+          <>
+            <h2>Your Purchases</h2>
+            {purchaseList}
+            {purchaseList.length === 0 && (
+              <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
+            )}
+          </>
+        ) : (
+          ""
         )}
+
         <Logout>
           <Link to="login" data-cy="nav-logout">
             <GreyButton text="Logout" onClick={() => onLogout()} />

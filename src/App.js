@@ -221,7 +221,7 @@ function App() {
                     profiles={profiles}
                     onLogout={handleLogoutClick}
                     onPayClick={handlePayClick}
-                    profile={activeProfile}
+                    activeProfile={activeProfile}
                     {...props}
                   />
                 ) : (
