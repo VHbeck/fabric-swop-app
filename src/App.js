@@ -263,7 +263,15 @@ function App() {
                 )
               }
             />
-            <Route component={NotFound} />
+            <Route
+              render={props =>
+                activeProfile.username ? (
+                  <NotFound profile={activeProfile} {...props} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
+            />
           </Switch>
         </ScrollToTop>
       </Router>

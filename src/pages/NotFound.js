@@ -13,7 +13,7 @@ const NotFoundContainer = styled.div`
   height: 90vh;
 `;
 
-function NotFound() {
+function NotFound({ profile }) {
   return (
     <>
       <Header headline="Not Found" />
@@ -23,7 +23,7 @@ function NotFound() {
           <GreyButton text="Back" />
         </Link>
       </NotFoundContainer>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }
