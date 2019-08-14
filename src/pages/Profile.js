@@ -124,16 +124,15 @@ function Profile({
             {purchaseList.length === 0 && (
               <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
             )}
+            <Logout>
+              <Link to="login" data-cy="nav-logout">
+                <GreyButton text="Logout" onClick={() => onLogout()} />
+              </Link>
+            </Logout>
           </>
         ) : (
           ""
         )}
-
-        <Logout>
-          <Link to="login" data-cy="nav-logout">
-            <GreyButton text="Logout" onClick={() => onLogout()} />
-          </Link>
-        </Logout>
       </ProfileContainer>
       <Footer profile={profile} />
     </>
