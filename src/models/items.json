@@ -9,7 +9,9 @@
     "price": "5",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1564675826/sample-fabric_en0o7u.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "1.0",
+    "vendorName": "Nessa"
   },
   {
     "_id": "2",
@@ -21,7 +23,9 @@
     "price": "4",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1564675805/sample-fabric2_k3rytp.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "2.0",
+    "vendorName": "Greta"
   },
   {
     "_id": "3",
@@ -33,7 +37,9 @@
     "price": "8",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1564667218/sample-fabric3_uahuuk.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "0.0",
+    "vendorName": "Hansi"
   },
   {
     "_id": "4",
@@ -45,7 +51,9 @@
     "price": "3",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1565357980/baumwolljersey-tulpen-senf--81_12616_034_ZB02_jayqda.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "1.0",
+    "vendorName": "Nessa"
   },
   {
     "_id": "5",
@@ -57,7 +65,9 @@
     "price": "8",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1565357979/dekostoff-canvas-beschichtet-beeren-creme--197_poso_f19_240_fatasv.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "2.0",
+    "vendorName": "Greta"
   },
   {
     "_id": "6",
@@ -69,7 +79,9 @@
     "price": "9",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1565357978/chambray-mit-einseitiger-bogenkante-blaetter-jeansblau--81_12018_003_ZB02_eiv4y6.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "0.0",
+    "vendorName": "Hansi"
   },
   {
     "_id": "7",
@@ -81,7 +93,9 @@
     "price": "1",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1565357977/viskosestoff-stoerche-himbeerrot--05_703477_3008_ZB02_ytnotk.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "0.0",
+    "vendorName": "Hansi"
   },
   {
     "_id": "8",
@@ -93,7 +107,9 @@
     "price": "10",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1565357977/musselin-doppel-krinkel-gewebe-glitzersternchen-schilf-silber--81_12687_022_gofin0.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "1.0",
+    "vendorName": "Nessa"
   },
   {
     "_id": "9",
@@ -105,7 +121,9 @@
     "price": "5",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1565357976/bekleidungsjacquard-cloque-blaetterwald-bordeauxrot-creme--17_poso_e19_034_lbpipu.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "2.0",
+    "vendorName": "Greta"
   },
   {
     "_id": "10",
@@ -117,6 +135,8 @@
     "price": "12",
     "source": "https://res.cloudinary.com/fab-swop/image/upload/v1565357975/chiffon-ausbrenner-stoff-blumenranken-schwarz-pink--17_poso_e19_036_hjxcuu.jpg",
     "bookmark": false,
-    "dis": false
+    "dis": false,
+    "vendorId": "1.0",
+    "vendorName": "Nessa"
   }
 ]

@@ -58,10 +58,16 @@ function Details({ match, cards, onBuyClick, profile }) {
             <BoldText>Width:</BoldText>
             <span>{card.fabricWidth || "no width"}</span>
             <BoldText>Color:</BoldText> <span>{card.fabricColor}</span>
+            <BoldText>Vendor: </BoldText>{" "}
+            <Link to={`/profile/${card.vendorId}`}>
+              <span>{card.vendorName}</span>
+            </Link>
             <StyledPrice>
               <span>{card.price} Euro</span>
             </StyledPrice>
+            <span />
           </Description>
+
           <Link to="/feed">
             <GreyButton text="Back" />
           </Link>

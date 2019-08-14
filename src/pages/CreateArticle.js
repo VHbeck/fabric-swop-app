@@ -10,7 +10,7 @@ function CreateArticle({ onCreate, profile }) {
     <>
       <Header headline="Create" />
       <Container>
-        <ArticleForm onCreate={onCreate} />
+        <ArticleForm onCreate={onCreate} profile={profile} />
       </Container>
       <Footer profile={profile} />
     </>

@@ -15,7 +15,7 @@ import {
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
-function ArticleForm({ onCreate, history }) {
+function ArticleForm({ onCreate, history, profile }) {
   const [newCard, setnewCard] = React.useState({
     name: "",
     type: "",
@@ -95,7 +95,9 @@ function ArticleForm({ onCreate, history }) {
       ...newCard,
       source: image,
       bookmark: false,
-      dis: false
+      dis: false,
+      vendorName: profile.username,
+      vendorId: profile._id
     };
     onCreate(item);
     history.replace(`/details/${item._id}`);
