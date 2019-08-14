@@ -35,7 +35,6 @@ const Icons = styled.div`
 `;
 
 function Footer({ profile }) {
-  console.log(profile._id);
   return (
     <FooterStyled>
       <Icons>

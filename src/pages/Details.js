@@ -71,7 +71,7 @@ function Details({ match, cards, onBuyClick, profile }) {
           <Link to="/feed">
             <GreyButton text="Back" />
           </Link>
-          <Link to="/profile" data-cy="nav-profile">
+          <Link to={`/profile/${profile._id}`} data-cy="nav-profile">
             <RedButton
               text="Buy now"
               onClick={() => onBuyClick(card._id)}

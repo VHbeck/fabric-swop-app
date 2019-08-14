@@ -82,6 +82,7 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
             color={out.color || "no color"}
             bookmark={out.bookmark}
             dis={out.dis}
+            profile={profile}
           />
         ))}
       </Container>

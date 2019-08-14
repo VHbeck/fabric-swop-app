@@ -56,6 +56,7 @@ function Favorite({ cards, history, onBookmark, onBuyClick, profile }) {
             source={out.source || "../../images/default-img.png"}
             bookmark={out.bookmark}
             dis={out.dis}
+            profile={profile}
           />
         ))}
       </Container>

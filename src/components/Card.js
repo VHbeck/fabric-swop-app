@@ -56,7 +56,8 @@ function Card({
   onDetailsClick,
   onBuyClick,
   bookmark,
-  dis
+  dis,
+  profile
 }) {
   return (
     <CardFrame>
@@ -73,7 +74,7 @@ function Card({
           onClick={onDetailsClick}
           data-cy="nav-details"
         />
-        <Link to="/profile">
+        <Link to={`/profile/${profile._id}`}>
           <RedButton
             text="Buy now"
             onClick={onBuyClick}
