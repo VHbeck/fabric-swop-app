@@ -1,6 +1,11 @@
 import React from "react";
 import GlobalStyle from "./misc/GlobalStyle";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import Start from "./pages/Start";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -25,7 +30,7 @@ function App() {
     getFromStorage("Profile") || dummyProfiles
   );
   const [activeProfile, setActiveProfile] = React.useState(
-    getFromStorage("ActiveProfile") || dummyProfiles[0]
+    getFromStorage("ActiveProfile") || {}
   );
 
   React.useEffect(() => {
@@ -141,15 +146,19 @@ function App() {
             <Route
               path="/feed"
               exact
-              render={props => (
-                <Feed
-                  cards={cards}
-                  onBookmark={handleBookmarkChange}
-                  onBuyClick={handleBuyClick}
-                  dis={dis}
-                  {...props}
-                />
-              )}
+              render={props =>
+                activeProfile.username ? (
+                  <Feed
+                    cards={cards}
+                    onBookmark={handleBookmarkChange}
+                    onBuyClick={handleBuyClick}
+                    dis={dis}
+                    {...props}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
             <Route
               path="/login"
@@ -172,58 +181,78 @@ function App() {
             <Route
               path="/create-article"
               exact
-              render={props => (
-                <CreateArticle onCreate={handleCreate} {...props} />
-              )}
+              render={props =>
+                activeProfile.username ? (
+                  <CreateArticle onCreate={handleCreate} {...props} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
             <Route
               path="/search"
               exact
-              render={props => (
-                <Search
-                  cards={cards}
-                  onBookmark={handleBookmarkChange}
-                  onBuyClick={handleBuyClick}
-                  dis={dis}
-                  {...props}
-                />
-              )}
+              render={props =>
+                activeProfile.username ? (
+                  <Search
+                    cards={cards}
+                    onBookmark={handleBookmarkChange}
+                    onBuyClick={handleBuyClick}
+                    dis={dis}
+                    {...props}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
             <Route
               path="/profile"
               exact
-              render={props => (
-                <Profile
-                  profile={activeProfile}
-                  onLogout={handleLogoutClick}
-                  onPayClick={handlePayClick}
-                  {...props}
-                />
-              )}
+              render={props =>
+                activeProfile.username ? (
+                  <Profile
+                    profile={activeProfile}
+                    onLogout={handleLogoutClick}
+                    onPayClick={handlePayClick}
+                    {...props}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
             <Route
               path="/favorite"
               exact
-              render={props => (
-                <Favorite
-                  cards={cards}
-                  onBookmark={handleBookmarkChange}
-                  onBuyClick={handleBuyClick}
-                  dis={dis}
-                />
-              )}
+              render={props =>
+                activeProfile.username ? (
+                  <Favorite
+                    cards={cards}
+                    onBookmark={handleBookmarkChange}
+                    onBuyClick={handleBuyClick}
+                    dis={dis}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
             <Route
               path="/details/:id"
               exact
-              render={props => (
-                <Details
-                  cards={cards}
-                  onBuyClick={handleBuyClick}
-                  dis={dis}
-                  {...props}
-                />
-              )}
+              render={props =>
+                activeProfile.username ? (
+                  <Details
+                    cards={cards}
+                    onBuyClick={handleBuyClick}
+                    dis={dis}
+                    {...props}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
             <Route component={NotFound} />
           </Switch>
