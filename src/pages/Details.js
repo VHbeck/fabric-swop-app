@@ -36,11 +36,12 @@ const StyledPrice = styled.div`
   padding: 15px 15px 0px 0px;
 `;
 
-function Details({ match, cards, onBuyClick }) {
+function Details({ match, cards, onBuyClick, profile }) {
   const card = cards && cards.find(card => card._id === match.params.id);
   if (!card) {
     return null;
   }
+
   return (
     <>
       <Header headline={card.name} />
@@ -57,14 +58,20 @@ function Details({ match, cards, onBuyClick }) {
             <BoldText>Width:</BoldText>
             <span>{card.fabricWidth || "no width"}</span>
             <BoldText>Color:</BoldText> <span>{card.fabricColor}</span>
+            <BoldText>Vendor: </BoldText>{" "}
+            <Link to={`/profile/${card.vendorId}`}>
+              <span>{card.vendorName}</span>
+            </Link>
             <StyledPrice>
               <span>{card.price} Euro</span>
             </StyledPrice>
+            <span />
           </Description>
+
           <Link to="/feed">
             <GreyButton text="Back" />
           </Link>
-          <Link to="/profile" data-cy="nav-profile">
+          <Link to={`/profile/${profile._id}`} data-cy="nav-profile">
             <RedButton
               text="Buy now"
               onClick={() => onBuyClick(card._id)}
@@ -73,7 +80,7 @@ function Details({ match, cards, onBuyClick }) {
           </Link>
         </Frame>
       </Container>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }

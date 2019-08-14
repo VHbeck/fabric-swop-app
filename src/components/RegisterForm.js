@@ -103,7 +103,7 @@ function RegisterForm({ onCreateProfile, history }) {
       address: newProfile.address,
       email: newProfile.email,
       birthday: newProfile.birthday,
-      imageSource: image ? image : "images/lou.jpg",
+      imageSource: image,
       purchases: []
     };
     onCreateProfile(item);

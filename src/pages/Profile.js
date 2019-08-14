@@ -60,7 +60,17 @@ const Logout = styled.span`
   align-self: center;
 `;
 
-function Profile({ onLogout, onPayClick, profile, history }) {
+function Profile({
+  match,
+  onLogout,
+  onPayClick,
+  profiles,
+  history,
+  activeProfile
+}) {
+  const profile =
+    profiles && profiles.find(profile => profile._id === match.params.id);
+
   function onDetailsClick(id) {
     history.replace(`/details/${id}`);
   }
@@ -92,27 +102,39 @@ function Profile({ onLogout, onPayClick, profile, history }) {
     <>
       <Header headline={profile.username} />
       <ProfileContainer>
-        <StyledImage src={profile.imageSource} alt="User Image" />
+        <StyledImage
+          src={
+            profile.imageSource ||
+            "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg"
+          }
+          alt="User Image"
+        />
         <Description>
           <BoldText>Name:</BoldText>
           <span>
-            {profile.firstName} {profile.lastName}
+            {profile.firstName || "no name"} {profile.lastName}
           </span>
           <BoldText>Address:</BoldText>
-          <span>{profile.address}</span>
+          <span>{profile.address || "no address"}</span>
         </Description>
-        <h2>Your Purchases</h2>
-        {purchaseList}
-        {purchaseList.length === 0 && (
-          <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
+        {profile.username === activeProfile.username ? (
+          <>
+            <h2>Your Purchases</h2>
+            {purchaseList}
+            {purchaseList.length === 0 && (
+              <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
+            )}
+            <Logout>
+              <Link to="login" data-cy="nav-logout">
+                <GreyButton text="Logout" onClick={() => onLogout()} />
+              </Link>
+            </Logout>
+          </>
+        ) : (
+          ""
         )}
-        <Logout>
-          <Link to="login" data-cy="nav-logout">
-            <GreyButton text="Logout" onClick={() => onLogout()} />
-          </Link>
-        </Logout>
       </ProfileContainer>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }

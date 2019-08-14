@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 
-function Feed({ history, cards: output, onBookmark, onBuyClick }) {
+function Feed({ history, cards: output, onBookmark, onBuyClick, profile }) {
   const outputArray =
     output &&
     output.map(element => {
@@ -37,6 +37,7 @@ function Feed({ history, cards: output, onBookmark, onBuyClick }) {
       source={out.source || "../../images/default-img.png"}
       bookmark={out.bookmark}
       dis={out.dis}
+      profile={profile}
     />
   ));
 
@@ -44,7 +45,7 @@ function Feed({ history, cards: output, onBookmark, onBuyClick }) {
     <>
       <Header headline="Feed" />
       <Container>{content}</Container>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }

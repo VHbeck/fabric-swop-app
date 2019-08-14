@@ -28,7 +28,7 @@ const StyledParagraph = styled.p`
   text-align: center;
 `;
 
-function Search({ onBookmark, history, cards, onBuyClick }) {
+function Search({ onBookmark, history, cards, onBuyClick, profile }) {
   const [input, setInput] = React.useState("");
 
   const options = {
@@ -82,10 +82,11 @@ function Search({ onBookmark, history, cards, onBuyClick }) {
             color={out.color || "no color"}
             bookmark={out.bookmark}
             dis={out.dis}
+            profile={profile}
           />
         ))}
       </Container>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }
