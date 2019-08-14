@@ -60,7 +60,10 @@ const Logout = styled.span`
   align-self: center;
 `;
 
-function Profile({ onLogout, onPayClick, profile, history }) {
+function Profile({ match, onLogout, onPayClick, profiles, history }) {
+  const profile =
+    profiles && profiles.find(profile => profile._id === match.params.id);
+
   function onDetailsClick(id) {
     history.replace(`/details/${id}`);
   }
@@ -112,7 +115,7 @@ function Profile({ onLogout, onPayClick, profile, history }) {
           </Link>
         </Logout>
       </ProfileContainer>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }

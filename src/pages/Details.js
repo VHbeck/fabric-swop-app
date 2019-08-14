@@ -36,11 +36,12 @@ const StyledPrice = styled.div`
   padding: 15px 15px 0px 0px;
 `;
 
-function Details({ match, cards, onBuyClick }) {
+function Details({ match, cards, onBuyClick, profile }) {
   const card = cards && cards.find(card => card._id === match.params.id);
   if (!card) {
     return null;
   }
+
   return (
     <>
       <Header headline={card.name} />
@@ -73,7 +74,7 @@ function Details({ match, cards, onBuyClick }) {
           </Link>
         </Frame>
       </Container>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }

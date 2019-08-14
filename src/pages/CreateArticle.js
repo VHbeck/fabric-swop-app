@@ -5,14 +5,14 @@ import Container from "../components/Container";
 import Footer from "../components/Footer";
 import ArticleForm from "../components/ArticleForm";
 
-function CreateArticle({ onCreate }) {
+function CreateArticle({ onCreate, profile }) {
   return (
     <>
       <Header headline="Create" />
       <Container>
         <ArticleForm onCreate={onCreate} />
       </Container>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }

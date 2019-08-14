@@ -34,7 +34,8 @@ const Icons = styled.div`
   }
 `;
 
-function Footer() {
+function Footer({ profile }) {
+  console.log(profile._id);
   return (
     <FooterStyled>
       <Icons>
@@ -53,7 +54,7 @@ function Footer() {
         </Link>
       </Icons>
       <Icons>
-        <Link to="/profile" data-cy="nav-profile">
+        <Link to={`/profile/${profile._id}`} data-cy="nav-profile">
           <i className="far fa-user" />
         </Link>
       </Icons>

@@ -153,6 +153,7 @@ function App() {
                     onBookmark={handleBookmarkChange}
                     onBuyClick={handleBuyClick}
                     dis={dis}
+                    profile={activeProfile}
                     {...props}
                   />
                 ) : (
@@ -183,7 +184,11 @@ function App() {
               exact
               render={props =>
                 activeProfile.username ? (
-                  <CreateArticle onCreate={handleCreate} {...props} />
+                  <CreateArticle
+                    onCreate={handleCreate}
+                    profile={activeProfile}
+                    {...props}
+                  />
                 ) : (
                   <Redirect to="/" />
                 )
@@ -199,6 +204,7 @@ function App() {
                     onBookmark={handleBookmarkChange}
                     onBuyClick={handleBuyClick}
                     dis={dis}
+                    profile={activeProfile}
                     {...props}
                   />
                 ) : (
@@ -207,14 +213,15 @@ function App() {
               }
             />
             <Route
-              path="/profile"
+              path="/profile/:id"
               exact
               render={props =>
                 activeProfile.username ? (
                   <Profile
-                    profile={activeProfile}
+                    profiles={profiles}
                     onLogout={handleLogoutClick}
                     onPayClick={handlePayClick}
+                    profile={activeProfile}
                     {...props}
                   />
                 ) : (
@@ -231,6 +238,7 @@ function App() {
                     cards={cards}
                     onBookmark={handleBookmarkChange}
                     onBuyClick={handleBuyClick}
+                    profile={activeProfile}
                     dis={dis}
                   />
                 ) : (
@@ -247,6 +255,7 @@ function App() {
                     cards={cards}
                     onBuyClick={handleBuyClick}
                     dis={dis}
+                    profile={activeProfile}
                     {...props}
                   />
                 ) : (

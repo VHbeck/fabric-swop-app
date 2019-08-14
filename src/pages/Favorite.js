@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import Card from "../components/Card";
 import GreyButton from "../components/GreyButton";
 
-function Favorite({ cards, history, onBookmark, onBuyClick }) {
+function Favorite({ cards, history, onBookmark, onBuyClick, profile }) {
   const outputArray =
     cards &&
     cards
@@ -59,7 +59,7 @@ function Favorite({ cards, history, onBookmark, onBuyClick }) {
           />
         ))}
       </Container>
-      <Footer />
+      <Footer profile={profile} />
     </>
   );
 }
