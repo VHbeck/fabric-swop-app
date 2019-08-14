@@ -102,14 +102,20 @@ function Profile({
     <>
       <Header headline={profile.username} />
       <ProfileContainer>
-        <StyledImage src={profile.imageSource} alt="User Image" />
+        <StyledImage
+          src={
+            profile.imageSource ||
+            "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg"
+          }
+          alt="User Image"
+        />
         <Description>
           <BoldText>Name:</BoldText>
           <span>
-            {profile.firstName} {profile.lastName}
+            {profile.firstName || "no name"} {profile.lastName}
           </span>
           <BoldText>Address:</BoldText>
-          <span>{profile.address}</span>
+          <span>{profile.address || "no address"}</span>
         </Description>
         {profile.username === activeProfile.username ? (
           <>
