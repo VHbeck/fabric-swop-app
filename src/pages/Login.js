@@ -75,10 +75,9 @@ function Login({ onLogin, activeProfile, login, history }) {
     }
     try {
       if (profile.username === username && profile.password === password) {
-        console.log("right Password");
         history.replace("/feed");
       } else {
-        console.log("wrong Password");
+        alert("wrong password");
       }
     } catch (e) {
       console.log(e);

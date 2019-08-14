@@ -9,11 +9,9 @@ import Card from "../components/Card";
 import GreyButton from "../components/GreyButton";
 
 function Favorite({ cards, history, onBookmark, onBuyClick }) {
-  const output = cards;
-
   const outputArray =
-    output &&
-    output
+    cards &&
+    cards
       .filter(element => element.bookmark === true)
       .map(element => {
         return {
