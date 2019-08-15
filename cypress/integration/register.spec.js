@@ -26,4 +26,11 @@ describe("Register", () => {
       "The password must contain at least seven characters"
     );
   });
+  it("register with username and password", () => {
+    cy.get('[data-cy="register-username"]').type("Trude");
+    cy.get('[data-cy="register-password"]').type("1234567");
+
+    cy.get('[data-cy="submit-button"]').click();
+    cy.location("pathname").should("be", "feed");
+  });
 });

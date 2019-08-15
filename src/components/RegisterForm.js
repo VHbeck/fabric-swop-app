@@ -128,6 +128,7 @@ function RegisterForm({ onCreateProfile, history }) {
           value={newProfile.username}
           onChange={handleChange}
           error={errors.username}
+          data-cy="register-username"
         />
         {errors.username && (
           <StyledError data-cy="error-username">{errors.username}</StyledError>
@@ -169,6 +170,7 @@ function RegisterForm({ onCreateProfile, history }) {
           value={newProfile.password}
           onChange={handleChange}
           error={errors.password}
+          data-cy="register-password"
         />
         {errors.password && (
           <StyledError data-cy="error-password">{errors.password}</StyledError>
