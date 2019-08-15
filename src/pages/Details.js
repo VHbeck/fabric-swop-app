@@ -76,6 +76,7 @@ function Details({ match, cards, onBuyClick, profile }) {
               text="Buy now"
               onClick={() => onBuyClick(card._id)}
               dis={card.dis}
+              data-cy="buy-button"
             />
           </Link>
         </Frame>
