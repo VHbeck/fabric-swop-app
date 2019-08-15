@@ -88,7 +88,8 @@ function Details({ match, cards, onBuyClick, profile }) {
 
 Details.propTypes = {
   cards: PropTypes.array,
-  onBuyClick: PropTypes.func
+  onBuyClick: PropTypes.func,
+  profile: PropTypes.object
 };
 
 export default Details;

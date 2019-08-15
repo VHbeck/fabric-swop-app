@@ -225,7 +225,8 @@ function ArticleForm({ onCreate, history, profile }) {
 }
 
 ArticleForm.propTypes = {
-  onCreate: PropTypes.func
+  onCreate: PropTypes.func,
+  profile: PropTypes.object
 };
 
 export default withRouter(ArticleForm);

@@ -37,11 +37,10 @@ const LoginContainer = styled.div`
   );
 `;
 
-function Login({ onLogin, activeProfile, login, history }) {
+function Login({ onLogin, activeProfile: profile, history }) {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errors, setErrors] = React.useState({});
-  const profile = activeProfile;
 
   function handleUsernameChange(event) {
     const value = event.target.value;
@@ -121,7 +120,6 @@ function Login({ onLogin, activeProfile, login, history }) {
             type="submit"
             text="Login"
             onClick={() => onLogin(username)}
-            login={login}
           />
           <Link to="/register" data-cy="nav-register">
             <GreyButton text="Register" />

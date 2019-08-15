@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import GreyButton from "../components/GreyButton";
@@ -27,5 +28,9 @@ function NotFound({ profile }) {
     </>
   );
 }
+
+NotFound.propTypes = {
+  profile: PropTypes.object
+};
 
 export default NotFound;

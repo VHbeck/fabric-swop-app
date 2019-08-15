@@ -95,7 +95,9 @@ Card.propTypes = {
   bookmark: PropTypes.bool,
   onBookmarkClick: PropTypes.func,
   onDetailsClick: PropTypes.func,
-  onBuyClick: PropTypes.func
+  onBuyClick: PropTypes.func,
+  dis: PropTypes.bool,
+  profile: PropTypes.object
 };
 
 export default Card;

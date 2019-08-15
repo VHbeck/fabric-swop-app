@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const FooterStyled = styled.div`
   background-color: rgba(253, 247, 245, 0.85);
@@ -66,5 +67,9 @@ function Footer({ profile }) {
     </FooterStyled>
   );
 }
+
+Footer.propTypes = {
+  profile: PropTypes.object
+};
 
 export default Footer;

@@ -142,7 +142,8 @@ function Profile({
 Profile.propTypes = {
   activeProfile: PropTypes.object,
   profiles: PropTypes.array,
-  onLogout: PropTypes.func
+  onLogout: PropTypes.func,
+  onPayClick: PropTypes.func
 };
 
 export default withRouter(Profile);

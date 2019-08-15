@@ -24,7 +24,9 @@ function GreyButton({ onClick, text, "data-cy": dataCy, disabled }) {
 
 GreyButton.propTypes = {
   text: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  dataCy: PropTypes.string
 };
 
 export default GreyButton;

@@ -53,7 +53,8 @@ function Feed({ history, cards: output, onBookmark, onBuyClick, profile }) {
 Feed.propTypes = {
   cards: PropTypes.array,
   onDetailsClick: PropTypes.func,
-  onBookmark: PropTypes.func
+  onBookmark: PropTypes.func,
+  profile: PropTypes.object
 };
 
 export default withRouter(Feed);
