@@ -157,7 +157,7 @@ function App() {
                     {...props}
                   />
                 ) : (
-                  <Redirect to="/" />
+                  <Redirect to="/login" />
                 )
               }
             />
@@ -190,7 +190,7 @@ function App() {
                     {...props}
                   />
                 ) : (
-                  <Redirect to="/" />
+                  <Redirect to="/login" />
                 )
               }
             />
@@ -208,7 +208,7 @@ function App() {
                     {...props}
                   />
                 ) : (
-                  <Redirect to="/" />
+                  <Redirect to="/login" />
                 )
               }
             />
@@ -225,7 +225,7 @@ function App() {
                     {...props}
                   />
                 ) : (
-                  <Redirect to="/" />
+                  <Redirect to="/login" />
                 )
               }
             />
@@ -242,7 +242,7 @@ function App() {
                     dis={dis}
                   />
                 ) : (
-                  <Redirect to="/" />
+                  <Redirect to="/login" />
                 )
               }
             />
@@ -259,7 +259,7 @@ function App() {
                     {...props}
                   />
                 ) : (
-                  <Redirect to="/" />
+                  <Redirect to="/login" />
                 )
               }
             />
@@ -268,7 +268,7 @@ function App() {
                 activeProfile.username ? (
                   <NotFound profile={activeProfile} {...props} />
                 ) : (
-                  <Redirect to="/" />
+                  <Redirect to="/login" />
                 )
               }
             />

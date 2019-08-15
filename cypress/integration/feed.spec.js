@@ -1,6 +1,12 @@
 describe("Feed", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/feed");
+    cy.visit("http://localhost:3000/login");
+
+    cy.get('[data-cy="input-username"]').type("Nessa");
+    cy.get('[data-cy="input-password"]').type("1234");
+
+    cy.get('[data-cy="submit-button"]').click();
+    cy.location("pathname").should("be", "feed");
   });
   it("footer navigates to feed page on click", () => {
     cy.get('[data-cy="nav-feed"]').click();

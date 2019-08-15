@@ -1,6 +1,14 @@
 describe("Create-Article", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/create-article");
+    cy.visit("http://localhost:3000/login");
+    cy.get('[data-cy="input-username"]').type("Nessa");
+    cy.get('[data-cy="input-password"]').type("1234");
+
+    cy.get('[data-cy="submit-button"]').click();
+    cy.location("pathname").should("be", "feed");
+
+    cy.get('[data-cy="nav-create-article"]').click();
+    cy.location("pathname").should("be", "create-article");
   });
 
   it("has a complete form", () => {

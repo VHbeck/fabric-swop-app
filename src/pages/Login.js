@@ -95,6 +95,7 @@ function Login({ onLogin, activeProfile, login, history }) {
             value={username}
             onChange={handleUsernameChange}
             error={errors.username}
+            data-cy="input-username"
           />
           {errors.username && (
             <StyledError data-cy="error-username">
@@ -107,6 +108,7 @@ function Login({ onLogin, activeProfile, login, history }) {
             value={password}
             onChange={handlePasswordChange}
             error={errors.password}
+            data-cy="input-password"
           />
           {errors.password && (
             <StyledError data-cy="error-password">
