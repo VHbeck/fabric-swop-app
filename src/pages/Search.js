@@ -92,7 +92,9 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
 }
 Search.propTypes = {
   cards: PropTypes.array,
-  onDetailsClick: PropTypes.func
+  onBuyClick: PropTypes.func,
+  onBookmark: PropTypes.func,
+  profile: PropTypes.object
 };
 
 export default withRouter(Search);

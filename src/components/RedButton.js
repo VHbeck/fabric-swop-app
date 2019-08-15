@@ -24,7 +24,9 @@ function RedButton({ onClick, text, dis, "data-cy": dataCy }) {
 
 RedButton.propTypes = {
   text: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  dataCy: PropTypes.string,
+  dis: PropTypes.bool
 };
 
 export default RedButton;

@@ -76,6 +76,7 @@ function Details({ match, cards, onBuyClick, profile }) {
               text="Buy now"
               onClick={() => onBuyClick(card._id)}
               dis={card.dis}
+              data-cy="buy-button"
             />
           </Link>
         </Frame>
@@ -87,7 +88,8 @@ function Details({ match, cards, onBuyClick, profile }) {
 
 Details.propTypes = {
   cards: PropTypes.array,
-  onBuyClick: PropTypes.func
+  onBuyClick: PropTypes.func,
+  profile: PropTypes.object
 };
 
 export default Details;
