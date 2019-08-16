@@ -77,8 +77,13 @@ const ShoppingImage = styled.img`
 
 const ShoppingContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 function Profile({
@@ -107,7 +112,7 @@ function Profile({
             {out.name}, {out.price} Euro
           </span>
         </ShoppingContainer>
-        <ShoppingContainer>
+        <ButtonContainer>
           <GreyButton
             text="Details"
             onClick={() => onDetailsClick(out._id)}
@@ -118,7 +123,7 @@ function Profile({
             onClick={() => onPayClick(out._id)}
             disabled={out.disable}
           />
-        </ShoppingContainer>
+        </ButtonContainer>
       </PurchaseContainer>
     );
   });
