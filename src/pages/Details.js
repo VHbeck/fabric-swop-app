@@ -16,7 +16,7 @@ const MainImage = styled.img`
 
 const Description = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   margin: 20px;
 `;
 
@@ -34,6 +34,28 @@ const StyledPrice = styled.div`
   font-size: 20px;
   font-weight: bold;
   padding: 15px 15px 0px 0px;
+`;
+
+const VendorImage = styled.img`
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin: 15px 0px 15px 20px;
+`;
+
+const VendorName = styled.span`
+  display: block;
+  padding-top: 25px;
+  padding-bottom: 25px;
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  button {
+    margin: 0px 25px 25px 25px;
+  }
 `;
 
 function Details({ match, cards, onBuyClick, profile }) {
@@ -58,27 +80,28 @@ function Details({ match, cards, onBuyClick, profile }) {
             <BoldText>Width:</BoldText>
             <span>{card.fabricWidth || "no width"}</span>
             <BoldText>Color:</BoldText> <span>{card.fabricColor}</span>
-            <BoldText>Vendor: </BoldText>{" "}
+            <VendorImage src={card.vendorImage} />
             <Link to={`/profile/${card.vendorId}`}>
-              <span>{card.vendorName}</span>
+              <VendorName>{card.vendorName}</VendorName>
             </Link>
             <StyledPrice>
-              <span>{card.price} Euro</span>
+              <span> {card.price} Euro</span>
             </StyledPrice>
             <span />
           </Description>
-
-          <Link to="/feed">
-            <GreyButton text="Back" />
-          </Link>
-          <Link to={`/profile/${profile._id}`} data-cy="nav-profile">
-            <RedButton
-              text="Buy now"
-              onClick={() => onBuyClick(card._id)}
-              dis={card.dis}
-              data-cy="buy-button"
-            />
-          </Link>
+          <TextContainer>
+            <Link to="/feed">
+              <GreyButton text="Back" />
+            </Link>
+            <Link to={`/profile/${profile._id}`} data-cy="nav-profile">
+              <RedButton
+                text="Buy now"
+                onClick={() => onBuyClick(card._id)}
+                dis={card.dis}
+                data-cy="buy-button"
+              />
+            </Link>
+          </TextContainer>
         </Frame>
       </Container>
       <Footer profile={profile} />
