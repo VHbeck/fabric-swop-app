@@ -22,7 +22,7 @@ const Description = styled.div`
 
 const Frame = styled.div`
   background: white;
-  margin: 20px 20px 90px 20px;
+  margin: 20px 20px 0px 20px;
 `;
 
 const BoldText = styled.span`
@@ -42,13 +42,13 @@ const VendorImage = styled.img`
   width: 40px;
   height: 40px;
   object-fit: cover;
-  margin: 15px 0px 15px 20px;
+  margin: 15px 0px 5px 20px;
 `;
 
 const VendorName = styled.span`
   display: block;
   padding-top: 25px;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
 `;
 
 const TextContainer = styled.div`
@@ -77,9 +77,9 @@ function Details({ match, cards, onBuyClick, profile }) {
           <Description>
             <BoldText>Type:</BoldText> <span>{card.type || "no type"}</span>
             <BoldText>Length:</BoldText>
-            <span>{card.fabricLength || "no length"}</span>
+            <span>{`${card.fabricLength} m` || "no length"}</span>
             <BoldText>Width:</BoldText>
-            <span>{card.fabricWidth || "no width"}</span>
+            <span>{`${card.fabricWidth} m` || "no width"}</span>
             <BoldText>Color:</BoldText> <span>{card.fabricColor}</span>
             <VendorImage src={card.vendorImage} />
             <Link to={`/profile/${card.vendorId}`}>

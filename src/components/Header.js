@@ -11,7 +11,7 @@ const HeaderStyled = styled.div`
   flex-grow: 0;
   flex-shrink: 0;
   width: 100vw;
-  height: 70px;
+  height: 80px;
   margin-top: 15px;
 `;
 
