@@ -97,7 +97,8 @@ function ArticleForm({ onCreate, history, profile }) {
       bookmark: false,
       dis: false,
       vendorName: profile.username,
-      vendorId: profile._id
+      vendorId: profile._id,
+      vendorImage: profile.imageSource
     };
     onCreate(item);
     history.replace(`/details/${item._id}`);
