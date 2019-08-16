@@ -9,7 +9,6 @@ const Number = styled.div`
   background-color: #131426;
   border-radius: 50%;
   color: white;
-  margin-top: 10px;
 `;
 
 export default Number;

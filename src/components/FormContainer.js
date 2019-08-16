@@ -6,13 +6,13 @@ export const FormContainer = styled.div`
   margin: 0px 15px 30px 15px;
   input,
   select {
-    font-size: 18px;
+    font-size: 16px;
     width: 95%;
     border: grey solid 1px;
     padding: 5px 5px 5px 10px;
     border-radius: 15px;
     background-color: white;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   label {
     font-size: 18px;
@@ -37,7 +37,7 @@ export const StepContainer = styled.div`
   align-items: center;
   margin-top: 40px;
   input {
-    font-size: 18px;
+    font-size: 16px;
     width: 90%;
     border: grey solid 1px;
     padding: 5px;

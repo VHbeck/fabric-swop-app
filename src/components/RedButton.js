@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 
 const StyledButton = styled.button`
   height: 35px;
-  width: 133px;
+  width: 120px;
   background-color: #ff979a;
   border-radius: 15px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Nunito", sans-serif;
   margin: 10px;
   border: none;

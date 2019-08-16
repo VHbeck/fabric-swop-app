@@ -8,7 +8,7 @@ import ArticleForm from "../components/ArticleForm";
 function CreateArticle({ onCreate, profile }) {
   return (
     <>
-      <Header headline="Create" />
+      <Header headline="Create Article" />
       <Container>
         <ArticleForm onCreate={onCreate} profile={profile} />
       </Container>

@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const FooterStyled = styled.div`
   background-color: rgba(253, 247, 245, 0.85);
   width: 100vw;
-  height: 60px;
+  height: 50px;
   position: fixed;
   bottom: 0;
   display: grid;
@@ -14,7 +14,7 @@ const FooterStyled = styled.div`
 `;
 
 const Icons = styled.div`
-  font-size: 30px;
+  font-size: 26px;
   align-self: center;
   text-align: center;
   color: #131426;
@@ -31,7 +31,7 @@ const Icons = styled.div`
   .fa-search {
     border-radius: 50%;
     background: white;
-    padding: 15px;
+    padding: 10px;
   }
 `;
 
