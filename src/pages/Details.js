@@ -17,7 +17,7 @@ const MainImage = styled.img`
 const Description = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
-  margin: 20px;
+  margin: 20px 20px 0px 20px;
 `;
 
 const Frame = styled.div`
@@ -33,7 +33,8 @@ const StyledPrice = styled.div`
   color: #ff979a;
   font-size: 20px;
   font-weight: bold;
-  padding: 15px 15px 0px 0px;
+  padding: 0px 40px 20px 0px;
+  text-align: right;
 `;
 
 const VendorImage = styled.img`
@@ -84,11 +85,10 @@ function Details({ match, cards, onBuyClick, profile }) {
             <Link to={`/profile/${card.vendorId}`}>
               <VendorName>{card.vendorName}</VendorName>
             </Link>
-            <StyledPrice>
-              <span> {card.price} Euro</span>
-            </StyledPrice>
-            <span />
           </Description>
+          <StyledPrice>
+            <span> {card.price} Euro</span>
+          </StyledPrice>
           <TextContainer>
             <Link to="/feed">
               <GreyButton text="Back" />
