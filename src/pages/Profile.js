@@ -103,10 +103,7 @@ function Profile({
       <Header headline={profile.username} />
       <ProfileContainer>
         <StyledImage
-          src={
-            profile.imageSource ||
-            "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg"
-          }
+          src={profile.imageSource || "../../images/default.jpg"}
           alt="User Image"
         />
         <Description>

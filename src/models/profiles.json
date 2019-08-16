@@ -7,7 +7,7 @@
     "lastName": "im Glück",
     "address": "Musterstraße 1A, Hamburg",
     "email": "test@test.de",
-    "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565546863/three-toed-sloth_bfhmx6.jpg",
+    "imageSource": "../../images/hansi.jpg",
     "purchases": []
   },
   {
@@ -18,7 +18,7 @@
     "lastName": "Harbeck",
     "address": "Gasstrasse 6A, Hamburg",
     "email": "nessah@bla.de",
-    "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565176961/vanessa-harbeck-foto.1024x1024_lp4btu.jpg",
+    "imageSource": "../../images/nessa.jpg",
     "purchases": []
   },
   {
@@ -29,7 +29,7 @@
     "lastName": "Mueller",
     "address": "Strasse 1A, Buxtehude",
     "email": "greta@bla.de",
-    "imageSource": "https://res.cloudinary.com/fab-swop/image/upload/v1565188049/lou_sxurur.jpg",
+    "imageSource": "../../images/greta.jpg",
     "purchases": []
   }
 ]

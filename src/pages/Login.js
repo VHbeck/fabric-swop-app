@@ -9,7 +9,7 @@ import { StyledError } from "../components/FormContainer";
 
 const StyledInput = styled.input`
   width: 70%;
-  font-size: 18px;
+  font-size: 16px;
   align-self: center;
   height: 25px;
   border: grey solid 1px;

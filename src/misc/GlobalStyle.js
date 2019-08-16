@@ -17,7 +17,7 @@ background: linear-gradient(0deg, rgba(253,247,245,1) 76%, rgba(255,224,199,1) 8
    display: flex;
    min-height: 100vh;
  flex-direction: column;
- font-size: 18px;
+ font-size: 16px;
 }
 `;
 
