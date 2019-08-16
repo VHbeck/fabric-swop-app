@@ -60,6 +60,27 @@ const Logout = styled.span`
   align-self: center;
 `;
 
+const ShoppingIcon = styled.div`
+  font-size: 20px;
+  align-self: center;
+  text-align: center;
+  color: #131426;
+  margin-top: 20px;
+`;
+
+const ShoppingImage = styled.img`
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 20px;
+`;
+
+const ShoppingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 function Profile({
   match,
   onLogout,
@@ -79,21 +100,25 @@ function Profile({
     const date = new Date(out.purchaseDate);
     return (
       <PurchaseContainer key={out._id}>
-        <p>
-          {date.getDate()}.{date.getMonth() + 1}.{date.getFullYear()}:{" "}
-          {out.name}, {out.price} Euro
-        </p>
-        <GreyButton
-          text="Details"
-          onClick={() => onDetailsClick(out._id)}
-          disabled={out.disable}
-        />
-        <GreyButton
-          text="Pay now"
-          onClick={() => onPayClick(out._id)}
-          disabled={out.disable}
-        />
-        <br />
+        <ShoppingContainer>
+          <ShoppingImage src={out.source} />
+          <span>
+            {date.getDate()}.{date.getMonth() + 1}.{date.getFullYear()}:{" "}
+            {out.name}, {out.price} Euro
+          </span>
+        </ShoppingContainer>
+        <ShoppingContainer>
+          <GreyButton
+            text="Details"
+            onClick={() => onDetailsClick(out._id)}
+            disabled={out.disable}
+          />
+          <GreyButton
+            text="Pay now"
+            onClick={() => onPayClick(out._id)}
+            disabled={out.disable}
+          />
+        </ShoppingContainer>
       </PurchaseContainer>
     );
   });
@@ -116,7 +141,10 @@ function Profile({
         </Description>
         {profile.username === activeProfile.username ? (
           <>
-            <h2>Your Purchases</h2>
+            <ShoppingIcon>
+              <i class="fas fa-shopping-cart" />
+              <BoldText> Shopping Cart</BoldText>
+            </ShoppingIcon>
             {purchaseList}
             {purchaseList.length === 0 && (
               <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
