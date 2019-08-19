@@ -9,7 +9,7 @@ const profileSchema = new mongoose.Schema({
   address: String,
   email: String,
   imageSource: String,
-  purchases: Array
+  purchases: [Object]
 });
 
 module.exports = mongoose.model("Profile", profileSchema);

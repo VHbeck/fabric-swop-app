@@ -55,7 +55,7 @@ function App() {
       { ...card, bookmark: !card.bookmark },
       ...cards.slice(index + 1)
     ]);
-    patchCard({ bookmark: !card.bookmarked }, card._id);
+    patchCard({ bookmark: !card.bookmark }, card._id);
   }
 
   function handleCreate(card) {
@@ -66,8 +66,6 @@ function App() {
     postProfile(profile).then(result => setProfiles([result, ...profiles]));
     setActiveProfile(profile);
   }
-  console.log(profiles);
-  console.log(cards);
 
   function handleBuyClick(id) {
     const index = cards.findIndex(card => card._id === id);
