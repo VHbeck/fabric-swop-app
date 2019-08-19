@@ -147,7 +147,7 @@ function Profile({
         {profile.username === activeProfile.username ? (
           <>
             <ShoppingIcon>
-              <i class="fas fa-shopping-cart" />
+              <i className="fas fa-shopping-cart" />
               <BoldText> Shopping Cart</BoldText>
             </ShoppingIcon>
             {purchaseList}
