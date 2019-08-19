@@ -4,9 +4,15 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "babel-plugin-styled-components": "1.10.6",
+    "@craco/craco": "5.2.4",
     "cypress": "^3.4.1",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
+    "dotenv": "8.0.0",
+    "express": "4.17.1",
+    "mongoose": "5.6.6",
+    "nodemon": "1.19.1",
     "fuse.js": "^3.4.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -15,6 +21,10 @@
     "styled-components": "^4.3.2",
     "uuid": "^3.3.2"
   },
+  "proxy": "http://localhost:4001",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -22,10 +32,8 @@
     "eject": "react-scripts eject",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
-    "cypress:open": "npx cypress open"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "cypress:open": "npx cypress open",
+    "server": "nodemon server.js"
   },
   "browserslist": {
     "production": [

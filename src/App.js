@@ -18,6 +18,7 @@ import Favorite from "./pages/Favorite";
 import Details from "./pages/Details";
 import ScrollToTop from "./utils/ScrollToTop";
 import { getFromStorage, setToStorage } from "./utils/Storage";
+import { getCards, postCard, patchCard } from "./services";
 
 const dummyCards = require("./models/items.json");
 const dummyProfiles = require("./models/profiles.json");
@@ -56,7 +57,7 @@ function App() {
   }
 
   function handleCreate(card) {
-    setCards([card, ...cards]);
+    postCard(card).then(result => setCards([result, ...cards]));
   }
 
   function handleCreateProfile(profile) {
@@ -263,15 +264,6 @@ function App() {
                 )
               }
             />
-            <Route
-              render={props =>
-                activeProfile.username ? (
-                  <NotFound profile={activeProfile} {...props} />
-                ) : (
-                  <Redirect to="/login" />
-                )
-              }
-            />
           </Switch>
         </ScrollToTop>
       </Router>
@@ -280,3 +272,15 @@ function App() {
 }
 
 export default App;
+
+/*<Route
+              render={props =>
+                activeProfile.username ? (
+                  <NotFound profile={activeProfile} {...props} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+            
+            */
