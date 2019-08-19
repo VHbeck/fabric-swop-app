@@ -20,13 +20,10 @@ import ScrollToTop from "./utils/ScrollToTop";
 import { getFromStorage, setToStorage } from "./utils/Storage";
 import { getCards, postCard, patchCard } from "./services";
 
-const dummyCards = require("./models/items.json");
 const dummyProfiles = require("./models/profiles.json");
 
 function App() {
-  const [cards, setCards] = React.useState(
-    getFromStorage("Card") || dummyCards
-  );
+  const [cards, setCards] = React.useState([]);
   const [profiles, setProfiles] = React.useState(
     getFromStorage("Profile") || dummyProfiles
   );
@@ -35,8 +32,8 @@ function App() {
   );
 
   React.useEffect(() => {
-    setToStorage("Card", cards);
-  }, [cards]);
+    getCards().then(result => setCards(result));
+  }, []);
 
   React.useEffect(() => {
     setToStorage("Profile", profiles);
@@ -54,6 +51,7 @@ function App() {
       { ...card, bookmark: !card.bookmark },
       ...cards.slice(index + 1)
     ]);
+    patchCard({ bookmark: !card.bookmarked }, card._id);
   }
 
   function handleCreate(card) {
@@ -264,16 +262,7 @@ function App() {
                 )
               }
             />
-          </Switch>
-        </ScrollToTop>
-      </Router>
-    </>
-  );
-}
-
-export default App;
-
-/*<Route
+            <Route
               render={props =>
                 activeProfile.username ? (
                   <NotFound profile={activeProfile} {...props} />
@@ -282,5 +271,11 @@ export default App;
                 )
               }
             />
-            
-            */
+          </Switch>
+        </ScrollToTop>
+      </Router>
+    </>
+  );
+}
+
+export default App;
