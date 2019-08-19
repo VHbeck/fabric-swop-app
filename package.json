@@ -26,7 +26,7 @@
     "extends": "react-app"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "run-p react server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
