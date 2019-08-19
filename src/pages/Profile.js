@@ -106,7 +106,7 @@ function Profile({
     return (
       <PurchaseContainer key={out._id}>
         <ShoppingContainer>
-          <ShoppingImage src={out.source} />
+          <ShoppingImage src={out.source || "../../images/default-img.png"} />
           <span>
             {date.getDate()}.{date.getMonth() + 1}.{date.getFullYear()}:{" "}
             {out.name}, {out.price} Euro

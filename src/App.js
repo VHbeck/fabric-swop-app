@@ -22,6 +22,7 @@ import {
   getCards,
   postCard,
   patchCard,
+  deleteCard,
   getProfiles,
   postProfile,
   patchProfile
@@ -122,8 +123,10 @@ function App() {
   }
 
   function handlePayClick(id) {
-    const index = cards.findIndex(card => card._id === id);
-    setCards([...cards.splice(0, index), ...cards.splice(index + 1)]);
+    deleteCard(id).then(result => {
+      const index = cards.findIndex(card => card._id === id);
+      setCards([...cards.splice(0, index), ...cards.splice(index + 1)]);
+    });
 
     alert("You payed your purchase!");
     const profileIndex = profiles.findIndex(

@@ -21,6 +21,13 @@ module.exports = function(app) {
       .catch(err => res.json(err));
   });
 
+  app.delete("/api/cards/:id", (req, res) => {
+    const { id } = req.params;
+    Card.findByIdAndRemove(id)
+      .then(card => res.json({ success: true }))
+      .catch(err => res.json(err));
+  });
+
   app.get("/api/profiles", (req, res) => {
     Profile.find()
       .then(cards => res.json(cards))
