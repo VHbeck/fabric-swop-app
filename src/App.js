@@ -18,28 +18,30 @@ import Favorite from "./pages/Favorite";
 import Details from "./pages/Details";
 import ScrollToTop from "./utils/ScrollToTop";
 import { getFromStorage, setToStorage } from "./utils/Storage";
-
-const dummyCards = require("./models/items.json");
-const dummyProfiles = require("./models/profiles.json");
+import {
+  getCards,
+  postCard,
+  patchCard,
+  deleteCard,
+  getProfiles,
+  postProfile,
+  patchProfile
+} from "./services";
 
 function App() {
-  const [cards, setCards] = React.useState(
-    getFromStorage("Card") || dummyCards
-  );
-  const [profiles, setProfiles] = React.useState(
-    getFromStorage("Profile") || dummyProfiles
-  );
+  const [cards, setCards] = React.useState([]);
+  const [profiles, setProfiles] = React.useState([]);
   const [activeProfile, setActiveProfile] = React.useState(
     getFromStorage("ActiveProfile") || {}
   );
 
   React.useEffect(() => {
-    setToStorage("Card", cards);
-  }, [cards]);
+    getCards().then(result => setCards(result));
+  }, []);
 
   React.useEffect(() => {
-    setToStorage("Profile", profiles);
-  }, [profiles]);
+    getProfiles().then(result => setProfiles(result));
+  }, []);
 
   React.useEffect(() => {
     setToStorage("ActiveProfile", activeProfile);
@@ -53,14 +55,15 @@ function App() {
       { ...card, bookmark: !card.bookmark },
       ...cards.slice(index + 1)
     ]);
+    patchCard({ bookmark: !card.bookmark }, card._id);
   }
 
   function handleCreate(card) {
-    setCards([card, ...cards]);
+    postCard(card).then(result => setCards([result, ...cards]));
   }
 
   function handleCreateProfile(profile) {
-    setProfiles([profile, ...profiles]);
+    postProfile(profile).then(result => setProfiles([result, ...profiles]));
     setActiveProfile(profile);
   }
 
@@ -88,6 +91,15 @@ function App() {
       newProfile,
       ...profiles.slice(userIndex + 1)
     ]);
+    patchProfile(
+      {
+        purchases: [
+          { ...purchase, purchaseDate: new Date().toISOString() },
+          ...userPurchases
+        ]
+      },
+      user._id
+    );
     setActiveProfile(newProfile);
 
     setCards([
@@ -95,6 +107,7 @@ function App() {
       { ...purchase, dis: !dis },
       ...cards.slice(index + 1)
     ]);
+    patchCard({ dis: !dis }, purchase._id);
   }
 
   function handleLoginClick(username) {
@@ -108,8 +121,11 @@ function App() {
   }
 
   function handlePayClick(id) {
-    const index = cards.findIndex(card => card._id === id);
-    setCards([...cards.splice(0, index), ...cards.splice(index + 1)]);
+    deleteCard(id).then(result => {
+      const index = cards.findIndex(card => card._id === id);
+      setCards([...cards.splice(0, index), ...cards.splice(index + 1)]);
+    });
+
     alert("You payed your purchase!");
     const profileIndex = profiles.findIndex(
       profile => profile._id === activeProfile._id
@@ -132,6 +148,7 @@ function App() {
       updatedProfile,
       ...profiles.slice(profileIndex + 1)
     ]);
+    patchProfile({ ...profile, purchases: disabledPurchase }, profile._id);
   }
 
   let dis = false;

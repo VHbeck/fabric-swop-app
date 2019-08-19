@@ -97,16 +97,21 @@ function Profile({
   const profile =
     profiles && profiles.find(profile => profile._id === match.params.id);
 
+  if (!profile) {
+    return null;
+  }
+
   function onDetailsClick(id) {
     history.replace(`/details/${id}`);
   }
+  console.log(profile.purchases);
 
   const purchaseList = profile.purchases.map(out => {
     const date = new Date(out.purchaseDate);
     return (
       <PurchaseContainer key={out._id}>
         <ShoppingContainer>
-          <ShoppingImage src={out.source} />
+          <ShoppingImage src={out.source || "../../images/default-img."} />
           <span>
             {date.getDate()}.{date.getMonth() + 1}.{date.getFullYear()}:{" "}
             {out.name}, {out.price} Euro
