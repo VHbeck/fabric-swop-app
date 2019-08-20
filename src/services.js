@@ -36,12 +36,12 @@ export function patchProfile(data, id) {
   return fetchProfile("PATCH", data, id);
 }
 
-function fetchProfile(method, data, id) {
+function fetchProfile(method, data, id = "") {
   return fetch("/api/profiles/" + id, {
     method,
     headers: {
       "Content-Type": "application/json"
     },
-    body: data ? JSON.stringify(data) : undefined
+    body: JSON.stringify(data)
   }).then(res => res.json());
 }
