@@ -81,7 +81,7 @@ function Details({ match, cards, onBuyClick, profile }) {
             <BoldText>Width:</BoldText>
             <span>{`${card.fabricWidth} m` || "no width"}</span>
             <BoldText>Color:</BoldText> <span>{card.fabricColor}</span>
-            <VendorImage src={card.vendorImage} />
+            <VendorImage src={card.vendorImage || "../../images/default.jpg"} />
             <Link to={`/profile/${card.vendorId}`}>
               <VendorName>{card.vendorName}</VendorName>
             </Link>
