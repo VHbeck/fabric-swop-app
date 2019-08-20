@@ -52,6 +52,23 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
     history.replace(`/details/${id}`);
   }
 
+  const mappedResults = result.map((out, index) => (
+    <Card
+      onBookmarkClick={() => onBookmark(out._id)}
+      onDetailsClick={() => onDetailsClick(out._id)}
+      onBuyClick={() => onBuyClick(out._id)}
+      key={out.source + index}
+      name={out.name}
+      length={out.fabricLength}
+      price={out.price || "no price"}
+      source={out.source || "../../images/default-img.png"}
+      color={out.color || "no color"}
+      bookmark={out.bookmark}
+      dis={out.dis}
+      profile={profile}
+    />
+  ));
+
   return (
     <>
       <Header headline="Search" />
@@ -69,22 +86,7 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
             Nothing found. Search for something else.
           </StyledParagraph>
         )}
-        {result.map((out, index) => (
-          <Card
-            onBookmarkClick={() => onBookmark(out._id)}
-            onDetailsClick={() => onDetailsClick(out._id)}
-            onBuyClick={() => onBuyClick(out._id)}
-            key={out.source + index}
-            name={out.name}
-            length={out.fabricLength}
-            price={out.price || "no price"}
-            source={out.source || "../../images/default-img.png"}
-            color={out.color || "no color"}
-            bookmark={out.bookmark}
-            dis={out.dis}
-            profile={profile}
-          />
-        ))}
+        {mappedResults}
       </Container>
       <Footer profile={profile} />
     </>
