@@ -19,7 +19,9 @@ const cardSchema = new mongoose.Schema({
   },
   vendorId: String,
   vendorName: String,
-  vendorImage: String
+  vendorImage: String,
+  buyer: String,
+  buyerAddress: String
 });
 
 module.exports = mongoose.model("Card", cardSchema);
