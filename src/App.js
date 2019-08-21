@@ -104,10 +104,22 @@ function App() {
 
     setCards([
       ...cards.slice(0, index),
-      { ...purchase, dis: !dis },
+      {
+        ...purchase,
+        dis: !dis,
+        buyer: activeProfile.username,
+        buyerAddress: activeProfile.address
+      },
       ...cards.slice(index + 1)
     ]);
-    patchCard({ dis: !dis }, purchase._id);
+    patchCard(
+      {
+        dis: !dis,
+        buyer: activeProfile.username,
+        buyerAddress: activeProfile.address
+      },
+      purchase._id
+    );
   }
 
   function handleLoginClick(username) {
@@ -239,6 +251,7 @@ function App() {
                     onLogout={handleLogoutClick}
                     onPayClick={handlePayClick}
                     activeProfile={activeProfile}
+                    cards={cards}
                     {...props}
                   />
                 ) : (

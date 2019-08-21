@@ -92,7 +92,8 @@ function Profile({
   onPayClick,
   profiles,
   history,
-  activeProfile
+  activeProfile,
+  cards
 }) {
   const profile =
     profiles && profiles.find(profile => profile._id === match.params.id);
@@ -132,6 +133,25 @@ function Profile({
     );
   });
 
+  const notification = cards.map(card =>
+    card.vendorName === activeProfile.username && card.dis === true ? (
+      <PurchaseContainer key={card._id + card.name}>
+        <ShoppingContainer>
+          <ShoppingImage src={card.source || "../../images/default.jpg"} />
+          <span>
+            You sold <BoldText>{card.name}</BoldText> for{" "}
+            <BoldText>{card.price} Euro</BoldText> to{" "}
+            <BoldText>{card.buyer}</BoldText>.<br /> Please send the fabric to
+            following address:
+            <br />
+            <BoldText>{card.buyerAddress}</BoldText>
+          </span>
+        </ShoppingContainer>
+      </PurchaseContainer>
+    ) : null
+  );
+
+  console.log(notification);
   return (
     <>
       <Header headline={profile.username} />
@@ -157,6 +177,14 @@ function Profile({
             {purchaseList}
             {purchaseList.length === 0 && (
               <StyledParagraph>You have nothing purchased yet.</StyledParagraph>
+            )}
+            <ShoppingIcon>
+              <i className="fas fa-bell" />
+              <BoldText> Notifications</BoldText>
+            </ShoppingIcon>
+            {notification}
+            {notification[0] === null && (
+              <StyledParagraph>You have no notifications.</StyledParagraph>
             )}
             <Logout>
               <Link to="login" data-cy="nav-logout">
