@@ -124,8 +124,7 @@ function App() {
 
   function handleLoginClick(username) {
     const index = profiles.findIndex(profile => profile.username === username);
-    const profile = profiles[index];
-    setActiveProfile(profile);
+    setActiveProfile(profiles[index]);
   }
 
   function handleLogoutClick() {

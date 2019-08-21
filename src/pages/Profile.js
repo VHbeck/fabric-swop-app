@@ -45,7 +45,7 @@ const Description = styled.div`
 
 const PurchaseContainer = styled.div`
   background: white;
-  margin: 10px 20px 20px 20px;
+  margin: 10px 20px 10px 20px;
   padding: 20px;
   p {
     margin: 0px;
@@ -148,10 +148,11 @@ function Profile({
           </span>
         </ShoppingContainer>
       </PurchaseContainer>
-    ) : null
+    ) : (
+      ""
+    )
   );
 
-  console.log(notification);
   return (
     <>
       <Header headline={profile.username} />
@@ -183,8 +184,8 @@ function Profile({
               <BoldText> Notifications</BoldText>
             </ShoppingIcon>
             {notification}
-            {notification[0] === null && (
-              <StyledParagraph>You have no notifications.</StyledParagraph>
+            {notification[0] === "" && (
+              <StyledParagraph>You have no more notifications.</StyledParagraph>
             )}
             <Logout>
               <Link to="login" data-cy="nav-logout">
