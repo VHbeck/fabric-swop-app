@@ -10,7 +10,7 @@ import {
   StyledUpload,
   StepContainer,
   StyledError
-} from "./FormContainer";
+} from "./FormStyles";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;

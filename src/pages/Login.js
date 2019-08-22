@@ -5,7 +5,7 @@ import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
 import Header from "../components/Header";
-import { StyledError } from "../components/FormContainer";
+import { StyledError } from "../components/FormStyles";
 
 const StyledInput = styled.input`
   width: 70%;
@@ -78,8 +78,8 @@ function Login({ onLogin, activeProfile: profile, history }) {
       } else {
         alert("wrong password");
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   }
 

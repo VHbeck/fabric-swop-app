@@ -18,7 +18,7 @@ function CreateArticle({ onCreate, profile }) {
 }
 
 CreateArticle.propTypes = {
-  cards: PropTypes.array,
+  profile: PropTypes.object,
   onCreate: PropTypes.func
 };
 

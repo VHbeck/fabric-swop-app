@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import RedButton from "./RedButton";
 import GreyButton from "./GreyButton";
-import { StyledUpload, FormContainer, StyledError } from "./FormContainer";
+import { StyledUpload, FormContainer, StyledError } from "./FormStyles";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;

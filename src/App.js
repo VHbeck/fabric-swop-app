@@ -170,10 +170,8 @@ function App() {
       <Router>
         <ScrollToTop>
           <Switch>
-            <Route path="/" exact render={props => <Start {...props} />} />
             <Route
               path="/feed"
-              exact
               render={props =>
                 activeProfile.username ? (
                   <Feed
@@ -191,7 +189,6 @@ function App() {
             />
             <Route
               path="/login"
-              exact
               render={props => (
                 <Login
                   onLogin={handleLoginClick}
@@ -202,14 +199,12 @@ function App() {
             />
             <Route
               path="/register"
-              exact
               render={props => (
                 <Register onCreateProfile={handleCreateProfile} {...props} />
               )}
             />
             <Route
               path="/create-article"
-              exact
               render={props =>
                 activeProfile.username ? (
                   <CreateArticle
@@ -224,7 +219,6 @@ function App() {
             />
             <Route
               path="/search"
-              exact
               render={props =>
                 activeProfile.username ? (
                   <Search
@@ -242,7 +236,6 @@ function App() {
             />
             <Route
               path="/profile/:id"
-              exact
               render={props =>
                 activeProfile.username ? (
                   <Profile
@@ -260,7 +253,6 @@ function App() {
             />
             <Route
               path="/favorite"
-              exact
               render={props =>
                 activeProfile.username ? (
                   <Favorite
@@ -269,6 +261,7 @@ function App() {
                     onBuyClick={handleBuyClick}
                     profile={activeProfile}
                     dis={dis}
+                    {...props}
                   />
                 ) : (
                   <Redirect to="/login" />
@@ -277,7 +270,6 @@ function App() {
             />
             <Route
               path="/details/:id"
-              exact
               render={props =>
                 activeProfile.username ? (
                   <Details
@@ -292,6 +284,7 @@ function App() {
                 )
               }
             />
+            <Route path="/" component={Start} />
             <Route
               render={props =>
                 activeProfile.username ? (
