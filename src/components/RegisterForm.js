@@ -176,7 +176,7 @@ function RegisterForm({ onCreateProfile, history }) {
         {errors.password && (
           <StyledError data-cy="error-password">{errors.password}</StyledError>
         )}
-        <RedButton text="Register now" type="submit" data-cy="submit-button" />
+        <RedButton text="Register" type="submit" data-cy="submit-button" />
       </FormContainer>
       <ButtonContainer>
         <Link to="/" data-cy="nav-start">

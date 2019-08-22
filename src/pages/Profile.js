@@ -4,8 +4,7 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import GreyButton from "../components/GreyButton";
-import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const StyledParagraph = styled.p`
   text-align: center;
@@ -103,7 +102,11 @@ function Profile({
   }
 
   function onDetailsClick(id) {
-    history.replace(`/details/${id}`);
+    history.push(`/details/${id}`);
+  }
+
+  function handleBackClick() {
+    history.goBack();
   }
 
   const purchaseList = profile.purchases.map(out => {
@@ -169,6 +172,11 @@ function Profile({
           <BoldText>Address:</BoldText>
           <span>{profile.address || "no address"}</span>
         </Description>
+        {profile.username !== activeProfile.username ? (
+          <GreyButton onClick={handleBackClick} text="Back" />
+        ) : (
+          ""
+        )}
         {profile.username === activeProfile.username ? (
           <>
             <ShoppingIcon>

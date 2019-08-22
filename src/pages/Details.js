@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import GreyButton from "../components/GreyButton";
 import RedButton from "../components/RedButton";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const MainImage = styled.img`
   width: 100%;
@@ -59,10 +59,13 @@ const TextContainer = styled.div`
   }
 `;
 
-function Details({ match, cards, onBuyClick, profile }) {
+function Details({ match, cards, onBuyClick, profile, history }) {
   const card = cards && cards.find(card => card._id === match.params.id);
   if (!card) {
     return null;
+  }
+  function onBackClick() {
+    history.goBack();
   }
 
   return (
@@ -90,9 +93,8 @@ function Details({ match, cards, onBuyClick, profile }) {
             <span> {card.price} Euro</span>
           </StyledPrice>
           <TextContainer>
-            <Link to="/feed">
-              <GreyButton text="Back" />
-            </Link>
+            <GreyButton text="Back" onClick={onBackClick} />
+
             <Link to={`/profile/${profile._id}`} data-cy="nav-profile">
               <RedButton
                 text="Buy now"
@@ -115,4 +117,4 @@ Details.propTypes = {
   profile: PropTypes.object
 };
 
-export default Details;
+export default withRouter(Details);

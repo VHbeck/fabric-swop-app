@@ -22,7 +22,7 @@ function Feed({ history, cards: output, onBookmark, onBuyClick, profile }) {
     });
 
   function onDetailsClick(id) {
-    history.replace(`/details/${id}`);
+    history.push(`/details/${id}`);
   }
 
   const content = outputArray.map((out, index) => (
