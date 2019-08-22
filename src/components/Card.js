@@ -51,6 +51,7 @@ function Card({
   name,
   source,
   length,
+  width,
   price,
   onDetailsClick,
   onBuyClick,
@@ -64,7 +65,9 @@ function Card({
       <CardImage src={source} alt={name} />
       <CardTitle>{name}</CardTitle>
       <TextContainer>
-        <CardLengthText>Length: {length} m</CardLengthText>
+        <CardLengthText>
+          Size: {length} x {width} m
+        </CardLengthText>
         <CardPrice>{price} Euro</CardPrice>
       </TextContainer>
       <TextContainer>
@@ -90,6 +93,7 @@ Card.propTypes = {
   source: PropTypes.string,
   name: PropTypes.string,
   length: PropTypes.string,
+  width: PropTypes.string,
   price: PropTypes.string,
   bookmark: PropTypes.bool,
   onBookmarkClick: PropTypes.func,

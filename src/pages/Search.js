@@ -60,6 +60,7 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
       key={out.source + index}
       name={out.name}
       length={out.fabricLength}
+      width={out.fabricWidth}
       price={out.price || "no price"}
       source={out.source || "../../images/default-img.png"}
       color={out.color || "no color"}

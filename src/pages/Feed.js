@@ -6,40 +6,29 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 
-function Feed({ history, cards: output, onBookmark, onBuyClick, profile }) {
-  const outputArray =
-    output &&
-    output.map(element => {
-      return {
-        _id: element._id,
-        name: element.name,
-        price: element.price,
-        source: element.source,
-        length: element.fabricLength,
-        bookmark: element.bookmark,
-        dis: element.dis
-      };
-    });
-
+function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
   function onDetailsClick(id) {
     history.push(`/details/${id}`);
   }
 
-  const content = outputArray.map((out, index) => (
-    <Card
-      onDetailsClick={() => onDetailsClick(out._id)}
-      onBookmarkClick={() => onBookmark(out._id)}
-      onBuyClick={() => onBuyClick(out._id)}
-      key={out.name + index}
-      name={out.name}
-      length={out.length}
-      price={out.price}
-      source={out.source || "../../images/default-img.png"}
-      bookmark={out.bookmark}
-      dis={out.dis}
-      profile={profile}
-    />
-  ));
+  const content =
+    cards &&
+    cards.map((card, index) => (
+      <Card
+        onDetailsClick={() => onDetailsClick(card._id)}
+        onBookmarkClick={() => onBookmark(card._id)}
+        onBuyClick={() => onBuyClick(card._id)}
+        key={card.name + index}
+        name={card.name}
+        length={card.fabricLength}
+        width={card.fabricWidth}
+        price={card.price}
+        source={card.source || "../../images/default-img.png"}
+        bookmark={card.bookmark}
+        dis={card.dis}
+        profile={profile}
+      />
+    ));
 
   return (
     <>

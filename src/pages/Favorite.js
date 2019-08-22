@@ -9,21 +9,26 @@ import Card from "../components/Card";
 import { GreyButton } from "../components/Buttons";
 
 function Favorite({ cards, history, onBookmark, onBuyClick, profile }) {
-  const outputArray =
+  const content =
     cards &&
     cards
       .filter(element => element.bookmark === true)
-      .map(element => {
-        return {
-          _id: element._id,
-          name: element.name,
-          price: element.price,
-          source: element.source,
-          length: element.fabricLength,
-          bookmark: element.bookmark,
-          dis: element.dis
-        };
-      });
+      .map((out, index) => (
+        <Card
+          onDetailsClick={() => onDetailsClick(out._id)}
+          onBookmarkClick={() => onBookmark(out._id)}
+          onBuyClick={() => onBuyClick(out._id)}
+          key={out.source + index}
+          name={out.name}
+          length={out.fabricLength}
+          width={out.fabricWidth}
+          price={out.price}
+          source={out.source || "../../images/default-img.png"}
+          bookmark={out.bookmark}
+          dis={out.dis}
+          profile={profile}
+        />
+      ));
   const StyledParagraph = styled.p`
     text-align: center;
   `;
@@ -36,7 +41,7 @@ function Favorite({ cards, history, onBookmark, onBuyClick, profile }) {
     <>
       <Header headline="Favorite" />
       <Container>
-        {outputArray.length === 0 && (
+        {content.length === 0 && (
           <StyledParagraph>
             Go to your feed and add your favorite articles.
             <Link to="/feed" data-cy="nav-favorite-feed">
@@ -44,21 +49,7 @@ function Favorite({ cards, history, onBookmark, onBuyClick, profile }) {
             </Link>
           </StyledParagraph>
         )}
-        {outputArray.map((out, index) => (
-          <Card
-            onDetailsClick={() => onDetailsClick(out._id)}
-            onBookmarkClick={() => onBookmark(out._id)}
-            onBuyClick={() => onBuyClick(out._id)}
-            key={out.source + index}
-            name={out.name}
-            length={out.length}
-            price={out.price}
-            source={out.source || "../../images/default-img.png"}
-            bookmark={out.bookmark}
-            dis={out.dis}
-            profile={profile}
-          />
-        ))}
+        {content}
       </Container>
       <Footer profile={profile} />
     </>
