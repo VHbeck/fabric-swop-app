@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import GreyButton from "../components/GreyButton";
+import { GreyButton } from "../components/Buttons";
 import { Link, withRouter } from "react-router-dom";
 
 const StyledParagraph = styled.p`

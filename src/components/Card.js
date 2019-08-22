@@ -3,8 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Bookmark from "../components/Bookmark";
 import { Link } from "react-router-dom";
-import GreyButton from "./GreyButton";
-import RedButton from "./RedButton";
+import { GreyButton, RedButton } from "./Buttons";
 
 const CardFrame = styled.div`
   margin: 15px 15px 30px 15px;

@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import GreyButton from "../components/GreyButton";
-import RedButton from "../components/RedButton";
+import { GreyButton, RedButton } from "../components/Buttons";
 import { Rotate } from "../utils/Animations";
 import { Background, StartContainer } from "../components/Background";
 

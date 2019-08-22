@@ -4,8 +4,7 @@ import Header from "../components/Header";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import styled from "styled-components";
-import GreyButton from "../components/GreyButton";
-import RedButton from "../components/RedButton";
+import { GreyButton, RedButton } from "../components/Buttons";
 import { Link, withRouter } from "react-router-dom";
 
 const MainImage = styled.img`

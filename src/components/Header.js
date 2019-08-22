@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Headline from "./Headline";
 import PropTypes from "prop-types";
 
 const HeaderStyled = styled.div`
@@ -18,7 +17,7 @@ const HeaderStyled = styled.div`
 function Header({ headline }) {
   return (
     <HeaderStyled data-cy="header-title">
-      <Headline>{headline}</Headline>
+      <h1>{headline}</h1>
     </HeaderStyled>
   );
 }

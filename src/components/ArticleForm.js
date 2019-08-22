@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 import uuid from "uuid/v1";
-import RedButton from "./RedButton";
+import { RedButton } from "./Buttons";
 import Number from "./Number";
 import {
   FormContainer,

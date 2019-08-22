@@ -2,6 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
+h1 {
+  font-size: 28px;
+  font-family: "Nothing You Could Do", cursive;
+}
+
 h2 {
   font-family: 'Nunito', sans-serif;
    color: #131426;

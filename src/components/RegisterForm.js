@@ -5,8 +5,7 @@ import uuid from "uuid/v1";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import RedButton from "./RedButton";
-import GreyButton from "./GreyButton";
+import { RedButton, GreyButton } from "./Buttons";
 import { StyledUpload, FormContainer, StyledError } from "./FormStyles";
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;

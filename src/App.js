@@ -17,7 +17,6 @@ import Profile from "./pages/Profile";
 import Favorite from "./pages/Favorite";
 import Details from "./pages/Details";
 import ScrollToTop from "./utils/ScrollToTop";
-import { getFromStorage, setToStorage } from "./utils/Storage";
 import {
   getCards,
   postCard,
@@ -25,7 +24,9 @@ import {
   deleteCard,
   getProfiles,
   postProfile,
-  patchProfile
+  patchProfile,
+  getFromStorage,
+  setToStorage
 } from "./services";
 
 function App() {

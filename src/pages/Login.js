@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import GreyButton from "../components/GreyButton";
-import RedButton from "../components/RedButton";
+import { GreyButton, RedButton } from "../components/Buttons";
 import Header from "../components/Header";
 import { StyledError } from "../components/FormStyles";
 
