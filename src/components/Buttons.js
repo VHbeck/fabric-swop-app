@@ -27,15 +27,15 @@ const StyledButtonGrey = styled.button`
 `;
 
 const StyledFilterButton = styled.button`
-  height: 35px;
-  width: 150px;
-  background-color: lightgrey;
+  padding: 5px 10px 5px 10px;
+  color: grey;
+  background-color: white;
+  border: grey solid 1px;
   border-radius: 15px;
   font-weight: bold;
   font-size: 16px;
   font-family: "Nunito", sans-serif;
-  margin: 15px;
-  border: none;
+  margin: 10px 20px 10px 20px;
 `;
 
 export function RedButton({ onClick, text, dis, "data-cy": dataCy }) {
