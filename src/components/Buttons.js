@@ -61,7 +61,7 @@ export function GreyButton({ onClick, text, "data-cy": dataCy, disabled }) {
 export function FilterButtonUp({ onClick, text }) {
   return (
     <StyledFilterButton onClick={onClick}>
-      {text} <i class="fas fa-arrow-up" />
+      {text} <i className="fas fa-arrow-up" />
     </StyledFilterButton>
   );
 }
@@ -69,7 +69,7 @@ export function FilterButtonUp({ onClick, text }) {
 export function FilterButtonDown({ onClick, text }) {
   return (
     <StyledFilterButton onClick={onClick}>
-      {text} <i class="fas fa-arrow-down" />
+      {text} <i className="fas fa-arrow-down" />
     </StyledFilterButton>
   );
 }

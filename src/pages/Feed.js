@@ -94,7 +94,7 @@ function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
   return (
     <>
       <Header headline="Feed" />
-      <StyledParagraph onClick={hideSort}>Sort</StyledParagraph>
+      <StyledParagraph onClick={hideSort}>Sort fabrics</StyledParagraph>
       <StyledDivider />
       <ButtonContainer>
         <FilterButtonUp text="Price" onClick={sortPriceAscending} />
