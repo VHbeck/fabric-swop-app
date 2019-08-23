@@ -94,7 +94,7 @@ Card.propTypes = {
   name: PropTypes.string,
   length: PropTypes.string,
   width: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   bookmark: PropTypes.bool,
   onBookmarkClick: PropTypes.func,
   onDetailsClick: PropTypes.func,

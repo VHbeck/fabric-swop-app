@@ -7,7 +7,7 @@ const cardSchema = new mongoose.Schema({
   fabricLength: String,
   fabricWidth: String,
   fabricColor: String,
-  price: String,
+  price: Number,
   source: String,
   bookmark: {
     type: Boolean,

@@ -101,7 +101,7 @@ function ArticleForm({ onCreate, history, profile }) {
       vendorImage: profile.imageSource
     };
     onCreate(item);
-    history.replace(`/details/${item._id}`);
+    history.push(`/details/${item._id}`);
   }
 
   return (

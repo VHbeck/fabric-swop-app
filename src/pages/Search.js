@@ -19,7 +19,7 @@ const StyledInput = styled.input`
   align-self: center;
   height: 25px;
   border: grey solid 1px;
-  padding: 5px;
+  padding: 5px 10px 5px 10px;
   border-radius: 15px;
   margin: 10px 0px 10px 0px;
 `;
@@ -49,26 +49,8 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
   }
 
   function onDetailsClick(id) {
-    history.replace(`/details/${id}`);
+    history.push(`/details/${id}`);
   }
-
-  const mappedResults = result.map((out, index) => (
-    <Card
-      onBookmarkClick={() => onBookmark(out._id)}
-      onDetailsClick={() => onDetailsClick(out._id)}
-      onBuyClick={() => onBuyClick(out._id)}
-      key={out.source + index}
-      name={out.name}
-      length={out.fabricLength}
-      width={out.fabricWidth}
-      price={out.price || "no price"}
-      source={out.source || "../../images/default-img.png"}
-      color={out.color || "no color"}
-      bookmark={out.bookmark}
-      dis={out.dis}
-      profile={profile}
-    />
-  ));
 
   return (
     <>
@@ -81,13 +63,31 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
           placeholder="Search for fabric types, colors, names etc."
         />
       </InputContainer>
+
       <Container>
-        {result.length === 0 && (
+        {result.length === 0 ? (
           <StyledParagraph>
             Nothing found. Search for something else.
           </StyledParagraph>
+        ) : (
+          result.map((out, index) => (
+            <Card
+              onBookmarkClick={() => onBookmark(out._id)}
+              onDetailsClick={() => onDetailsClick(out._id)}
+              onBuyClick={() => onBuyClick(out._id)}
+              key={out.source + index}
+              name={out.name}
+              length={out.fabricLength}
+              width={out.fabricWidth}
+              price={out.price || "no price"}
+              source={out.source || "../../images/default-img.png"}
+              color={out.color || "no color"}
+              bookmark={out.bookmark}
+              dis={out.dis}
+              profile={profile}
+            />
+          ))
         )}
-        {mappedResults}
       </Container>
       <Footer profile={profile} />
     </>
