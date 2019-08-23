@@ -5,13 +5,14 @@ import Container from "../components/Container";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
-import { FilterButton } from "../components/Buttons";
+import { FilterButtonUp, FilterButtonDown } from "../components/Buttons";
 import styled from "styled-components";
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 0px 20px 0px 20px;
 `;
 
 const StyledDivider = styled.hr`
@@ -22,12 +23,13 @@ const StyledDivider = styled.hr`
 `;
 
 const StyledParagraph = styled.p`
-  margin: 20px 20px 0px 20px;
+  margin: 0px 20px 0px 20px;
 `;
 
 function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
   const [sort, setSort] = React.useState(null);
   const [sortLength, setSortLength] = React.useState(null);
+  const [hide, setHide] = React.useState(true);
 
   function onDetailsClick(id) {
     history.push(`/details/${id}`);
@@ -46,6 +48,10 @@ function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
 
   function sortLengthDescending() {
     setSortLength("desc");
+  }
+
+  function hideSort() {
+    setHide(!hide);
   }
 
   const content =
@@ -88,16 +94,15 @@ function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
   return (
     <>
       <Header headline="Feed" />
-      <StyledParagraph>Filter</StyledParagraph>
+      <StyledParagraph onClick={hideSort}>Sort</StyledParagraph>
       <StyledDivider />
       <ButtonContainer>
-        <FilterButton text="Price ascending" onClick={sortPriceAscending} />
-        <FilterButton text="Length ascending" onClick={sortLengthAscending} />
+        <FilterButtonUp text="Price" onClick={sortPriceAscending} />
+        <FilterButtonDown text="Price" onClick={sortPriceDescending} />
+        <FilterButtonUp text="Length" onClick={sortLengthAscending} />
+        <FilterButtonDown text="Length" onClick={sortLengthDescending} />
       </ButtonContainer>
-      <ButtonContainer>
-        <FilterButton text="Price descending" onClick={sortPriceDescending} />
-        <FilterButton text="Length descending" onClick={sortLengthDescending} />
-      </ButtonContainer>
+      <br />
       <Container>{content}</Container>
       <Footer profile={profile} />
     </>

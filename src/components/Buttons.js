@@ -28,13 +28,13 @@ const StyledButtonGrey = styled.button`
 
 const StyledFilterButton = styled.button`
   padding: 5px 10px 5px 10px;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.4);
   color: #131426;
   border: #131426 solid 1px;
   border-radius: 15px;
   font-size: 14px;
   font-family: "Nunito", sans-serif;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 0px 0px 0px;
 `;
 
 export function RedButton({ onClick, text, dis, "data-cy": dataCy }) {
@@ -58,8 +58,20 @@ export function GreyButton({ onClick, text, "data-cy": dataCy, disabled }) {
   );
 }
 
-export function FilterButton({ onClick, text }) {
-  return <StyledFilterButton onClick={onClick}>{text}</StyledFilterButton>;
+export function FilterButtonUp({ onClick, text }) {
+  return (
+    <StyledFilterButton onClick={onClick}>
+      {text} <i class="fas fa-arrow-up" />
+    </StyledFilterButton>
+  );
+}
+
+export function FilterButtonDown({ onClick, text }) {
+  return (
+    <StyledFilterButton onClick={onClick}>
+      {text} <i class="fas fa-arrow-down" />
+    </StyledFilterButton>
+  );
 }
 
 RedButton.propTypes = {
