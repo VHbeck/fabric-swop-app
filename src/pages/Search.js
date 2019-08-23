@@ -7,6 +7,7 @@ import Container from "../components/Container";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 import { withRouter } from "react-router-dom";
+import { FilterButton } from "../components/Buttons";
 
 const InputContainer = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ const StyledParagraph = styled.p`
 
 function Search({ onBookmark, history, cards, onBuyClick, profile }) {
   const [input, setInput] = React.useState("");
+  const [filteredResults, setFilteredResults] = React.useState("");
 
   const options = {
     shouldSort: true,
@@ -46,29 +48,90 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
   function handleSearchChange(event) {
     const value = event.target.value;
     setInput(value);
+    const mappedResults = result.map((out, index) => (
+      <Card
+        onBookmarkClick={() => onBookmark(out._id)}
+        onDetailsClick={() => onDetailsClick(out._id)}
+        onBuyClick={() => onBuyClick(out._id)}
+        key={out.source + index}
+        name={out.name}
+        length={out.fabricLength}
+        width={out.fabricWidth}
+        price={out.price || "no price"}
+        source={out.source || "../../images/default-img.png"}
+        color={out.color || "no color"}
+        bookmark={out.bookmark}
+        dis={out.dis}
+        profile={profile}
+      />
+    ));
+
+    setFilteredResults(mappedResults);
   }
 
   function onDetailsClick(id) {
     history.replace(`/details/${id}`);
   }
 
-  const mappedResults = result.map((out, index) => (
-    <Card
-      onBookmarkClick={() => onBookmark(out._id)}
-      onDetailsClick={() => onDetailsClick(out._id)}
-      onBuyClick={() => onBuyClick(out._id)}
-      key={out.source + index}
-      name={out.name}
-      length={out.fabricLength}
-      width={out.fabricWidth}
-      price={out.price || "no price"}
-      source={out.source || "../../images/default-img.png"}
-      color={out.color || "no color"}
-      bookmark={out.bookmark}
-      dis={out.dis}
-      profile={profile}
-    />
-  ));
+  function filterPriceAscending() {
+    const filter = result
+      .slice()
+      .sort((a, b) => {
+        if (a.price > b.price) {
+          return 1;
+        } else {
+          return -1;
+        }
+      })
+      .map((out, index) => (
+        <Card
+          onBookmarkClick={() => onBookmark(out._id)}
+          onDetailsClick={() => onDetailsClick(out._id)}
+          onBuyClick={() => onBuyClick(out._id)}
+          key={out.source + index}
+          name={out.name}
+          length={out.fabricLength}
+          width={out.fabricWidth}
+          price={out.price || "no price"}
+          source={out.source || "../../images/default-img.png"}
+          color={out.color || "no color"}
+          bookmark={out.bookmark}
+          dis={out.dis}
+          profile={profile}
+        />
+      ));
+    setFilteredResults(filter);
+  }
+
+  function filterPriceDescending() {
+    const filter = result
+      .slice()
+      .sort((a, b) => {
+        if (a.price < b.price) {
+          return 1;
+        } else {
+          return -1;
+        }
+      })
+      .map((out, index) => (
+        <Card
+          onBookmarkClick={() => onBookmark(out._id)}
+          onDetailsClick={() => onDetailsClick(out._id)}
+          onBuyClick={() => onBuyClick(out._id)}
+          key={out.source + index}
+          name={out.name}
+          length={out.fabricLength}
+          width={out.fabricWidth}
+          price={out.price || "no price"}
+          source={out.source || "../../images/default-img.png"}
+          color={out.color || "no color"}
+          bookmark={out.bookmark}
+          dis={out.dis}
+          profile={profile}
+        />
+      ));
+    setFilteredResults(filter);
+  }
 
   return (
     <>
@@ -81,13 +144,17 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
           placeholder="Search for fabric types, colors, names etc."
         />
       </InputContainer>
+      <FilterButton text="Price ascending" onClick={filterPriceAscending} />
+
+      <FilterButton text="Price descending" onClick={filterPriceDescending} />
       <Container>
-        {result.length === 0 && (
+        {result.length === 0 ? (
           <StyledParagraph>
             Nothing found. Search for something else.
           </StyledParagraph>
+        ) : (
+          filteredResults
         )}
-        {mappedResults}
       </Container>
       <Footer profile={profile} />
     </>
