@@ -28,12 +28,11 @@ const StyledButtonGrey = styled.button`
 
 const StyledFilterButton = styled.button`
   padding: 5px 10px 5px 10px;
-  color: grey;
-  background-color: white;
-  border: grey solid 1px;
+  background-color: transparent;
+  color: #131426;
+  border: #131426 solid 1px;
   border-radius: 15px;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Nunito", sans-serif;
   margin: 10px 20px 10px 20px;
 `;

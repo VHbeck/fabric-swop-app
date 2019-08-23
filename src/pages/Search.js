@@ -7,7 +7,6 @@ import Container from "../components/Container";
 import styled from "styled-components";
 import Fuse from "fuse.js";
 import { withRouter } from "react-router-dom";
-import { FilterButton } from "../components/Buttons";
 
 const InputContainer = styled.div`
   display: flex;
@@ -29,14 +28,8 @@ const StyledParagraph = styled.p`
   text-align: center;
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
 function Search({ onBookmark, history, cards, onBuyClick, profile }) {
   const [input, setInput] = React.useState("");
-  const [filteredResults, setFilteredResults] = React.useState("");
 
   const options = {
     shouldSort: true,
@@ -53,33 +46,10 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
   function handleSearchChange(event) {
     const value = event.target.value;
     setInput(value);
-    setFilteredResults(result);
   }
 
   function onDetailsClick(id) {
     history.push(`/details/${id}`);
-  }
-
-  function filterPriceAscending() {
-    const filter = result.slice().sort((a, b) => {
-      if (a.price > b.price) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-    setFilteredResults(filter);
-  }
-
-  function filterPriceDescending() {
-    const filter = result.slice().sort((a, b) => {
-      if (a.price < b.price) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-    setFilteredResults(filter);
   }
 
   return (
@@ -93,17 +63,14 @@ function Search({ onBookmark, history, cards, onBuyClick, profile }) {
           placeholder="Search for fabric types, colors, names etc."
         />
       </InputContainer>
-      <ButtonContainer>
-        <FilterButton text="Price ascending" onClick={filterPriceAscending} />
-        <FilterButton text="Price descending" onClick={filterPriceDescending} />
-      </ButtonContainer>
+
       <Container>
         {result.length === 0 ? (
           <StyledParagraph>
             Nothing found. Search for something else.
           </StyledParagraph>
         ) : (
-          filteredResults.map((out, index) => (
+          result.map((out, index) => (
             <Card
               onBookmarkClick={() => onBookmark(out._id)}
               onDetailsClick={() => onDetailsClick(out._id)}
