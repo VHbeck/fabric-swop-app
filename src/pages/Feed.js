@@ -15,80 +15,56 @@ const ButtonContainer = styled.div`
 `;
 
 function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
-  const [filteredResults, setFilteredResults] = React.useState("");
+  const [sort, setSort] = React.useState(null);
 
   function onDetailsClick(id) {
     history.push(`/details/${id}`);
   }
 
-  function filterPriceAscending() {
-    const filter = cards.slice().sort((a, b) => {
-      if (a.price > b.price) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-    setFilteredResults(filter);
+  function sortPriceAscending() {
+    setSort("asc");
   }
 
-  function filterPriceDescending() {
-    const filter = cards.slice().sort((a, b) => {
-      if (a.price < b.price) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-    setFilteredResults(filter);
+  function sortPriceDescending() {
+    setSort("desc");
   }
 
   const content =
-    filteredResults &&
-    filteredResults.map((card, index) => (
-      <Card
-        onDetailsClick={() => onDetailsClick(card._id)}
-        onBookmarkClick={() => onBookmark(card._id)}
-        onBuyClick={() => onBuyClick(card._id)}
-        key={card.name + index}
-        name={card.name}
-        length={card.fabricLength}
-        width={card.fabricWidth}
-        price={card.price}
-        source={card.source || "../../images/default-img.png"}
-        bookmark={card.bookmark}
-        dis={card.dis}
-        profile={profile}
-      />
-    ));
-
-  const defaultContent =
     cards &&
-    cards.map((card, index) => (
-      <Card
-        onDetailsClick={() => onDetailsClick(card._id)}
-        onBookmarkClick={() => onBookmark(card._id)}
-        onBuyClick={() => onBuyClick(card._id)}
-        key={card.name + index}
-        name={card.name}
-        length={card.fabricLength}
-        width={card.fabricWidth}
-        price={card.price}
-        source={card.source || "../../images/default-img.png"}
-        bookmark={card.bookmark}
-        dis={card.dis}
-        profile={profile}
-      />
-    ));
+    cards
+      .slice()
+      .sort((a, b) => {
+        if (!sort) {
+          return 0;
+        } else {
+          return (a.price - b.price) * (sort === "asc" ? 1 : -1);
+        }
+      })
+      .map((card, index) => (
+        <Card
+          onDetailsClick={() => onDetailsClick(card._id)}
+          onBookmarkClick={() => onBookmark(card._id)}
+          onBuyClick={() => onBuyClick(card._id)}
+          key={card.name + index}
+          name={card.name}
+          length={card.fabricLength}
+          width={card.fabricWidth}
+          price={card.price}
+          source={card.source || "../../images/default-img.png"}
+          bookmark={card.bookmark}
+          dis={card.dis}
+          profile={profile}
+        />
+      ));
 
   return (
     <>
       <Header headline="Feed" />
       <ButtonContainer>
-        <FilterButton text="Price ascending" onClick={filterPriceAscending} />
-        <FilterButton text="Price descending" onClick={filterPriceDescending} />
+        <FilterButton text="Price ascending" onClick={sortPriceAscending} />
+        <FilterButton text="Price descending" onClick={sortPriceDescending} />
       </ButtonContainer>
-      <Container>{content || defaultContent}</Container>
+      <Container>{content}</Container>
       <Footer profile={profile} />
     </>
   );
