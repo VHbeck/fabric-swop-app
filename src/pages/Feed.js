@@ -27,20 +27,19 @@ const StyledParagraph = styled.p`
 `;
 
 function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
-  const [sort, setSort] = React.useState(null);
+  const [sortPrice, setSortPrice] = React.useState(null);
   const [sortLength, setSortLength] = React.useState(null);
-  const [hide, setHide] = React.useState(true);
 
   function onDetailsClick(id) {
     history.push(`/details/${id}`);
   }
 
   function sortPriceAscending() {
-    setSort("asc");
+    setSortPrice("asc");
   }
 
   function sortPriceDescending() {
-    setSort("desc");
+    setSortPrice("desc");
   }
   function sortLengthAscending() {
     setSortLength("asc");
@@ -50,19 +49,15 @@ function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
     setSortLength("desc");
   }
 
-  function hideSort() {
-    setHide(!hide);
-  }
-
   const content =
     cards &&
     cards
       .slice()
       .sort((a, b) => {
-        if (!sort) {
+        if (!sortPrice) {
           return 0;
         } else {
-          return (a.price - b.price) * (sort === "asc" ? 1 : -1);
+          return (a.price - b.price) * (sortPrice === "asc" ? 1 : -1);
         }
       })
       .sort((a, b) => {
@@ -94,7 +89,7 @@ function Feed({ history, cards, onBookmark, onBuyClick, profile }) {
   return (
     <>
       <Header headline="Feed" />
-      <StyledParagraph onClick={hideSort}>Sort fabrics</StyledParagraph>
+      <StyledParagraph>Sort fabrics</StyledParagraph>
       <StyledDivider />
       <ButtonContainer>
         <FilterButtonUp text="Price" onClick={sortPriceAscending} />
